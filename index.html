@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>OSCA Survey</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+ </head>
+ <body>
+	<form action = http://web.engr.oregonstate.edu/~zhangluy/tools/class-content/form_tests/check_request.php method="post">
+		<fieldset>
+			<legend> 2020 Profile </legend>
+      <br>
+      <h2> Problem Solving Court Site Information </h2>
+	  
+	  <!-- Select Circuit -->
+      <label for="Circuit">Court Circuit</label>
+            <select name="circuit" id="c-circuit" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </select>
+            <br>
+      
+		<!-- Select PSC Type -->
+      <label for="PSC-type">What type of problem-solving court is your site</label>
+            <select name="type" id="PSC-type" required>
+                <option value="Adult Drug Court">Adult Drug Court</option>
+                <option value="Mental Helath Court">Mental Health Court</option>
+                <option value="Veterans Court">Veterans Court</option>
+                <option value="Early Childhood Court">Early Childhood Court</option>
+                <option value="DUI Court">DUI Court</option>
+                <option value="Juvenile Drug Court">Juvenile Drug Court</option>
+                <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
+              
+            </select>
+            <br>
+            <label> If your problem-solving court type is not listed above please type it here:
+            <input type = "text" name = "other psc" size = "30" maxlength = "100">
+            </label>
+      <br>
+      <br>
+	  
+	  <!-- Felony/Misdemeanor -->
+      <label> What level of charge does your court accept? </label>
+      <br>
+      <input type = "checkbox" id= "Misdemeanor" value = "Misdemeanor">
+      <label for = "Misdemeanor"> Misdemeanor </label>
+      <br>
+      <input type = "checkbox" id= "Felony" value = "Felony">
+      <label for = "Felony"> Felony </label>
+      <br>
+      <input type = "checkbox" id= "NA" value = "NA">
+      <label for = "NA"> This does not apply to my problem-solving court type </label>
+      <br>
+      <br>
+	  
+	  <!-- Case Processing -->
+      <label> How are cases processed? </label>
+      <br>
+      <input type = "checkbox" id= "Pre-trial" value = "Pre-trial">
+      <label for = "Pre-trial"> Pre-trial </label>
+      <br>
+      <input type = "checkbox" id= "Pre-plea" value = "Pre-plea">
+      <label for = "Pre-plea"> Pre-plea </label>
+      <br>
+      <input type = "checkbox" id= "Post-plea" value = "Post-plea">
+      <label for = "Post-plea"> Post-plea </label>
+      <br>
+      <input type = "checkbox" id= "Pre-adjudication" value = "Pre-adjudication">
+      <label for = "Pre-adjudication"> Pre-adjudication </label>
+      <br>
+      <input type = "checkbox" id= "Post-adjudication" value = "Post-adjudication">
+      <label for = "Post-adjudication"> Post-adjudication </label>
+      <br>
+      <input type = "checkbox" id= "NA" value = "NA">
+      <label for = "NA"> This does not apply to my problem-solving court type </label>
+      <br>
+      
+   	
+	<!-- Point of Contact -->
+      <h2> Primary Contact Information </h2>
+			<label> Name:
+				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> Street Address:
+				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> City:
+				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+			</label>
+			<label> Zip Code:
+				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> Phone Number:
+				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> E-mail Address:
+				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+	  
+	  <!-- Judge Contact -->
+      <h2> Primary Judge/Magistrate Information </h2>
+			<label> Name:
+				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> Street Address:
+				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> City:
+				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+			</label>
+			<label> Zip Code:
+				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> Phone Number:
+				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> E-mail Address:
+				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+			</label>
+        <br>
+		
+		
+		<!--Does this court accept transfers, needs data validation to work with next few steps -->
+        <h2> Transfer Information</h2>
+          <label> Does this court accept transfers?
+            <br>
+              <input type = "checkbox" id = "yes" name = "yes" value = "Accepts Transfers">
+            <label for = "yes"> This court accepts Transfers </label>
+            <br>
+              <input type = "checkbox" id = "No" name = "No" value = "Does not Accept Transfers">
+            <label for = "No"> This court does not accept Transfers </label>
+           </label>
+        <br>
+		
+		<!-- Designee for Transfers -->
+      <h3> Designee For Transfers </h3>
+			<label> Name:
+				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+      	<label> Name:
+				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+      <label> Street Address:
+				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> City:
+				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+			</label>
+			<label> Zip Code:
+				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> Phone Number:
+				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> E-mail Address:
+				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+      <br>
+	  
+	  <!-- Clerk of Court Transfer Information-->
+         <h3> Clerk of Court Designee For Transfers </h3>
+			<label> Name:
+				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+      <label> Street Address:
+				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> City:
+				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+			</label>
+			<label> Zip Code:
+				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> Phone Number:
+				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+			<label> E-mail Address:
+				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+			</label>
+      <br>
+	  
+	
+		<!-- Transfer Criteria -->		
+      <h3> Transfer Criteria</h3>
+        <input class = "tallbox" type = "text" name = "transfer criteria" size = "60" maxlenth "50000" required>
+        <br>
+		
+		<!-- Implementation Date-->
+      <h2>Implementation Date</h2>
+      <input type = "date" name = "implementation date" required>
+      <br>
+	  
+	  <!-- Eligibility Criteria -->
+      <h2> Eligibility Criteria </h2>
+      <input class = "tallbox" type = text name = "screening procedure" size = "60" maxlength =5000 required>
+      
+	  <!-- Program Requirements -->
+	  <h2> Program Requirements </h2>
+      <input class = "tallbox" type = text name = "screening procedure" size = "60" maxlength =5000 required>
+      
+	  <!-- Screening Procedure -->
+	  <h2> Screening Procedure </h2>
+      <input class = "tallbox" type = text name = "screening procedure" size = "60" maxlength =5000 required>
+      <br>
+	  
+	  <!-- Referral Procedure -->
+      <h2> Referral Procedure </h2>
+      <input class = "tallbox" type = text name = "referral procedure" size = 60 maxlength = 50000 required>
+      <br>
+	  
+	  
+	  <!-- Submission Button -->
+      <h4> Submit </h4>
+      <input type="submit" value="Submit Profile" />
+    </fieldset>
+   </form>
+      
+			
+  
+ </body>
+</html>
