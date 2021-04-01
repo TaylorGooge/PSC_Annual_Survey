@@ -1,0 +1,19 @@
+.tallbox {
+  height:100px;
+}
+
+legend {
+  font-size: 100px;
+  text-align: center; 
+}
+
+.txtbox {
+  line-height: 20px; 
+}
+
+input{
+  margin-bottom: 5px;
+}
+select {
+  margin-bottom: 5px;
+}
