@@ -3,9 +3,11 @@
  <head>
   <meta charset="UTF-8">
   <title>OSCA Survey</title>
+  <script type = "text/javascript" src= "javascript.js"></script>
   <link rel="stylesheet" href="stylesheet.css" type="text/css">
  </head>
  <body>
+  
 	<form action = http://web.engr.oregonstate.edu/~zhangluy/tools/class-content/form_tests/check_request.php method="post">
 		<fieldset>
 			<legend> 2020 Profile </legend>
@@ -111,12 +113,13 @@
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+				<input type = "text" name = "phone number" id = 5 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('5').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "emailaddress"  id = "1" = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('1').value)">
 			</label>
+        
       <br>
 	  
 	  <!-- Judge Contact -->
@@ -137,11 +140,11 @@
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+				<input type = "text" name = "phone number" id = 6 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "e-mail address"  id = "2" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('2').value)">
 			</label>
         <br>
 		
@@ -180,11 +183,11 @@
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+				<input type = "text" name = "phone number" id = 7 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('7').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "e-mail address" id = 3 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
 			</label>
       <br>
       <br>
@@ -207,11 +210,11 @@
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" size = "30" maxlength= "100" required>
+				<input type = "text" name = "phone number" id = 8 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('8').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "e-mail address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "e-mail address" id = 4 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
 			</label>
       <br>
 	  
@@ -250,6 +253,7 @@
       <input type="submit" value="Submit Profile" />
     </fieldset>
    </form>
+   
       
 			
   
