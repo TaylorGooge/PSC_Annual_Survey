@@ -6,9 +6,10 @@
   <script type = "text/javascript" src= "javascript.js"></script>
   <link rel="stylesheet" href="stylesheet.css" type="text/css">
  </head>
- <body>
+ <body>  
+	<form action = " " method="post"  
+  enctype = "multipart/form-data" name = "survey" >
   
-	<form action = http://web.engr.oregonstate.edu/~zhangluy/tools/class-content/form_tests/check_request.php method="post">
 		<fieldset>
 			<legend> 2020 Profile </legend>
       <br>
@@ -41,19 +42,19 @@
       
 		<!-- Select PSC Type -->
       <label for="PSC-type">What type of problem-solving court is your site</label>
-            <select name="type" id="PSC-type" required>
+            <select name="psctype" id="PSC-type" required>
                 <option value="Adult Drug Court">Adult Drug Court</option>
                 <option value="Mental Helath Court">Mental Health Court</option>
                 <option value="Veterans Court">Veterans Court</option>
                 <option value="Early Childhood Court">Early Childhood Court</option>
                 <option value="DUI Court">DUI Court</option>
                 <option value="Juvenile Drug Court">Juvenile Drug Court</option>
-                <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
-              
+                <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>\
+                <option value="None of these">Family Dependency Drug Court</option>
             </select>
             <br>
             <label> If your problem-solving court type is not listed above please type it here:
-            <input type = "text" name = "other psc" size = "30" maxlength = "100">
+            <input type = "text" name = "otherpsc" size = "30" maxlength = "100">
             </label>
       <br>
       <br>
@@ -61,36 +62,37 @@
 	  <!-- Felony/Misdemeanor -->
       <label> What level of charge does your court accept? </label>
       <br>
-      <input type = "checkbox" id= "Misdemeanor" value = "Misdemeanor">
+      <input name = "levelofcharge"  type = "checkbox"  value = "Misdemeanor" >
       <label for = "Misdemeanor"> Misdemeanor </label>
       <br>
-      <input type = "checkbox" id= "Felony" value = "Felony">
+      <input type = "checkbox" name = "levelofcharge" value = "Felony">
       <label for = "Felony"> Felony </label>
       <br>
-      <input type = "checkbox" id= "NA" value = "NA">
+      <input type = "checkbox" name = "levelofcharge" value = "NA">
       <label for = "NA"> This does not apply to my problem-solving court type </label>
+
       <br>
       <br>
 	  
 	  <!-- Case Processing -->
       <label> How are cases processed? </label>
       <br>
-      <input type = "checkbox" id= "Pre-trial" value = "Pre-trial">
+      <input type = "checkbox" name = "caseProcesss"  value = "Pre-trial">
       <label for = "Pre-trial"> Pre-trial </label>
       <br>
-      <input type = "checkbox" id= "Pre-plea" value = "Pre-plea">
+      <input type = "checkbox"  name = "caseProcesss" value = "Pre-plea">
       <label for = "Pre-plea"> Pre-plea </label>
       <br>
-      <input type = "checkbox" id= "Post-plea" value = "Post-plea">
+      <input type = "checkbox" name = "caseProcesss"  value = "Post-plea">
       <label for = "Post-plea"> Post-plea </label>
       <br>
-      <input type = "checkbox" id= "Pre-adjudication" value = "Pre-adjudication">
+      <input type = "checkbox"  name = "caseProcesss" value = "Pre-adjudication">
       <label for = "Pre-adjudication"> Pre-adjudication </label>
       <br>
-      <input type = "checkbox" id= "Post-adjudication" value = "Post-adjudication">
+      <input type = "checkbox" name = "caseProcesss"  value = "Post-adjudication">
       <label for = "Post-adjudication"> Post-adjudication </label>
       <br>
-      <input type = "checkbox" id= "NA" value = "NA">
+      <input type = "checkbox" name = "caseProcesss" value = "NA">
       <label for = "NA"> This does not apply to my problem-solving court type </label>
       <br>
       
@@ -98,26 +100,26 @@
 	<!-- Point of Contact -->
       <h2> Primary Contact Information </h2>
 			<label> Name:
-				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+				<input type = "text" name = "primaryname" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> Street Address:
-				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "primaryaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> City:
-				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+				<input type = "text" name = "primarycity" size = "30" maxlength= "100" required>
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+				<input type = "text" name = "primaryzipcode" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" id = 5 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('5').value)">
+				<input type = "text" name = "primaryphone" id = 5 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('5').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "emailaddress"  id = "1" = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('1').value)">
+				<input type = "text" name = "primaryemail"  id = "1" = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('1').value)">
 			</label>
         
       <br>
@@ -125,26 +127,26 @@
 	  <!-- Judge Contact -->
       <h2> Primary Judge/Magistrate Information </h2>
 			<label> Name:
-				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+				<input type = "text" name = "judgename" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> Street Address:
-				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "judgeaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> City:
-				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+				<input type = "text" name = "judgecity" size = "30" maxlength= "100" required>
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+				<input type = "text" name = "judgezipcode" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" id = 6 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
+				<input type = "text" name = "judgephone" id = 6 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "e-mail address"  id = "2" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('2').value)">
+				<input type = "text" name = "judgeemail"  id = "2" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('2').value)">
 			</label>
         <br>
 		
@@ -153,10 +155,10 @@
         <h2> Transfer Information</h2>
           <label> Does this court accept transfers?
             <br>
-              <input type = "checkbox" id = "yes" name = "yes" value = "Accepts Transfers">
+              <input type = "checkbox" name = "transfercheck" name = "yes" value = "Accepts Transfers">
             <label for = "yes"> This court accepts Transfers </label>
             <br>
-              <input type = "checkbox" id = "No" name = "No" value = "Does not Accept Transfers">
+              <input type = "checkbox" name = "transfercheck" name = "No" value = "Does not Accept Transfers">
             <label for = "No"> This court does not accept Transfers </label>
            </label>
         <br>
@@ -164,30 +166,27 @@
 		<!-- Designee for Transfers -->
       <h3> Designee For Transfers </h3>
 			<label> Name:
-				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+				<input type = "text" name = "designeename" size = "30" maxlength= "100" >
 			</label>
-      <br>
-      	<label> Name:
-				<input type = "text" name = "name" size = "30" maxlength= "100" required>
-			</label>
+      
       <br>
       <label> Street Address:
-				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "designeeaddress" size = "30" maxlength= "100">
 			</label>
       <br>
 			<label> City:
-				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+				<input type = "text" name = "designeecity" size = "30" maxlength= "100">
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+				<input type = "text" name = "designeezipcode" size = "30" maxlength= "100" >
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" id = 7 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('7').value)">
+				<input type = "text" name = "designeephone" id = 7 size = "30" maxlength= "100">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "e-mail address" id = 3 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
+				<input type = "text" name = "designeeemail" id = 3 size = "30" maxlength= "100" >
 			</label>
       <br>
       <br>
@@ -195,47 +194,47 @@
 	  <!-- Clerk of Court Transfer Information-->
          <h3> Clerk of Court Designee For Transfers </h3>
 			<label> Name:
-				<input type = "text" name = "name" size = "30" maxlength= "100" required>
+				<input type = "text" name = "cocname" size = "30" maxlength= "100" >
 			</label>
       <br>
       <label> Street Address:
-				<input type = "text" name = "street address" size = "30" maxlength= "100" required>
+				<input type = "text" name = "cocaddress" size = "30" maxlength= "100" >
 			</label>
       <br>
 			<label> City:
-				<input type = "text" name = "city" size = "30" maxlength= "100" required>
+				<input type = "text" name = "coccity" size = "30" maxlength= "100" >
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "zip code" size = "30" maxlength= "100" required>
+				<input type = "text" name = "coczipcode" size = "30" maxlength= "100" >
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "phone number" id = 8 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('8').value)">
+				<input type = "text" name = "cocphone" id = 8 size = "30" maxlength= "100">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "e-mail address" id = 4 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
+				<input type = "text" name = "coce-mail" id = 4 size = "30" maxlength= "100" >
 			</label>
       <br>
 	  
 	
 		<!-- Transfer Criteria -->		
       <h3> Transfer Criteria</h3>
-        <input class = "tallbox" type = "text" name = "transfer criteria" size = "60" maxlenth "50000" required>
+        <input class = "tallbox" type = "text" name = "transfercriteria" size = "60" maxlenth "50000">
         <br>
 		
 		<!-- Implementation Date-->
       <h2>Implementation Date</h2>
-      <input type = "date" name = "implementation date" required>
+      <input type = "date" name = "implementationdate" required>
       <br>
 	  
 	  <!-- Eligibility Criteria -->
       <h2> Eligibility Criteria </h2>
-      <input class = "tallbox" type = text name = "screening procedure" size = "60" maxlength =5000 required>
+      <input class = "tallbox" type = text name = "eligibilitycriteria" size = "60" maxlength =5000 required>
       
 	  <!-- Program Requirements -->
 	  <h2> Program Requirements </h2>
-      <input class = "tallbox" type = text name = "screening procedure" size = "60" maxlength =5000 required>
+      <input class = "tallbox" type = text name = "programreqs" size = "60" maxlength =5000 required>
       
 	  <!-- Screening Procedure -->
 	  <h2> Screening Procedure </h2>
@@ -249,11 +248,11 @@
 	  
 	  
 	  <!-- Submission Button -->
-      <h4> Submit </h4>
-      <input type="submit" value="Submit Profile" />
+      <input type="submit" onSubmit = "validator()" value="Submit Profile" />
     </fieldset>
    </form>
-   
+
+
       
 			
   
