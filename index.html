@@ -111,7 +111,7 @@
 				<input type = "text" name = "primarycity" size = "30" maxlength= "100" required>
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "primaryzipcode" size = "30" maxlength= "100" required>
+				<input type = "text" id = "primzip" name = "primaryzipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('primzip').value)">
 			</label>
       <br>
 			<label> Phone Number:
@@ -138,7 +138,7 @@
 				<input type = "text" name = "judgecity" size = "30" maxlength= "100" required>
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "judgezipcode" size = "30" maxlength= "100" required>
+				<input type = "text" id = "judgezip" name = "judgezipcode" size = "20" maxlength= "5" required onchange=" isValidZip(document.getElementById('judgezip').value)">
 			</label>
       <br>
 			<label> Phone Number:
@@ -155,72 +155,74 @@
         <h2> Transfer Information</h2>
           <label> Does this court accept transfers?
             <br>
-              <input type = "checkbox" name = "transfercheck" name = "yes" value = "Accepts Transfers">
+              <input type = "checkbox" id ="transferyes"  name = "transfercheck"  value = "Accepts Transfers" onchange = "checktTransfer(document.getElementById('transferyes').value)">
             <label for = "yes"> This court accepts Transfers </label>
             <br>
-              <input type = "checkbox" name = "transfercheck" name = "No" value = "Does not Accept Transfers">
+              <input type = "checkbox" id=  "transferno" name = "transfercheck" value = "Does not Accept Transfers" onchange = "checkTransfer(document.getElementById('transferno').value)">
             <label for = "No"> This court does not accept Transfers </label>
            </label>
         <br>
 		
 		<!-- Designee for Transfers -->
+   
       <h3> Designee For Transfers </h3>
 			<label> Name:
-				<input type = "text" name = "designeename" size = "30" maxlength= "100" >
+				<input type = "text" id = "designeename" name = "designeename"  size = "30" maxlength= "100" required >
 			</label>
       
       <br>
       <label> Street Address:
-				<input type = "text" name = "designeeaddress" size = "30" maxlength= "100">
+				<input type = "text"  id ="designeeaddress" name = "designeeaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> City:
-				<input type = "text" name = "designeecity" size = "30" maxlength= "100">
+				<input type = "text"  id = "designeecity"  name = "designeecity" size = "30" maxlength= "100" required>
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "designeezipcode" size = "30" maxlength= "100" >
+				<input type = "text"  id = "designeezip" name = "designeezipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('designeezip').value)">
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "designeephone" id = 7 size = "30" maxlength= "100">
+				<input type = "text"  name = "designeephone" id = 7 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('7').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "designeeemail" id = 3 size = "30" maxlength= "100" >
+				<input type = "text"  name = "designeeemail" id = 3 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
 			</label>
+  
       <br>
       <br>
 	  
 	  <!-- Clerk of Court Transfer Information-->
          <h3> Clerk of Court Designee For Transfers </h3>
 			<label> Name:
-				<input type = "text" name = "cocname" size = "30" maxlength= "100" >
+				<input type = "text" id = "cocname" name = "cocname" size = "30" maxlength= "100" required >
 			</label>
       <br>
       <label> Street Address:
-				<input type = "text" name = "cocaddress" size = "30" maxlength= "100" >
+				<input type = "text" id ="cocaddress"  name = "cocaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label> City:
-				<input type = "text" name = "coccity" size = "30" maxlength= "100" >
+				<input type = "text"  id = "coccity" name = "coccity" size = "30" maxlength= "100" required >
 			</label>
 			<label> Zip Code:
-				<input type = "text" name = "coczipcode" size = "30" maxlength= "100" >
+				<input type = "text" id = "coczip" name = "coczipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('coczip').value)" >
 			</label>
       <br>
 			<label> Phone Number:
-				<input type = "text" name = "cocphone" id = 8 size = "30" maxlength= "100">
+				<input type = "text"  name = "cocphone" id = 8 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('8').value)">
 			</label>
       <br>
 			<label> E-mail Address:
-				<input type = "text" name = "coce-mail" id = 4 size = "30" maxlength= "100" >
+				<input type = "text"  name = "cocemail" id = 4 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
 			</label>
       <br>
 	  
 	
 		<!-- Transfer Criteria -->		
       <h3> Transfer Criteria</h3>
-        <input class = "tallbox" type = "text" name = "transfercriteria" size = "60" maxlenth "50000">
+        <input class = "tallbox" id = "transfercriteria" type = "text" name = "transfercriteria" size = "60" maxlenth "50000" required>
         <br>
 		
 		<!-- Implementation Date-->
