@@ -13,7 +13,7 @@
         // $mail->SMTPSecure = false;
         
 
-        $to = 'taylorgooge@gmail.com'
+        $to = ''
         $from = $_['circuit']
 
         $pos = $_POST;
