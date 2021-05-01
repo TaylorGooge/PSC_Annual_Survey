@@ -5,18 +5,24 @@
   <title>OSCA Survey</title>
   <script type = "text/javascript" src= "javascript.js"></script>
   <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  
  </head>
- <body>  
+ <body> 
+  <header>Here is where a logo or other nice looking stuff goes </header>
+  <p> This is where the instructions can be written</p>
+  
 	<form action = " " method="post"  
   enctype = "multipart/form-data" name = "survey" >
-  
+  <div class = "formbox">
 		<fieldset>
 			<legend> 2020 Profile </legend>
-      <br>
-      <h2> Problem Solving Court Site Information </h2>
+      <h2 class= "fontgroup1"> Problem Solving Court Site Information </h2>
 	  
 	  <!-- Select Circuit -->
-      <label for="Circuit">Court Circuit</label>
+    <div class= identifying >
+      <div class = "question">
+      <label class = 'req' for="Circuit">Court Circuit  </label>
+      
             <select name="circuit" id="c-circuit" required>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -38,11 +44,13 @@
                 <option value="19">19</option>
                 <option value="20">20</option>
             </select>
-            <br>
+           
+          </div>
       
 		<!-- Select PSC Type -->
-      <label for="PSC-type">What type of problem-solving court is your site</label>
-            <select name="psctype" id="PSC-type" required>
+    <div class = "question">
+      <label class = "req" for="PSC-type">What type of problem-solving court is your site?</label>
+            <select name="psctype" id="PSC-type"  onchange="otherCourtType(this.value)" required>
                 <option value="Adult Drug Court">Adult Drug Court</option>
                 <option value="Mental Helath Court">Mental Health Court</option>
                 <option value="Veterans Court">Veterans Court</option>
@@ -50,209 +58,222 @@
                 <option value="DUI Court">DUI Court</option>
                 <option value="Juvenile Drug Court">Juvenile Drug Court</option>
                 <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>\
-                <option value="None of these">Family Dependency Drug Court</option>
+                <option value="None of these" >None of these</option>
             </select>
             <br>
             <label> If your problem-solving court type is not listed above please type it here:
-            <input type = "text" name = "otherpsc" size = "30" maxlength = "100">
+            <input id = "othertype" type = "text" name = "otherpsc" size = "30" maxlength = "100">
             </label>
-      <br>
-      <br>
+      </div>
 	  
 	  <!-- Felony/Misdemeanor -->
-      <label> What level of charge does your court accept? </label>
+    <div class = "question">
+      <label class = "req"> What level of charge does your court accept? </label>
       <br>
-      <input name = "levelofcharge"  type = "checkbox"  value = "Misdemeanor" >
+      <input required name = "levelofcharge" id = "chargemisd" type = "checkbox"  value = "Misdemeanor" onchange="loqReqCheck()" >
       <label for = "Misdemeanor"> Misdemeanor </label>
       <br>
-      <input type = "checkbox" name = "levelofcharge" value = "Felony">
+      <input required type = "checkbox" id = "chargefel" name = "levelofcharge" value = "Felony" onchange="loqReqCheck()">
       <label for = "Felony"> Felony </label>
       <br>
-      <input type = "checkbox" name = "levelofcharge" value = "NA">
+      <input required type = "checkbox" id ="chargena" name = "levelofcharge" value = "NA" onchange= "loqReqCheck()">
       <label for = "NA"> This does not apply to my problem-solving court type </label>
-
-      <br>
-      <br>
+    </div>
+    
 	  
 	  <!-- Case Processing -->
-      <label> How are cases processed? </label>
+    <div class = "question">
+      <label  required class = "req"> How are cases processed? </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss"  value = "Pre-trial">
+      <input type = "checkbox" name = "caseProcesss" id= "cppretrial" value = "Pre-trial" required onchange= "caseProcCheck()">
       <label for = "Pre-trial"> Pre-trial </label>
       <br>
-      <input type = "checkbox"  name = "caseProcesss" value = "Pre-plea">
+      <input type = "checkbox"  name = "caseProcesss" id = "cppreplea" value = "Pre-plea" required onchange= "caseProcCheck()">
       <label for = "Pre-plea"> Pre-plea </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss"  value = "Post-plea">
+      <input type = "checkbox" name = "caseProcesss" id = "cppostplea" value = "Post-plea" required onchange= "caseProcCheck()">
       <label for = "Post-plea"> Post-plea </label>
       <br>
-      <input type = "checkbox"  name = "caseProcesss" value = "Pre-adjudication">
+      <input type = "checkbox"  name = "caseProcesss"  id = "cppreadj" value = "Pre-adjudication" required onchange= "caseProcCheck()">
       <label for = "Pre-adjudication"> Pre-adjudication </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss"  value = "Post-adjudication">
+      <input type = "checkbox" name = "caseProcesss"  id = "cppostadj" value = "Post-adjudication" required onchange= "caseProcCheck()">
       <label for = "Post-adjudication"> Post-adjudication </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss" value = "NA">
+      <input type = "checkbox" name = "caseProcesss"id = "cpna" value = "NA" required onchange= "caseProcCheck()">
       <label for = "NA"> This does not apply to my problem-solving court type </label>
-      <br>
-      
+    </div>
+      	<!-- Implementation Date-->
+      <div class ="question">
+      <label class = "req">Implementation Date</label>
+      <input type =  "date" name = "implementationdate"  required>
+      </div>
+  
+  </div>
    	
 	<!-- Point of Contact -->
-      <h2> Primary Contact Information </h2>
-			<label> Name:
-				<input type = "text" name = "primaryname" size = "30" maxlength= "100" required>
+      <h2 class = "fontgroup1"> Contact Information </h2>
+  <div class = "contactinfo">
+    <h3>Primary Contact Information</h3>
+			<label class = "req"> Name:
+				<input  type = "text" name = "primaryname" size = "30" maxlength= "100" required>
 			</label>
       <br>
-			<label> Street Address:
-				<input type = "text" name = "primaryaddress" size = "30" maxlength= "100" required>
+			<label class = "req"> Street Address:
+				<input  type = "text" name = "primaryaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
-			<label> City:
+			<label class = "req"> City:
 				<input type = "text" name = "primarycity" size = "30" maxlength= "100" required>
 			</label>
-			<label> Zip Code:
-				<input type = "text" id = "primzip" name = "primaryzipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('primzip').value)">
+			<label class = "req"> Zip Code:
+				<input  type = "text" id = "primzip" name = "primaryzipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('primzip').value)">
 			</label>
       <br>
-			<label> Phone Number:
+			<label class = "req"> Phone Number:
 				<input type = "text" name = "primaryphone" id = 5 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('5').value)">
 			</label>
       <br>
-			<label> E-mail Address:
-				<input type = "text" name = "primaryemail"  id = "1" = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('1').value)">
+			<label class = "req"> E-mail Address:
+				<input  type = "text" name = "primaryemail"  id = "1" = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('1').value)">
 			</label>
-        
+    
       <br>
 	  
 	  <!-- Judge Contact -->
-      <h2> Primary Judge/Magistrate Information </h2>
-			<label> Name:
-				<input type = "text" name = "judgename" size = "30" maxlength= "100" required>
+      <h3> Presiding Judge/Magistrate Information </h3>
+			<label class = "req"> Name:
+				<input  type = "text" name = "judgename" size = "30" maxlength= "100" required>
 			</label>
       <br>
-			<label> Street Address:
-				<input type = "text" name = "judgeaddress" size = "30" maxlength= "100" required>
+			<label class = "req"> Street Address:
+				<input  type = "text" name = "judgeaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
-			<label> City:
-				<input type = "text" name = "judgecity" size = "30" maxlength= "100" required>
+			<label class = "req"> City:
+				<input  type = "text" name = "judgecity" size = "30" maxlength= "100" required>
 			</label>
-			<label> Zip Code:
-				<input type = "text" id = "judgezip" name = "judgezipcode" size = "20" maxlength= "5" required onchange=" isValidZip(document.getElementById('judgezip').value)">
-			</label>
-      <br>
-			<label> Phone Number:
-				<input type = "text" name = "judgephone" id = 6 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
+			<label class = "req"> Zip Code:
+				<input  type = "text" id = "judgezip" name = "judgezipcode" size = "20" maxlength= "5" required onchange=" isValidZip(document.getElementById('judgezip').value)">
 			</label>
       <br>
-			<label> E-mail Address:
-				<input type = "text" name = "judgeemail"  id = "2" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('2').value)">
+			<label class = "req"> Phone Number:
+				<input  type = "text" name = "judgephone" id = 6 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
 			</label>
+      <br>
+			<label class = "req"> E-mail Address:
+				<input  type = "text" name = "judgeemail"  id = "2" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('2').value)">
+			</label>
+    </div> 
         <br>
 		
 		
 		<!--Does this court accept transfers, needs data validation to work with next few steps -->
-        <h2> Transfer Information</h2>
-          <label> Does this court accept transfers?
-            <br>
+   
+        <h2 class = "fontgroup1"> Transfer Information</h2>
+        <div class= "adaptive">
+          <h3 class = "req"> Does this court accept transfers?</h3>
               <input type = "checkbox" id ="transferyes"  name = "transfercheck"  value = "Accepts Transfers" onchange = "checktTransfer(document.getElementById('transferyes').value)">
-            <label for = "yes"> This court accepts Transfers </label>
+            <label for = "yes"> This court accepts transfers </label>
             <br>
               <input type = "checkbox" id=  "transferno" name = "transfercheck" value = "Does not Accept Transfers" onchange = "checkTransfer(document.getElementById('transferno').value)">
-            <label for = "No"> This court does not accept Transfers </label>
-           </label>
+            <label for = "No"> This court does not accept transfers </label>
+           
         <br>
 		
 		<!-- Designee for Transfers -->
    
-      <h3> Designee For Transfers </h3>
-			<label> Name:
-				<input type = "text" id = "designeename" name = "designeename"  size = "30" maxlength= "100" required >
+      <h3> Designee For Handling Transfers </h3>
+			<label class = "reqdep"> Name:
+				<input  type = "text" id = "designeename" name = "designeename"  size = "30" maxlength= "100" required >
 			</label>
       
       <br>
-      <label> Street Address:
+      <label class = "reqdep"> Street Address:
 				<input type = "text"  id ="designeeaddress" name = "designeeaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
-			<label> City:
-				<input type = "text"  id = "designeecity"  name = "designeecity" size = "30" maxlength= "100" required>
+			<label class = "reqdep"> City:
+				<input  type = "text"  id = "designeecity"  name = "designeecity" size = "30" maxlength= "100" required>
 			</label>
-			<label> Zip Code:
-				<input type = "text"  id = "designeezip" name = "designeezipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('designeezip').value)">
-			</label>
-      <br>
-			<label> Phone Number:
-				<input type = "text"  name = "designeephone" id = 7 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('7').value)">
+			<label class = "reqdep"> Zip Code:
+				<input  type = "text"  id = "designeezip" name = "designeezipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('designeezip').value)">
 			</label>
       <br>
-			<label> E-mail Address:
-				<input type = "text"  name = "designeeemail" id = 3 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
+			<label class = "reqdep"> Phone Number:
+				<input type = "text"   name = "designeephone" id = 7 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('7').value)">
 			</label>
-  
       <br>
+			<label class = "reqdep"> E-mail Address:
+				<input type = "text" c name = "designeeemail" id = 3 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
+			</label>
+        <br>
       <br>
 	  
 	  <!-- Clerk of Court Transfer Information-->
-         <h3> Clerk of Court Designee For Transfers </h3>
-			<label> Name:
-				<input type = "text" id = "cocname" name = "cocname" size = "30" maxlength= "100" required >
+         <h3> Clerk of Court Contacts For Transfers </h3>
+			<label class = "reqdep"> Name:
+				<input  type = "text" id = "cocname" name = "cocname" size = "30" maxlength= "100" required >
 			</label>
       <br>
-      <label> Street Address:
-				<input type = "text" id ="cocaddress"  name = "cocaddress" size = "30" maxlength= "100" required>
+      <label class = "reqdep"> Street Address:
+				<input  type = "text" id ="cocaddress"  name = "cocaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
-			<label> City:
-				<input type = "text"  id = "coccity" name = "coccity" size = "30" maxlength= "100" required >
+			<label class = "reqdep"> City:
+				<input  type = "text"  id = "coccity" name = "coccity" size = "30" maxlength= "100" required >
 			</label>
-			<label> Zip Code:
+			<label class = "reqdep"> Zip Code:
 				<input type = "text" id = "coczip" name = "coczipcode" size = "20" maxlength= "5" required onchange = "isValidZip(document.getElementById('coczip').value)" >
 			</label>
       <br>
-			<label> Phone Number:
-				<input type = "text"  name = "cocphone" id = 8 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('8').value)">
+			<label class = "reqdep"> Phone Number:
+				<input  type = "text"  name = "cocphone" id = 8 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('8').value)">
 			</label>
       <br>
-			<label> E-mail Address:
-				<input type = "text"  name = "cocemail" id = 4 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
+			<label class = "reqdep"> E-mail Address:
+				<input  type = "text"  name = "cocemail" id = 4 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
 			</label>
       <br>
 	  
 	
 		<!-- Transfer Criteria -->		
-      <h3> Transfer Criteria</h3>
-        <input class = "tallbox" id = "transfercriteria" type = "text" name = "transfercriteria" size = "60" maxlenth "50000" required>
+      <h3 class = "reqdep"> Transfer Criteria</h3>
+        <input  class= "tallbox" id = "transfercriteria" type = "text" name = "transfercriteria" size = "60" maxlenth "50000" required>
         <br>
-		
-		<!-- Implementation Date-->
-      <h2>Implementation Date</h2>
-      <input type = "date" name = "implementationdate" required>
-      <br>
-	  
+    </div>
+
+	<h3>Problem-Solving Court Criteria, Requirements, and Procedures</h3>	
+  <div class = "reqsprocs">
 	  <!-- Eligibility Criteria -->
-      <h2> Eligibility Criteria </h2>
+    <div class = "questsion">
+      <label class = "req"> Eligibility Criteria </label>
       <input class = "tallbox" type = text name = "eligibilitycriteria" size = "60" maxlength =5000 required>
-      
+    </div> 
 	  <!-- Program Requirements -->
-	  <h2> Program Requirements </h2>
+    <div class = "question">
+	  <label class = "req"> Program Requirements </label>
       <input class = "tallbox" type = text name = "programreqs" size = "60" maxlength =5000 required>
-      
+    </div>  
 	  <!-- Screening Procedure -->
-	  <h2> Screening Procedure </h2>
-      <input class = "tallbox" type = text name = "screening procedure" size = "60" maxlength =5000 required>
-      <br>
+    <div class = "question">
+	  <label class = "req"> Screening Procedure </label>
+      <input class = "tallbox"  type = text name = "screening procedure" size = "60" maxlength =5000 required>
+    </div>
 	  
 	  <!-- Referral Procedure -->
-      <h2> Referral Procedure </h2>
-      <input class = "tallbox" type = text name = "referral procedure" size = 60 maxlength = 50000 required>
-      <br>
-	  
+    <div class = "question">
+    <label class = "req"> Referral Procedure </label>
+    <input class = "tallbox" height="100px" type = text name = "referral procedure" size = 60 maxlength = 50000 required> 
+    </div>
+  </div>
 	  
 	  <!-- Submission Button -->
       <input type="submit" onSubmit = "validator()" value="Submit Profile" />
     </fieldset>
+  </div>
    </form>
+  
 
 
       

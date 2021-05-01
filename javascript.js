@@ -151,6 +151,30 @@ function checkTransfer(value){
 
     }
 }
+function otherCourtType(value){
+
+    if (value == "None of these"){
+        document.getElementById("othertype").required = true
+    }
+    else{
+         document.getElementById("othertype").required = false
+     }   
+}
+function loqReqCheck(){
+    document.getElementById("chargemisd").required = false
+    document.getElementById("chargefel").required = false
+    document.getElementById("chargena").required = false
+
+}
+
+function caseProcCheck(){
+    document.getElementById("cppretrial").required = false
+    document.getElementById("cppreplea").required = false
+    document.getElementById("cppostplea").required = false
+    document.getElementById("cppreadj").required = false
+    document.getElementById("cppostadj").required = false
+    document.getElementById("cpna").required = false
+}
 
 
 
