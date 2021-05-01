@@ -6,6 +6,23 @@ legend {
   font-size: 100px;
   text-align: center; 
 }
+body {
+  font-family: Open Sans, sans-serif;
+  font-weight: 400;
+  background-color:#0f2844;
+ 
+}
+.adaptive, .identifying, .contactinfo, .reqsprocs {
+border: 1px solid black;
+padding: 5px;
+background-color: #fcfcfc!important;
+}
+ 
+
+.formbox{
+  background-color:#e0dcdc;
+}
+
 
 .txtbox {
   line-height: 20px; 
@@ -17,3 +34,28 @@ input{
 select {
   margin-bottom: 5px;
 }
+
+.req:after{
+  content: "*";
+  color: red;
+}
+.reqdep:after{
+  content: "*";
+  color: red;
+}
+
+.question {
+ margin: 10px;
+}
+header, p {
+  color:white
+}
+
+legend{
+  font-size: 20pt ;
+}
+
+.fontgroup1{
+  font-size: 14pt
+}
+
