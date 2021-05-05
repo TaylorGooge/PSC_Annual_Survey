@@ -11,8 +11,10 @@
   <header>Here is where a logo or other nice looking stuff goes </header>
   <p> This is where the instructions can be written</p>
   
-	<form action = " " method="post"  
-  enctype = "multipart/form-data" name = "survey" >
+  
+	<!-- <form action = "" method="post"  
+  enctype = "multipart/form-data" name = "survey" > -->
+  <form onsubmit="return validator()">
   <div class = "formbox">
 		<fieldset>
 			<legend> 2020 Profile </legend>
@@ -158,7 +160,7 @@
 			</label>
       <br>
 			<label class = "req"> Phone Number:
-				<input  type = "text" name = "judgephone" id = 6 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
+				<input  type = "text" name = "judgephone" id = "6" size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
 			</label>
       <br>
 			<label class = "req"> E-mail Address:
@@ -269,7 +271,7 @@
   </div>
 	  
 	  <!-- Submission Button -->
-      <input type="submit" onSubmit = "validator()" value="Submit Profile" />
+      <input type="submit"  value="Submit Profile" />
     </fieldset>
   </div>
    </form>
