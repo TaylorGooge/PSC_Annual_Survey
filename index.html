@@ -11,10 +11,9 @@
   <header>Here is where a logo or other nice looking stuff goes </header>
   <p> This is where the instructions can be written</p>
   
-  
-	<!-- <form action = "" method="post"  
+  	<!-- <form action = "" method="post"  
   enctype = "multipart/form-data" name = "survey" > -->
-  <form onsubmit="return validator()">
+  <form onsubmit="return validator()" action= "submitter.php" method = "post">
   <div class = "formbox">
 		<fieldset>
 			<legend> 2020 Profile </legend>
@@ -175,10 +174,10 @@
         <h2 class = "fontgroup1"> Transfer Information</h2>
         <div class= "adaptive">
           <h3 class = "req"> Does this court accept transfers?</h3>
-              <input type = "checkbox" id ="transferyes"  name = "transfercheck"  value = "Accepts Transfers" onchange = "checktTransfer(document.getElementById('transferyes').value)">
+              <input type = "checkbox" id ="transferyes"  name = "transfercheck"  value = "Accepts Transfers" onchange = "checkTransfer()">
             <label for = "yes"> This court accepts transfers </label>
             <br>
-              <input type = "checkbox" id=  "transferno" name = "transfercheck" value = "Does not Accept Transfers" onchange = "checkTransfer(document.getElementById('transferno').value)">
+              <input type = "checkbox" id=  "transferno" name = "transfercheck" value = "Does not Accept Transfers" onchange = "checkTransfer()">
             <label for = "No"> This court does not accept transfers </label>
            
         <br>
@@ -186,13 +185,13 @@
 		<!-- Designee for Transfers -->
    
       <h3> Designee For Handling Transfers </h3>
-			<label class = "reqdep"> Name:
+			<label name = "dnlabel" class = "reqdep"> Name:
 				<input  type = "text" id = "designeename" name = "designeename"  size = "30" maxlength= "100" required >
 			</label>
       
       <br>
-      <label class = "reqdep"> Street Address:
-				<input type = "text"  id ="designeeaddress" name = "designeeaddress" size = "30" maxlength= "100" required>
+      <label > Street Address:
+				<input class = "reqdep" type = "text"  id ="designeeaddress" name = "designeeaddress" size = "30" maxlength= "100" required>
 			</label>
       <br>
 			<label class = "reqdep"> City:
@@ -209,12 +208,17 @@
 			<label class = "reqdep"> E-mail Address:
 				<input type = "text" c name = "designeeemail" id = 3 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
 			</label>
+      <br>
+      <label class = "redep"> Designee Contact does not apply
+			  <input  type = "checkbox"  name = "designeena" id = "designeena" onchange = "checkDesignee()">
+      </label>
+
         <br>
       <br>
 	  
 	  <!-- Clerk of Court Transfer Information-->
          <h3> Clerk of Court Contacts For Transfers </h3>
-			<label class = "reqdep"> Name:
+			<label name = "cocnamelabel" class = "reqdep"> Name:
 				<input  type = "text" id = "cocname" name = "cocname" size = "30" maxlength= "100" required >
 			</label>
       <br>
@@ -237,6 +241,9 @@
 				<input  type = "text"  name = "cocemail" id = 4 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
 			</label>
       <br>
+      <label class = "redep"> Clerk of Court Contact does not apply
+			  <input  type = "checkbox"  name = "cocna" id = "cocna" onchange = "checkCoc()">
+      </label>
 	  
 	
 		<!-- Transfer Criteria -->		
@@ -260,18 +267,18 @@
 	  <!-- Screening Procedure -->
     <div class = "question">
 	  <label class = "req"> Screening Procedure </label>
-      <input class = "tallbox"  type = text name = "screening procedure" size = "60" maxlength =5000 required>
+      <input class = "tallbox"  type = text name = "screeningprocedure" size = "60" maxlength =5000 required>
     </div>
 	  
 	  <!-- Referral Procedure -->
     <div class = "question">
     <label class = "req"> Referral Procedure </label>
-    <input class = "tallbox" height="100px" type = text name = "referral procedure" size = 60 maxlength = 50000 required> 
+    <input class = "tallbox" height="100px" type = text name = "referralprocedure" size = 60 maxlength = 50000 required> 
     </div>
   </div>
 	  
 	  <!-- Submission Button -->
-      <input type="submit"  value="Submit Profile" />
+      <input name= "submit" type="submit"  value="Submit Profile" />
     </fieldset>
   </div>
    </form>

@@ -1,30 +1,28 @@
 
-
-
 function isValidEmail(email){
     
     var res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let val = res.test(String(email).toLowerCase());
     
     if (val == true){
-        return true
+        return true;
     }
     else {
-        alert("Please enter a valid e-mail")
+        alert("Please enter a valid e-mail");
     } 
 
 }
 
 function isValidPhone(phonenum){
 
-    var comp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-    var val = comp.test(phonenum)
+    var comp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    var val = comp.test(phonenum);
     
     if ((val == false) || (typeof val == "object")) {
-        alert("Please enter a valid phone number")
+        alert("Please enter a valid phone number");
     }
   
-    return   
+    return;
 }
 
 function isValidZip(zip){
@@ -112,112 +110,214 @@ function isValidZip(zip){
         34715,34729,34731,34734,34736,34737,34739,34740,34741,34742,34743,34744,34745,34746,34747,34748,34749,34753,
         34755,34756,34758,34759,34760,34761,34762,34769,34770,34771,34772,34773,34777,34778,34785,34786,34787,34788,
         34789,34797,34945,34946,34947,34948,34949,34950,34951,34952,34953,34954,34956,34957,34958,34972,34973,34974,
-        34979,34981,34982,34983,34984,34985,34986,34987,34988,34990,34991,34992,34994,34995,34996,34997]
+        34979,34981,34982,34983,34984,34985,34986,34987,34988,34990,34991,34992,34994,34995,34996,34997];
 
-        var strToInt = parseInt(zip,10)
+        var strToInt = parseInt(zip,10);
     
         if (validZips.indexOf(strToInt) == -1){
-            alert("Please enter a valid zip code")
+            alert("Please enter a valid zip code");
         }
         else{
-            return
+            return;
       }
 }
 
-function checkTransfer(value){
-    if (value == "Accepts Transfers"){
+function checkTransfer(){
+
+    // if both boxes are unchecked everything is required    
+    if ((document.getElementById("transferyes").checked == false) && (document.getElementById("transferno").checked == false)){
+       addDesignee()
+       addCoc()
+       return
+    }
+    if ((document.getElementById("transferyes").checked == true)&& (document.getElementById("transferno").checked == true)) {
+        addCoc()
+        addDesignee()
+    }
+    // transfers accepted- fields required
+    if (document.getElementById("transferyes").checked == true){
+        addDesignee()
+        addCoc()
         return
     }
-    else{
-        document.getElementById("designeename").required= false
-        document.getElementById("designeename").disabled = true;
-
-        document.getElementById("designeeaddress").required = false
-        document.getElementById("designeeaddress").disabled = true
-
-        document.getElementById("designeecity").required = false
-        document.getElementById("designeecity").disabled = true
-
-        document.getElementById("designeezip").required = false
-        document.getElementById("designeezip").disabled = true
-
-        document.getElementById("7").required = false
-        document.getElementById("7").disabled = true
-
-        document.getElementById("3").required = false
-        document.getElementById("3").disabled = true
-
-
-        document.getElementById("cocname").required = false
-        document.getElementById("cocname").disabled = true
-
-
-        document.getElementById("cocaddress").required = false
-        document.getElementById("cocaddress").disabled = true
-
-        document.getElementById("coccity").required = false
-        document.getElementById("coccity").disabled = true
-
-        document.getElementById("coczip").required= false
-        document.getElementById("coczip").disabled= true
-
-        document.getElementById("8").required = false
-        document.getElementById("8").disabled = true
-
-
-        document.getElementById("4").required = false
-        document.getElementById("4").disabled = true
-
-        document.getElementById("transfercriteria").required = false
-        document.getElementById("transfercriteria").disabled = true
+    // remove requirements
+    if (document.getElementById("transferno").checked == true){
+       removeDesignee()
+       removeCoc()
+       return
     }
+}
+
+function removeDesignee(){    
+    document.getElementById("designeename").required= false;
+    document.getElementById("designeename").disabled = true;
+
+    document.getElementById("designeeaddress").required = false;
+    document.getElementById("designeeaddress").disabled = true;
+
+    document.getElementById("designeecity").required = false;
+    document.getElementById("designeecity").disabled = true;
+
+    document.getElementById("designeezip").required = false;
+    document.getElementById("designeezip").disabled = true;
+
+    document.getElementById("7").required = false;
+    document.getElementById("7").disabled = true;
+
+    document.getElementById("3").required = false;
+    document.getElementById("3").disabled = true;
+        
+    }
+
+
+function removeCoc(){
+
+    document.getElementById("cocname").required = false;
+    document.getElementById("cocname").disabled = true;
+
+    document.getElementById("cocaddress").required = false;
+    document.getElementById("cocaddress").disabled = true;
+
+    document.getElementById("coccity").required = false;
+    document.getElementById("coccity").disabled = true;
+
+    document.getElementById("coczip").required= false;
+    document.getElementById("coczip").disabled= true;
+
+    document.getElementById("8").required = false;
+    document.getElementById("8").disabled = true;
+
+    document.getElementById("4").required = false;
+    document.getElementById("4").disabled = true;
+
+    }
+
+function addCoc(){
+    document.getElementById("cocname").required = true;
+    document.getElementById("cocname").disabled = false;
+
+    document.getElementById("cocaddress").required = true;
+    document.getElementById("cocaddress").disabled = false;
+
+    document.getElementById("coccity").required = true;
+    document.getElementById("coccity").disabled = false;
+
+    document.getElementById("coczip").required= true;
+    document.getElementById("coczip").disabled= false;
+
+    document.getElementById("8").required = true;
+    document.getElementById("8").disabled = false;
+
+    document.getElementById("4").required = true;
+    document.getElementById("4").disabled = false;
+
+}
+
+function checkDesignee(){
+    if (document.getElementById("designeena").checked == true){
+        removeDesignee()
+    }
+    else{
+        addDesignee()
+    }
+}
+
+function checkCoc(){
+    if (document.getElementById("cocna").checked == true){
+        removeCoc()
+    }
+    else{
+        addCoc()
+    }
+}
+
+function addDesignee(){
+    document.getElementById("designeename").required= true;
+    document.getElementById("designeename").disabled = false;
+
+    document.getElementById("designeeaddress").required = true;
+    document.getElementById("designeeaddress").disabled = false;
+
+    document.getElementById("designeecity").required = true;
+    document.getElementById("designeecity").disabled = false;
+
+    document.getElementById("designeezip").required = true;
+    document.getElementById("designeezip").disabled = false;
+
+    document.getElementById("7").required = true;
+    document.getElementById("7").disabled = false;
+
+    document.getElementById("3").required = true;
+    document.getElementById("3").disabled = false;
+
+    document.getElementById("cocname").required = true;
+    document.getElementById("cocname").disabled = false;
+
+    document.getElementById("cocaddress").required = true;
+    document.getElementById("cocaddress").disabled = false;
+
+    document.getElementById("coccity").required = true;
+    document.getElementById("coccity").disabled = false;
+
+    document.getElementById("coczip").required= true;
+    document.getElementById("coczip").disabled= false;
+
+    document.getElementById("8").required = true;
+    document.getElementById("8").disabled = false;
+
+    document.getElementById("4").required = true;
+    document.getElementById("4").disabled = false;
+
+    document.getElementById("transfercriteria").required = true;
+    document.getElementById("transfercriteria").disabled = false;
+
 }
 function otherCourtType(value){
 
     if (value == "None of these"){
-        document.getElementById("othertype").required = true
+        document.getElementById("othertype").required = true;
     }
     else{
-         document.getElementById("othertype").required = false
+         document.getElementById("othertype").required = false;
      }   
 }
 function loqReqCheck(object){
-    document.getElementById("chargemisd").required = false
-    document.getElementById("chargefel").required = false
-    document.getElementById("chargena").required = false
+    document.getElementById("chargemisd").required = false;
+    document.getElementById("chargefel").required = false;
+    document.getElementById("chargena").required = false;
 
 }
 
 function caseProcCheck(){
-    document.getElementById("cppretrial").required = false
-    document.getElementById("cppreplea").required = false
-    document.getElementById("cppostplea").required = false
-    document.getElementById("cppreadj").required = false
-    document.getElementById("cppostadj").required = false
-    document.getElementById("cpna").required = false
+    document.getElementById("cppretrial").required = false;
+    document.getElementById("cppreplea").required = false;
+    document.getElementById("cppostplea").required = false;
+    document.getElementById("cppreadj").required = false;
+    document.getElementById("cppostadj").required = false;
+    document.getElementById("cpna").required = false;
 }
 
 
 
 function validator(){
-    alert("called")
+
 
     // checkbox checkers
     // level of charge
     if ((chargemisd.checked ==false) && (chargefel.checked == false) && (chargena.checked == false)){
-        alert("Please indicate the level of charges your court accepts")
-        return false
+        alert("Please indicate the level of charges your court accepts");
+        return false;
             }
 
     //case processing
     if ((cppretrial.checked == false) && (cppreplea.checked == false) && (cppostplea.checked== false) && (cppreadj.checked == false) && (cppostadj.checked == false) && (cpna.checked == false)){
          alert("Please indicate how your court processes cases")
-         return false
+         return false;
      }
     
     //comparators
     //phone
-    var comp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+    var comp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     // emails
     var res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     //zipcode
@@ -304,61 +404,63 @@ function validator(){
         34715,34729,34731,34734,34736,34737,34739,34740,34741,34742,34743,34744,34745,34746,34747,34748,34749,34753,
         34755,34756,34758,34759,34760,34761,34762,34769,34770,34771,34772,34773,34777,34778,34785,34786,34787,34788,
         34789,34797,34945,34946,34947,34948,34949,34950,34951,34952,34953,34954,34956,34957,34958,34972,34973,34974,
-        34979,34981,34982,34983,34984,34985,34986,34987,34988,34990,34991,34992,34994,34995,34996,34997]
+        34979,34981,34982,34983,34984,34985,34986,34987,34988,34990,34991,34992,34994,34995,34996,34997];
 
     // primary contact checkers
     //primary contact phone
     var primPhone = document.getElementById("5").value
     var primPhoneCheck = comp.test(primPhone)
     if ((primPhoneCheck == false) || (typeof primPhoneCheck == "object")){
-        alert("The primary contact phone number is not valid.")
-        return false
+        alert("The primary contact phone number is not valid.");
+        return false;
     }
 
     // //primary contact zipcode
-    var primZip = document.getElementById("primzip").value
-    var strToInt = parseInt(primZip,10)
-    var zipTest = validZips.indexOf(strToInt)
+    var primZip = document.getElementById("primzip").value;
+    var strToInt = parseInt(primZip,10);
+    var zipTest = validZips.indexOf(strToInt);
     if (zipTest == -1){
-        alert("Please provide a valid primary contact zip code")
-        return false
+        alert("Please provide a valid primary contact zip code");
+        return false;
     }
 
 
     // //primary contact email
-    var primEmail = document.getElementById("1").value
+    var primEmail = document.getElementById("1").value;
     var res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let primEmailCheck = res.test(String(primEmail).toLowerCase());
     if (primEmailCheck != true ){
-        alert("The primary contact email address is not valid.")
-        return false
+        alert("The primary contact email address is not valid.");
+        return false;
     }
 
     // judge contact checkers
     //judge contact phone
-    var judgePhone = document.getElementById("6").value
-    var judgePhoneCheck = comp.test(judgePhone)
+    var judgePhone = document.getElementById("6").value;
+    var judgePhoneCheck = comp.test(judgePhone);
     if ((judgePhoneCheck == false) || (typeof judgePhoneCheck == "object")){
-        alert("The judge phone number is not valid.")
-        return false
+        alert("The judge phone number is not valid.");
+        return false;
     }
 
     // judge contact zipcode
-    var judgeZip = document.getElementById("judgezip").value
-    var strToInt = parseInt(judgeZip,10)
-    var zipTest = validZips.indexOf(strToInt)
+    var judgeZip = document.getElementById("judgezip").value;
+    var strToInt = parseInt(judgeZip,10);
+    var zipTest = validZips.indexOf(strToInt);
     if (zipTest == -1){
-        alert("Please provide a valid judge zip code")
-        return false
+        alert("Please provide a valid judge zip code");
+        return false;
     }
     // judge email
-    var judgeEmail = document.getElementById("2").value
+    var judgeEmail = document.getElementById("2").value;
     var res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let judgeEmailCheck = res.test(String(judgeEmail).toLowerCase());
     if (judgeEmailCheck != true ){
-        alert("The judge email address is not valid.")
-        return false
+        alert("The judge email address is not valid.");
+        return false;
     }
+    
+return true;
 
 }
 
