@@ -1,112 +1,149 @@
+<?php
+$servername= "localhost";
+$username = "root";
+$password = "";
+$database_name = "psc_survey_collection";
 
 
-        // use PHPMailer\PHPMailer\PHPMailer;
-        // use PHPMailer\PHPMailer\Exception;
-        // use PHPMailer\PHPMailer\SMTP;
-        // require 'mail/Exception.php';  //my phpmailer scripts are in a 'mail' subdirectory
-        // require 'mail/PHPMailer.php';
-        // require 'mail/SMTP.php';
-        // $mail->isSMTP();
-        // $mail->Host = 'relay-hosting.secureserver.net';
-        // $mail->Port = 25;
-        // $mail->SMTPAuth = false;
-        // $mail->SMTPSecure = false;
+$conn = mysqli_connect($servername,$username,$password,$database_name);
+
+if (!$conn){
+        die("Connection failed:" . mysqli_connect_error());
+}
+if (isset($_POST['submit'])){
+        $Circuit = $_POST['circuit'];
+        $PSCType = $_POST["psctype"];
+        $LevelofCharge = $_POST["levelofcharge"];
+        if (isset($_POST["caseProcess"])){
+                $CaseProcessing = $_POST["caseProcess"];
+        }
+        else{
+                // known bug in html and javascript
+                $CaseProcessing = " ";
+        }
+        $ImplementationDate = $_POST["implementationdate"];
+        $PrimaryName= $_POST["primaryname"];
+        $PrimaryStreetAddress = $_POST["primaryaddress"];
+        $PrimaryCity = $_POST["primarycity"];
+        $PrimaryZipCode = $_POST["primaryzipcode"];
+        $PrimaryPhoneNumber= $_POST["primaryphone"];
+        $PrimaryEmailAddress= $_POST["primaryemail"];
+        $JudgeName = $_POST["judgename"];
+        $JudgeStreetAddress= $_POST["judgeaddress"];
+        $JudgeCity= $_POST["judgecity"];
+        $JudgeZipCode= $_POST["judgezipcode"];
+        $JudgePhoneNumber= $_POST["judgephone"];
+        $JudgeEmailAddress= $_POST["judgeemail"];
+        $AcceptsTransfers= $_POST["transfercheck"];
+        if (isset($_POST["designeename"])){
+                $DesigneeName = $_POST["designeename"];
+        }
+        else{
+                $DesigneeName = " ";
+        }
+        if (isset($_POST["designeeaddress"])){
+                $DesigneeStreetAddress= $_POST["designeeaddress"];
+        }
+        else{
+                $DesigneeStreetAddress = " ";
+        }
         
+        if (isset($_POST["designeecity"])){
+                $DesigneeCity = $_POST["designeecity"];
+        }
+        else{
+                $DesigneeCity = " ";
+        }
 
-        $to = ''
-        $from = $_['circuit']
+        if (isset($_POST["designeezipcode"])){
+                $DesigneeZipCode = $_POST["designeezipcode"];
+        }
+        else{
+                $DesigneeZipCode = " ";
+        }
 
-        $pos = $_POST;
-        $circuit = $_POST['circuit'];
-        $psctype = $_POST['psctype'];
-        $otherpsc = $_POST['otherpsc'];
-        $levelofcharge = $_POST['caseProcess'];  
+        if (isset($_POST["designeephone"])){
+                $DesigneePhoneNumber = $_POST["designeephone"];
+        }
+        else{
+                $DesigneePhoneNumber = ' ';
+        }
+        if (isset($_POST["designeeemail"])){
+                $DesigneeEmailAddress = $_POST["designeeemail"];
+        }
+        else{
+                $DesigneeEmailAddress = " ";
+        }
+        if (isset($_POST["cocname"])){
+                $CocName = $_POST["cocname"];
+        }
+        else{
+                $CocName = " ";
+        }
+        if (isset($_POST["cocaddress"])){
+                $CocStreetAddress = $_POST["cocaddress"];
+        }
+        else{
+                $CocStreetAddress = " ";
+        }
+        if (isset($_POST["coccity"])){
+                $CocCity= $_POST["coccity"];
+        }
+        else{
+                $CocCity = " ";
+        }
+        if (isset($_POST["coczipcode"])){
+                $CocZipCode =$_POST["coczipcode"];
+        }
+        else{
+                $CocZipCode = " ";
+        }
+        if (isset($_POST["cocphone"])){
+                $CocPhoneNumber= $_POST["cocphone"];
+        }
+        else{
+                $CocPhoneNumber = " ";
+        }
+        if (isset($_POST["cocemail"])){
+                $CocEmailAddress= $_POST["cocemail"];
+        }
+        else{
+                $CocEmailAddress = " ";
+        }
+        if (isset($_POST["transfercriteria"])){
+                $TransferCritera= $_POST["transfercriteria"];
+        }
+        else{
+                $TransferCritera = " ";
+        }
 
-        $primaryname = $_POST['primaryname']; 
-        $primaryaddress = $_POST['primaryaddress']; 
-        $primarycity = $_POST['primarycity']; 
-        $primaryzipcode = $_POST['primaryzipcode']; 
-        $primaryphone = $_POST['primaryphone']; 
-        $primaryemail = $_POST['primaryemail']; 
+        $EligibilityCriteria =$_POST["eligibilitycriteria"];
+        $ProgramRequirements= $_POST["programreqs"];
+        $ScreeningProcedure= $_POST["screeningprocedure"];
+        $ReferralProcedure= $_POST["referralprocedure"];
 
-        $judgename = $_POST['judgename']; 
-        $judgeaddress = $_POST['judgeaddress']; 
-        $judgecity = $_POST['judgecity']; 
-        $judegezipcode = $_POST['judgezipcode']; 
-        $judgephone = $_POST['judgephone']; 
-        $judgeemail = $_POST['judgeemail']; 
+        $sql_query = "INSERT INTO submission_information (Circuit, PSCType, LevelofCharge, CaseProcessing, ImplementationDate,
+        PrimaryName, PrimaryStreetAddress, PrimaryCity, PrimaryZipCode,PrimaryPhoneNumber,PrimaryEmailAddress,JudgeName,
+        JudgeStreetAddress, JudgeCity, JudgeZipCode, JudgePhoneNumber, JudgeEmailAddress,AcceptsTransfers, DesigneeName, 
+        DesigneeStreetAddress,DesigneeCity,DesigneeZipCode,DesigneePhoneNumber,DesigneeEmailAddress,CocName, CocStreetAddress,
+        CocCity, CocZipCode, CocPhoneNumber,CocEmailAddress, TransferCriteria, EligibilityCriteria, ProgramRequirements, 
+        ScreeningProcedure, ReferralProcedure) VALUES ('$Circuit', '$PSCType', '$LevelofCharge', '$CaseProcessing', '$ImplementationDate',
+        '$PrimaryName', '$PrimaryStreetAddress', '$PrimaryCity', '$PrimaryZipCode', '$PrimaryPhoneNumber', '$PrimaryEmailAddress', '$JudgeName',
+        '$JudgeStreetAddress', '$JudgeCity', '$JudgeZipCode', '$JudgePhoneNumber', '$JudgeEmailAddress', '$AcceptsTransfers' , '$DesigneeName',
+        '$DesigneeStreetAddress', '$DesigneeCity', '$DesigneeZipCode', '$DesigneePhoneNumber', '$DesigneeEmailAddress', '$CocName', '$CocStreetAddress',
+        '$CocCity', '$CocZipCode', '$CocPhoneNumber', '$CocEmailAddress', '$TransferCritera', '$EligibilityCriteria', '$ProgramRequirements', 
+        '$ScreeningProcedure', '$ReferralProcedure')";
 
-
-        $transfercheck = $_POST['transfercheck'];  
-
-        $designeename = $_POST['designeename']; 
-        $designeeaddress = $_POST['designeeaddress']; 
-        $designeecity = $_POST['designeecity']; 
-        $designeezipcode = $_POST['designeezipcode']; 
-        $designeephone = $_POST['designeephone']; 
-        $designeeemail = $_POST['designeeemail']; 
-
-
-        $cocname = $_POST['cocename']; 
-        $cocaddress = $_POST['cocaddress']; 
-        $coccity = $_POST['coccity']; 
-        $coczipcode = $_POST['coczipcode']; 
-        $cocphone = $_POST['cocphone']; 
-        $cocemail = $_POST['cocemail']; 
-
-        $transfercriteria = $_POST['transfercriteria']; 
-        $implementationdate = $_POST['implementationdate']; 
-        $eligbilitycriteria = $_POST['eligibilitycriteria']; 
-        $programreqs = $_POST['programreqs']; 
-        $screeningprocedure = $_POST['screeningprocedure']; 
-        $referralprocedure = $_POST['referralprocedure'];
+         if (mysqli_query($conn, $sql_query)){
+                 echo("Survey Submitted Successfully");
+         }
+         else{
+                 echo("Error" . $sql . mysqli_error($conn));
+         }
         
-        $subject = $_Post['circuit', 'psctype']
+         mysqli_close($conn);
+}
 
 
-       
-
-        $body = "$circuit /n
-                $psctype /n
-                $otherpsc /n
-                $levelofcharge /n
-                $primaryname /n
-                $primaryaddress  /n 
-                $primarycity /n
-                $primaryzipcode
-                $primaryphone /n
-                $primaryemail /n
-                $judgename /n
-                $judgeaddress /n
-                $judgecity /n
-                $judegezipcode /n
-                $judgephone /n
-                $judgeemail /n
-                $transfercheck /n
-                $designeename /n
-                $designeeaddress /n
-                $designeecity /n
-                $designeezipcode /n
-                $designeephone /n
-                $designeeemail/n
-                $cocname /n
-                $cocaddress /n
-                $coccity /n
-                $coczipcode /n
-                $cocphone /n
-                $cocemail /n
-                $transfercriteria /n
-                $implementationdate /n
-                $eligbilitycriteria /n
-                $programreqs /n
-                $screeningprocedure /n
-                $referralprocedure
-                "
-   
-
-
-
-
-    mail ($to, $subject, $body, $from)
 
 
