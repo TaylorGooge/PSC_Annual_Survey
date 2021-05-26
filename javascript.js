@@ -128,7 +128,7 @@ function checkTransfer(){
     if ((document.getElementById("transferyes").checked == false) && (document.getElementById("transferno").checked == false)){
        addDesignee()
        addCoc()
-       return
+     
     }
     if ((document.getElementById("transferyes").checked == true)&& (document.getElementById("transferno").checked == true)) {
         addCoc()
@@ -138,13 +138,14 @@ function checkTransfer(){
     if (document.getElementById("transferyes").checked == true){
         addDesignee()
         addCoc()
-        return
+
     }
     // remove requirements
     if (document.getElementById("transferno").checked == true){
        removeDesignee()
        removeCoc()
-       return
+       document.getElementById("transfercriteria").required = false;
+       document.getElementById("transfercriteria").disabled = true;
     }
 }
 
@@ -161,11 +162,11 @@ function removeDesignee(){
     document.getElementById("designeezip").required = false;
     document.getElementById("designeezip").disabled = true;
 
-    document.getElementById("7").required = false;
-    document.getElementById("7").disabled = true;
+    document.getElementById("designeephone").required = false;
+    document.getElementById("designeephone").disabled = true;
 
-    document.getElementById("3").required = false;
-    document.getElementById("3").disabled = true;
+    document.getElementById("designeeemail").required = false;
+    document.getElementById("designeeemail").disabled = true;
         
     }
 
@@ -184,11 +185,11 @@ function removeCoc(){
     document.getElementById("coczip").required= false;
     document.getElementById("coczip").disabled= true;
 
-    document.getElementById("8").required = false;
-    document.getElementById("8").disabled = true;
+    document.getElementById("cocphone").required = false;
+    document.getElementById("cocphone").disabled = true;
 
-    document.getElementById("4").required = false;
-    document.getElementById("4").disabled = true;
+    document.getElementById("cocemail").required = false;
+    document.getElementById("cocemail").disabled = true;
 
     }
 
@@ -205,11 +206,11 @@ function addCoc(){
     document.getElementById("coczip").required= true;
     document.getElementById("coczip").disabled= false;
 
-    document.getElementById("8").required = true;
-    document.getElementById("8").disabled = false;
+    document.getElementById("cocphone").required = true;
+    document.getElementById("cocphone").disabled = false;
 
-    document.getElementById("4").required = true;
-    document.getElementById("4").disabled = false;
+    document.getElementById("cocemail").required = true;
+    document.getElementById("cocemail").disabled = false;
 
 }
 
@@ -244,11 +245,11 @@ function addDesignee(){
     document.getElementById("designeezip").required = true;
     document.getElementById("designeezip").disabled = false;
 
-    document.getElementById("7").required = true;
-    document.getElementById("7").disabled = false;
+    document.getElementById("designeephone").required = true;
+    document.getElementById("designeephone").disabled = false;
 
-    document.getElementById("3").required = true;
-    document.getElementById("3").disabled = false;
+    document.getElementById("designeeemail").required = true;
+    document.getElementById("designeeemail").disabled = false;
 
     document.getElementById("cocname").required = true;
     document.getElementById("cocname").disabled = false;
@@ -262,11 +263,11 @@ function addDesignee(){
     document.getElementById("coczip").required= true;
     document.getElementById("coczip").disabled= false;
 
-    document.getElementById("8").required = true;
-    document.getElementById("8").disabled = false;
+    document.getElementById("cocphone").required = true;
+    document.getElementById("cocphone").disabled = false;
 
-    document.getElementById("4").required = true;
-    document.getElementById("4").disabled = false;
+    document.getElementById("cocemail").required = true;
+    document.getElementById("cocemail").disabled = false;
 
     document.getElementById("transfercriteria").required = true;
     document.getElementById("transfercriteria").disabled = false;
@@ -297,8 +298,6 @@ function caseProcCheck(){
     document.getElementById("cpna").required = false;
 }
 
-
-
 function validator(){
 
 
@@ -314,6 +313,7 @@ function validator(){
          alert("Please indicate how your court processes cases")
          return false;
      }
+
     
     //comparators
     //phone
@@ -408,7 +408,7 @@ function validator(){
 
     // primary contact checkers
     //primary contact phone
-    var primPhone = document.getElementById("5").value
+    var primPhone = document.getElementById("primaryphone").value
     var primPhoneCheck = comp.test(primPhone)
     if ((primPhoneCheck == false) || (typeof primPhoneCheck == "object")){
         alert("The primary contact phone number is not valid.");
@@ -426,7 +426,7 @@ function validator(){
 
 
     // //primary contact email
-    var primEmail = document.getElementById("1").value;
+    var primEmail = document.getElementById("primaryemail").value;
     var res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let primEmailCheck = res.test(String(primEmail).toLowerCase());
     if (primEmailCheck != true ){
@@ -436,7 +436,7 @@ function validator(){
 
     // judge contact checkers
     //judge contact phone
-    var judgePhone = document.getElementById("6").value;
+    var judgePhone = document.getElementById("judgephone").value;
     var judgePhoneCheck = comp.test(judgePhone);
     if ((judgePhoneCheck == false) || (typeof judgePhoneCheck == "object")){
         alert("The judge phone number is not valid.");
@@ -452,15 +452,16 @@ function validator(){
         return false;
     }
     // judge email
-    var judgeEmail = document.getElementById("2").value;
+    var judgeEmail = document.getElementById("judgeemail").value;
     var res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let judgeEmailCheck = res.test(String(judgeEmail).toLowerCase());
     if (judgeEmailCheck != true ){
         alert("The judge email address is not valid.");
         return false;
     }
-    
-return true;
-
 }
+    
+
+
+
 

@@ -13,7 +13,7 @@
   
   	<!-- <form action = "" method="post"  
   enctype = "multipart/form-data" name = "survey" > -->
-  <form onsubmit="return validator()" action= "submitter.php" method = "post">
+  <form onsubmit="return validator()" action= "https://formspree.io/f/mqkwqaew" method = "post">
   <div class = "formbox">
 		<fieldset>
 			<legend> 2020 Profile </legend>
@@ -58,7 +58,7 @@
                 <option value="Early Childhood Court">Early Childhood Court</option>
                 <option value="DUI Court">DUI Court</option>
                 <option value="Juvenile Drug Court">Juvenile Drug Court</option>
-                <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>\
+                <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
                 <option value="None of these" >None of these</option>
             </select>
             <br>
@@ -71,13 +71,13 @@
     <div class = "question">
       <label class = "req"> What level of charge does your court accept? </label>
       <br>
-      <input required name = "levelofcharge" id = "chargemisd" type = "checkbox"  value = "Misdemeanor" onchange="loqReqCheck()" >
+      <input required name = "levelofcharge-misd" id = "chargemisd" type = "checkbox"  value = "Misdemeanor" onchange="loqReqCheck()" >
       <label for = "Misdemeanor"> Misdemeanor </label>
       <br>
-      <input required type = "checkbox" id = "chargefel" name = "levelofcharge" value = "Felony" onchange="loqReqCheck()">
+      <input required type = "checkbox" id = "chargefel" name = "levelofcharge-fel" value = "Felony" onchange="loqReqCheck()">
       <label for = "Felony"> Felony </label>
       <br>
-      <input required type = "checkbox" id ="chargena" name = "levelofcharge" value = "NA" onchange= "loqReqCheck()">
+      <input required type = "checkbox" id ="chargena" name = "levelofcharge-na" value = "NA" onchange= "loqReqCheck()">
       <label for = "NA"> This does not apply to my problem-solving court type </label>
     </div>
     
@@ -86,22 +86,22 @@
     <div class = "question">
       <label  required class = "req"> How are cases processed? </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss" id= "cppretrial" value = "Pre-trial" required onchange= "caseProcCheck()">
+      <input type = "checkbox" name = "caseProcesss-pretrial" id= "cppretrial" value = "Pre-trial" required onchange= "caseProcCheck()">
       <label for = "Pre-trial"> Pre-trial </label>
       <br>
-      <input type = "checkbox"  name = "caseProcesss" id = "cppreplea" value = "Pre-plea" required onchange= "caseProcCheck()">
+      <input type = "checkbox"  name = "caseProcesss-preplea" id = "cppreplea" value = "Pre-plea" required onchange= "caseProcCheck()">
       <label for = "Pre-plea"> Pre-plea </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss" id = "cppostplea" value = "Post-plea" required onchange= "caseProcCheck()">
+      <input type = "checkbox" name = "caseProcesss-postplea" id = "cppostplea" value = "Post-plea" required onchange= "caseProcCheck()">
       <label for = "Post-plea"> Post-plea </label>
       <br>
-      <input type = "checkbox"  name = "caseProcesss"  id = "cppreadj" value = "Pre-adjudication" required onchange= "caseProcCheck()">
+      <input type = "checkbox"  name = "caseProcesss-preadj"  id = "cppreadj" value = "Pre-adjudication" required onchange= "caseProcCheck()">
       <label for = "Pre-adjudication"> Pre-adjudication </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss"  id = "cppostadj" value = "Post-adjudication" required onchange= "caseProcCheck()">
+      <input type = "checkbox" name = "caseProcesss-postadh"  id = "cppostadj" value = "Post-adjudication" required onchange= "caseProcCheck()">
       <label for = "Post-adjudication"> Post-adjudication </label>
       <br>
-      <input type = "checkbox" name = "caseProcesss"id = "cpna" value = "NA" required onchange= "caseProcCheck()">
+      <input type = "checkbox" name = "caseProcesss-na" id = "cpna" value = "NA" required onchange= "caseProcCheck()">
       <label for = "NA"> This does not apply to my problem-solving court type </label>
     </div>
       	<!-- Implementation Date-->
@@ -132,11 +132,11 @@
 			</label>
       <br>
 			<label class = "req"> Phone Number:
-				<input type = "text" name = "primaryphone" id = 5 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('5').value)">
+				<input type = "text" name = "primaryphone" id = "primaryphone" size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('5').value)">
 			</label>
       <br>
 			<label class = "req"> E-mail Address:
-				<input  type = "text" name = "primaryemail"  id = "1" = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('1').value)">
+				<input  type = "text" name = "primaryemail"  id = "primaryemail" = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('1').value)">
 			</label>
     
       <br>
@@ -159,11 +159,11 @@
 			</label>
       <br>
 			<label class = "req"> Phone Number:
-				<input  type = "text" name = "judgephone" id = "6" size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
+				<input  type = "text" name = "judgephone" id = "judgephone" size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('6').value)">
 			</label>
       <br>
 			<label class = "req"> E-mail Address:
-				<input  type = "text" name = "judgeemail"  id = "2" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('2').value)">
+				<input  type = "text" name = "judgeemail"  id = "judgeemail" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('2').value)">
 			</label>
     </div> 
         <br>
@@ -174,10 +174,10 @@
         <h2 class = "fontgroup1"> Transfer Information</h2>
         <div class= "adaptive">
           <h3 class = "req"> Does this court accept transfers?</h3>
-              <input type = "checkbox" id ="transferyes"  name = "transfercheck"  value = "Accepts Transfers" onchange = "checkTransfer()">
+              <input type = "checkbox" id ="transferyes"  name = "transfercheck-accept"  value = "Accepts Transfers" onchange = "checkTransfer()">
             <label for = "yes"> This court accepts transfers </label>
             <br>
-              <input type = "checkbox" id=  "transferno" name = "transfercheck" value = "Does not Accept Transfers" onchange = "checkTransfer()">
+              <input type = "checkbox" id=  "transferno" name = "transfercheck-notaccept" value = "Does not Accept Transfers" onchange = "checkTransfer()">
             <label for = "No"> This court does not accept transfers </label>
            
         <br>
@@ -202,11 +202,11 @@
 			</label>
       <br>
 			<label class = "reqdep"> Phone Number:
-				<input type = "text"   name = "designeephone" id = 7 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('7').value)">
+				<input type = "text"   name = "designeephone" id = "designeephone" size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('7').value)">
 			</label>
       <br>
 			<label class = "reqdep"> E-mail Address:
-				<input type = "text" c name = "designeeemail" id = 3 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
+				<input type = "text" c name = "designeeemail" id = "designeeemail" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('3').value)">
 			</label>
       <br>
       <label class = "redep"> Designee Contact does not apply
@@ -234,11 +234,11 @@
 			</label>
       <br>
 			<label class = "reqdep"> Phone Number:
-				<input  type = "text"  name = "cocphone" id = 8 size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('8').value)">
+				<input  type = "text"  name = "cocphone" id = "cocphone" size = "30" maxlength= "100" required onchange = "isValidPhone(document.getElementById('8').value)">
 			</label>
       <br>
 			<label class = "reqdep"> E-mail Address:
-				<input  type = "text"  name = "cocemail" id = 4 size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
+				<input  type = "text"  name = "cocemail" id = "cocemail" size = "30" maxlength= "100" required onchange = "isValidEmail(document.getElementById('4').value)">
 			</label>
       <br>
       <label class = "redep"> Clerk of Court Contact does not apply
