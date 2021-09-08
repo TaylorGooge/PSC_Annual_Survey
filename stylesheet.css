@@ -1,62 +1,29 @@
-.tallbox {
-  height:100px;
-  width: 75%
-}
-
-legend {
-  font-size: 100px;
-  text-align: center; 
-}
 body {
   font-family: Open Sans, sans-serif;
   font-weight: 400;
   background-color:#0f2844;
+  padding-left: 25px;
+  padding-right: 25px;
  
 }
-.adaptive, .identifying, .contactinfo, .reqsprocs {
-border: 1px solid black;
-padding: 5px;
-background-color: #fcfcfc!important;
-}
- 
 
-.formbox{
+
+
+.container-fluid{ 
   background-color:#e0dcdc;
 }
 
+td{
+  word-break: break-all;
+  
 
-.txtbox {
-  line-height: 20px; 
-}
-
-input{
-  margin-bottom: 5px;
-}
-select {
-  margin-bottom: 5px;
 }
 
-.req:after{
-  content: "*";
-  color: red;
-}
-.reqdep:after{
-  content: "*";
-  color: red;
+table{
+ table-layout: fixed;
 }
 
-.question {
- margin: 10px;
+.form-group.required .control-label:after {
+  content:" *";
+  color:red;
 }
-header, p {
-  color:white
-}
-
-legend{
-  font-size: 20pt ;
-}
-
-.fontgroup1{
-  font-size: 14pt
-}
-
