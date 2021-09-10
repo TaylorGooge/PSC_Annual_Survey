@@ -1,0 +1,114 @@
+<html>
+  
+<head>
+    <title>Pre-Filled Form Demo</title>
+</head>
+  
+<body>
+    <h1>Update User</h1>
+  
+    <form action="saveData" method="POST">
+        <pre>
+            <div>
+                <label class= "control-label" for="Circuit">Court Circuit  </label>
+                <select class= "form-control col-lg-2" name="circuit" id="c-circuit" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+
+                <label class = "control-label" for="PSC-type">What type of problem-solving court is your site?</label>
+                        <select class = "form-control col-lg-3" name="psctype" id="PSC-type"  onchange="otherCourtType(this.value)" required>
+                            <option value="Adult Drug Court">Adult Drug Court</option>
+                            <option value="Mental Helath Court">Mental Health Court</option>
+                            <option value="Veterans Court">Veterans Court</option>
+                            <option value="Early Childhood Court">Early Childhood Court</option>
+                            <option value="DUI Court">DUI Court</option>
+                            <option value="Juvenile Drug Court">Juvenile Drug Court</option>
+                            <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
+                            <option value="None of these" >None of these</option>
+                        </select>
+
+                        <label> If your problem-solving court type is not listed above please type it here: </label>
+                        <input class = "form-control col-lg-3" id = "othertype" type = "text" value= '<%=user.othertype%>'>
+
+                <label class= "control-label"> What level of charge does your court accept? </label>
+                        <label for = "Misdemeanor"> Misdemeanor </label>    
+                        <input name = "levelofcharge-misd" id = "chargemisd" type = "checkbox"  value = "Misdemeanor" required onchange="loqReqCheck()" >
+                            
+                        <label for = "Felony"> Felony </label>
+                        <input type = "checkbox" id = "chargefel" name = "levelofcharge-fel" value = "Felony" required onchange="loqReqCheck()">
+                    
+                        <label for = "NA"> Not applicable </label>
+                        <input type = "checkbox" id ="chargena" name = "levelofcharge-na" value = "NA" required onchange= "loqReqCheck()">
+
+                <label class ="control-label"> How are cases processed? </label>
+                        <input type = "checkbox" name = "caseProcesss-pretrial" id= "cppretrial" value = "Pre-trial" required onchange= "caseProcCheck()">
+                        <label for = "Pre-trial"> Pre-trial </label>
+                                
+                        <input type = "checkbox"  name = "caseProcesss-preplea" id = "cppreplea" value = "Pre-plea" required onchange= "caseProcCheck()">
+                        <label for = "Pre-plea"> Pre-plea </label>
+                                
+                        <input type = "checkbox" name = "caseProcesss-postplea" id = "cppostplea" value = "Post-plea" required onchange= "caseProcCheck()">
+                        <label for = "Post-plea"> Post-plea </label>
+                                
+                        <input type = "checkbox"  name = "caseProcesss-preadj"  id = "cppreadj" value = "Pre-adjudication" required onchange= "caseProcCheck()">
+                        <label for = "Pre-adjudication"> Pre-adjudication </label>
+                                
+                        <input type = "checkbox" name = "caseProcesss-postadh"  id = "cppostadj" value = "Post-adjudication" required onchange= "caseProcCheck()">
+                            <label for = "Post-adjudication"> Post-adjudication </label>
+                                
+                        <input type = "checkbox" name = "caseProcesss-na" id = "cpna" value = "NA" requied onchange= "caseProcCheck()">
+                            <label for = "NA"> Not applicable </label>
+
+                    <label class ="control-label">Implementation Date</label>
+                    <input  class = "form-control col-lg-3" type ="date" id = "impdate" name = "implementationdate"  required>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Email    : <input type="text" name="email"
+                        value='<%=user.email%>'> <br>
+  
+            Name     : <input type="text" name="name"
+                        value='<%=user.name%>'> <br>
+  
+            Number   : <input type="number" name="mobile"
+                        value='<%=user.phone%>'> <br>
+  
+            Address : <input type="text" name="address"
+                        value='<%=user.address%>'> <br>
+  
+            <input type="submit" value="Submit Form"> 
+        </pre>
+    </form>
+</body>
+  
+</html>

@@ -33,7 +33,6 @@ function add_row(body){
     
 }
 
-
 function checkTransfer(){
 
     // if both boxes are unchecked everything is required    
