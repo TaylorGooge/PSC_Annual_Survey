@@ -1,22 +1,19 @@
 body {
-  font-family: Open Sans, sans-serif;
-  font-weight: 400;
+  /* font-weight: 400; */
   background-color:#0f2844;
   padding-left: 25px;
   padding-right: 25px;
+
  
 }
-
-
-
 .container-fluid{ 
   background-color:#e0dcdc;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius:.25rem!important
 }
 
 td{
   word-break: break-all;
-  
-
 }
 
 table{
@@ -26,4 +23,11 @@ table{
 .form-group.required .control-label:after {
   content:" *";
   color:red;
+}
+
+.nav-link{
+  color: black
+}
+.rounded {
+  border-radius:.25rem!important
 }
