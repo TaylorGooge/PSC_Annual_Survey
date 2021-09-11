@@ -15,13 +15,13 @@ app.use(express.static(__dirname))
 
 
 const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: 'a long, randomly-generated string stored in env',
-  //baseURL: 'http://localhost:3000',
-  baseURL:  'https://psc-annual-survey.herokuapp.com',
-  clientID: 'tdMEnxkOd0V5hePoUwXWfjT59NrYf7Sr',
-  issuerBaseURL: 'https://dev-stdf3vge.us.auth0.com'
+    authRequired: false,
+    auth0Logout: true,
+    secret: 'a long, randomly-generated string stored in env',
+    //baseURL: 'http://localhost:3000',
+    baseURL:  'https://psc-annual-survey.herokuapp.com',
+    clientID: 'tdMEnxkOd0V5hePoUwXWfjT59NrYf7Sr',
+    issuerBaseURL: 'https://dev-stdf3vge.us.auth0.com'
 };
 
 let pool = mysql.createPool({
@@ -41,13 +41,8 @@ if (pool) { // mysql is started && connected successfully.
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
-app.get("/", function (req, res ) {
-    res.send(req.oidc.isAuthenticated() ? 'Logged in' :  'Denied')
-
-})
-
-
-app.get("/profile", requiresAuth(), function (req, res){
+app.get("/", requiresAuth(),function (req, res ) {
+    //res.send(req.oidc.isAuthenticated() ? 'Logged in' :  'Denied')
     let user = (JSON.stringify(req.oidc.user.email))
     user = user.replace(/"/g, '\'');
     let string = "Select * FROM survey WHERE completeremail = " +  user 
@@ -131,7 +126,6 @@ app.post('/submit', function (req, res) {
        string = string  + "?,"
        vals.push(data[i])
         }
-    
     }
 
     pool.query(string,vals,function (err, result) {
@@ -140,8 +134,7 @@ app.post('/submit', function (req, res) {
         } else{
             res.render('complete')
         }
-    }
-)
+    })
 })
 
 app.post('/update', function (req, res) {
@@ -167,8 +160,6 @@ app.post('/update', function (req, res) {
         }
         res.render('complete')
     })
-    
-  
 })
 
 // req.isAuthenticated is provided from the auth router
