@@ -1,114 +1,202 @@
 <html>
   
-<head>
-    <title>Pre-Filled Form Demo</title>
-</head>
-  
-<body>
-    <h1>Update User</h1>
-  
-    <form action="saveData" method="POST">
-        <pre>
-            <div>
-                <label class= "control-label" for="Circuit">Court Circuit  </label>
-                <select class= "form-control col-lg-2" name="circuit" id="c-circuit" required>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                </select>
-
-                <label class = "control-label" for="PSC-type">What type of problem-solving court is your site?</label>
-                        <select class = "form-control col-lg-3" name="psctype" id="PSC-type"  onchange="otherCourtType(this.value)" required>
-                            <option value="Adult Drug Court">Adult Drug Court</option>
-                            <option value="Mental Helath Court">Mental Health Court</option>
-                            <option value="Veterans Court">Veterans Court</option>
-                            <option value="Early Childhood Court">Early Childhood Court</option>
-                            <option value="DUI Court">DUI Court</option>
-                            <option value="Juvenile Drug Court">Juvenile Drug Court</option>
-                            <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
-                            <option value="None of these" >None of these</option>
-                        </select>
-
-                        <label> If your problem-solving court type is not listed above please type it here: </label>
-                        <input class = "form-control col-lg-3" id = "othertype" type = "text" value= '<%=user.othertype%>'>
-
-                <label class= "control-label"> What level of charge does your court accept? </label>
-                        <label for = "Misdemeanor"> Misdemeanor </label>    
-                        <input name = "levelofcharge-misd" id = "chargemisd" type = "checkbox"  value = "Misdemeanor" required onchange="loqReqCheck()" >
-                            
-                        <label for = "Felony"> Felony </label>
-                        <input type = "checkbox" id = "chargefel" name = "levelofcharge-fel" value = "Felony" required onchange="loqReqCheck()">
-                    
-                        <label for = "NA"> Not applicable </label>
-                        <input type = "checkbox" id ="chargena" name = "levelofcharge-na" value = "NA" required onchange= "loqReqCheck()">
-
-                <label class ="control-label"> How are cases processed? </label>
-                        <input type = "checkbox" name = "caseProcesss-pretrial" id= "cppretrial" value = "Pre-trial" required onchange= "caseProcCheck()">
-                        <label for = "Pre-trial"> Pre-trial </label>
-                                
-                        <input type = "checkbox"  name = "caseProcesss-preplea" id = "cppreplea" value = "Pre-plea" required onchange= "caseProcCheck()">
-                        <label for = "Pre-plea"> Pre-plea </label>
-                                
-                        <input type = "checkbox" name = "caseProcesss-postplea" id = "cppostplea" value = "Post-plea" required onchange= "caseProcCheck()">
-                        <label for = "Post-plea"> Post-plea </label>
-                                
-                        <input type = "checkbox"  name = "caseProcesss-preadj"  id = "cppreadj" value = "Pre-adjudication" required onchange= "caseProcCheck()">
-                        <label for = "Pre-adjudication"> Pre-adjudication </label>
-                                
-                        <input type = "checkbox" name = "caseProcesss-postadh"  id = "cppostadj" value = "Post-adjudication" required onchange= "caseProcCheck()">
-                            <label for = "Post-adjudication"> Post-adjudication </label>
-                                
-                        <input type = "checkbox" name = "caseProcesss-na" id = "cpna" value = "NA" requied onchange= "caseProcCheck()">
-                            <label for = "NA"> Not applicable </label>
-
-                    <label class ="control-label">Implementation Date</label>
-                    <input  class = "form-control col-lg-3" type ="date" id = "impdate" name = "implementationdate"  required>
+    <head>
+        <title>PSC Annual Survey</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script type = "text/javascript" src="/javascript.js"></script>
+        <link rel="stylesheet" href="/stylesheet.css" type="text/css"> 
+    </head>
+    <body>
+        <!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>PSC Annual Survey</strong></h2>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form action = "/update" method = "POST" id="msform">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="instructions"><strong>Responder Information</strong></li>
+                                <li id="courtinfo"><strong>Court Information</strong></li>
+                                <li id="contactinfo"><strong>Contact Information</strong></li>
+                                <li id="transfer1"><strong>Transfer Information 1</strong></li>
+                                <li id="transfer2"><strong>Transfer Information 2</strong></li>
+                                <li id="screening"><strong>Eligibility Requirements and Procedures</strong></li>
+                                <li id="data"><strong>Data</strong></li>
+                            </ul> <!-- fieldsets -->
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Responder Information</h2> <p>Instructions Placeholder</p>
+                                    <input type = "email" name= "completeremail" value = "<%= user.completeremail %>" required>
+                                </div> <input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Court Information</h2> 
+                                    <div class = "row">
+                                        <div class= "col-3"> <label class = "pay">What level of charge does your court accept?</label> </div>
+                                            <div class = "col-9">
+                                                <div class = "checkbox mx-auto">
+                                                    <input name = "chargefel" type= "checkbox" id = "chargefel">
+                                                    <label for="chargefel"> Felony</label>
+                                                </div>
+                                                <div class = "checkbox mx-auto">
+                                                    <input name = "chargemisd" type = "checkbox" id= "chargemisd">
+                                                    <label for="chargemisd">Misdemeanor</label>
+                                                </div>
+                                                <div class = "checkbox mx-auto">
+                                                    <input name = "chargena" type = "checkbox" id= "chargena">
+                                                    <label for="chargena">Not Applicable </label>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class= "col-3"> <label class = "pay">How are cases processed?</label> </div>
+                                            <div class = "col-9 mx">
+                                                <div class="checkbox">
+                                                    <input class='form-check' name = "pretrial" type= "checkbox" id = "pretrial"> 
+                                                    <label for="pretrial">Pre-trial </label>
+                                                </div>
+                                                <div class = "checkbox">
+                                                    <input class='form-check' name = "preplea" type = "checkbox" id= "preplea"> 
+                                                    <label for="preplea">Pre-plea </label>
+                                                </div>
+                                                <div class = "checkbox">
+                                                    <input class='form-check' name = "postplea" type = "checkbox" id = "postplea">
+                                                    <label for="postplea">Post-plea </label>
+                                                </div>
+                                                <div class ="checkbox">
+                                                    <input class='form-check' name = "preadj" type = "checkbox" id = "preadj">
+                                                    <label for="preadj">Pre-adjudication </label>
+                                                </div>
+                                                <div class = "checkbox">
+                                                    <input class='form-check' name = "postadj" type = "checkbox" id = "postadj">
+                                                    <label for="postadj">Post-adjudication </label>
+                                                </div>
+                                                <div class = "checkbox">
+                                                    <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna">
+                                                    <label for="caseprocessna">Not Applicable </label>
+                                                </div>
+                                            </div>
+                                    </div>
+                                 </div> 
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h3 class="fs-title">Primary Contact Information</h3>
+                                    <input type="text" name="primaryname" value = "<%= user.primaryname %>" required /> <input type="text" name="primaryaddress" value = "<%= user.primaryaddress %>" required /> <input type="text" name="primarycity"  value = "<%= user.primarycity %>" required /><input type="text" name="primaryzip" value = "<%= user.primaryzip %>" required /><input type="tel" name="primaryphone" value = "<%= user.primaryphone %>" required /> <input type="email" name="primaryemail" value = "<%= user.primaryemail %>" required /> <br> <br>
+                                    <h3 class="fs-title">Judge Contact Information</h3>
+                                    <input type="text" name="judgename" value = "<%= user.judgename %>" required/> <input type="text" name="judgeaddress" value = "<%= user.judgeaddress %>" required/> <input type="text" name="judgecity" value = "<%= user.judgecity %>" required /><input type="text" name="judgezipcode" value = "<%= user.judgezipcode %>"  required /><input type="tel" name="judgephone" value = "<%= user.judgephone %>" required/> <input type="email" name="judgeemail"  value = "<%= user.judgeemail %>" required />
+                                    
+                                </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Transfer Information 1</h2>
+                                    <div class = "row">
+                                        <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
+                                            <div class="checkbox">
+                                                <input class='form-check' name = "transferyes" type= "checkbox" value = "<%= user.transferyes%>" id= "transferyes" >
+                                                <label for="transferyes">This court accepts transfers </label>
+                                            </div>
+                                            <div class = "checkbox">
+                                                <input class='form-check' name = "transferno" type = "checkbox" id = "transferno" value = "<%= user.transferno%>"> 
+                                                <label for="transferno">This court does not accept transfers </label>
+                                            </div>
+                                    </div>
+                                </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 class="fs-title">Transfer Information 2 </h2>
+                                    <h3 class="fs-title">Desinee for Handling Transfers Contact Information</h3>
+                                    <input type="text" name="designeename" value = "<%= user.designeename %>" required/> <input type="text" name="designeeaddress" value = "<%= user.designeeaddress %>" required /> <input type="text" name="designeecity" value = "<%= user.designeecity %>" required /><input type="text" name="designeezip" value = "<%= user.designeezip %>" required /><input type="tel" name="designeephone" value = "<%= user.designeephone %>"required/> <input type="email" name="designeeemail" value = "<%= user.designeeemail %>" required /> <br> <br>
+                                    <h3 class="fs-title">Clerk of Court Contact Information</h3>
+                                    <input type="text" name="clerkname" value = "<%= user.clerkname %>" required/> <input type="text" name="clerkaddress" value = "<%= user.clerkaddress %>" required /> <input type="text" name="clerkcity" value = "<%= user.clerkcity %>" required /><input type="text" name="clerkzipcode" value = "<%= user.clerkzipcode %>" required/><input type="tel" name="clerkphone" value = "<%= user.clerkphone %>" required /> <input type="email" name="clerkemail" value = "<%= user.clerkemail %>" required />
+                                    <h3 class="fs-title">Transfer Requirements</h3>
+                                    <textarea class = "form-control" rows= "10" name = "transferreq"> <%=user.transferreq %> </textarea>
+                                 </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset>
+                            <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Eligibility Requirements and Procedures</h2>
+                                        <h3 class="fs-title">Referral Procedure</h3>
+                                        <textarea class = "form-control" rows= "10" name= "referralproc" required ><%= user.referralproc%></textarea>
+                                        <h3 class="fs-title">Screening Procedure</h3>
+                                        <textarea class = "form-control" rows= "10" name="screeningproc" required> <%= user.screeningproc%></textarea>
+                                        <h3 class="fs-title">Eligibility Requirements</h3>
+                                        <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required><%= user.eligibilitycrit%></textarea>
+                                        
+                                    </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                            </fieldset> 
+                            <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Data</h2>
+                                        <h3 class="fs-title">FY 2020-2021 Data</h3>
+                                        <input type="number" name="admissions" placeholder="Number of Admissions" required/> 
+                                        <input type="number" name="completions" placeholder="Number of Sucessful Completions" required /> 
+                                        <input type="number" name="terminations" placeholder="Number of Unsuccesul Terminations" required /> 
+                                        <h3 class="fs-title">Calendar Year 2020 Data</h3>
+                                        <input type="number" name="numserved" placeholder="Number of Participants" required/> 
+                                       
+                                    </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            Email    : <input type="text" name="email"
-                        value='<%=user.email%>'> <br>
-  
-            Name     : <input type="text" name="name"
-                        value='<%=user.name%>'> <br>
-  
-            Number   : <input type="number" name="mobile"
-                        value='<%=user.phone%>'> <br>
-  
-            Address : <input type="text" name="address"
-                        value='<%=user.address%>'> <br>
-  
-            <input type="submit" value="Submit Form"> 
-        </pre>
-    </form>
-</body>
-  
+        </div>
+    </div>
+</div>   
+    </body>
 </html>
+<script>
+    let data = <%- JSON.stringify(user) %> 
+    let chargefel = document.getElementById('chargefel')
+    if (data.chargefel == "on") {
+        chargefel.checked = true
+    }
+    let chargemisd = document.getElementById('chargemisd')
+    if (data.chargemisd == "on") {
+        chargemisd.checked = true
+    }
+    let chargena = document.getElementById('chargena')
+    if (data.chargena == "on") {
+        chargena.checked = true
+    }
+    let postadj = document.getElementById('postadj')
+    if (data.postadj == "on") {
+       postadj.checked = true
+    }
+    let postplea= document.getElementById('postplea')
+    if (data.postplea == "on") {
+        postplea.checked = true
+    }
+    let preadj = document.getElementById('preadj')
+    if (data.preadj == "on") {
+        preadj.checked = true
+    }
+    let preplea = document.getElementById('preplea')
+    if (data.preplea == "on") {
+        preplea.checked = true
+    }
+    let pretrial = document.getElementById('pretrial')
+    if (data.pretrial == "on") {
+        pretrial.checked = true
+    }
+    let tyes = document.getElementById('transferyes')
+    if (data.transferyes == "on") {
+        tyes.checked = true
+    }
+    let tno = document.getElementById('transferyes')
+    if (data.transferno == "on") {
+        tno.checked = true
+    }
+
+</script>

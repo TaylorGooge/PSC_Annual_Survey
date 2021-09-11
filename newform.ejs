@@ -1,7 +1,7 @@
 <html>
   
     <head>
-        <title>Pre-Filled Form Demo</title>
+        <title>PSC Annual Survey</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
                         <form action = "/submit" method = "POST" id="msform">
                             <!-- progressbar -->
                             <ul id="progressbar">
-                                <li class="active" id="instructions"><strong>Instructions</strong></li>
+                                <li class="active" id="instructions"><strong>Responder Information</strong></li>
                                 <li id="courtinfo"><strong>Court Information</strong></li>
                                 <li id="contactinfo"><strong>Contact Information</strong></li>
                                 <li id="transfer1"><strong>Transfer Information 1</strong></li>
@@ -31,7 +31,7 @@
                             </ul> <!-- fieldsets -->
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title">Instructions</h2> <p>Instructions Placeholder</p>
+                                    <h2 class="fs-title">Instructions</h2> <p>Responder Information</p>
                                     <input type = "email" name= "completeremail" value = "Please enter your email address" required>
                                 </div> <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
@@ -191,28 +191,15 @@
                             <fieldset>
                                     <div class="form-card">
                                         <h2 class="fs-title">Data</h2>
-                                        <h3 class="fs-title">DATE RANGE DATA</h3>
+                                        <h3 class="fs-title">Fiscal Year 2021-2021 Data</h3>
                                         <input type="number" name="admissions" placeholder="Number of Admissions"  required/> 
                                         <input type="number" name="completions" placeholder="Number of Sucessful Completions"  required /> 
                                         <input type="number" name="terminations" placeholder="Number of Unsuccesul Terminations"  required /> 
-                                        <h3 class="fs-title">DATE RANGE DATA</h3>
+                                        <h3 class="fs-title">Calendar Year Data</h3>
                                         <input type="number" name="numserved" placeholder="Number of Participants"  required/> 
                                        
                                     </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm" />
                             </fieldset>
-                            <!-- <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title text-center">Success !</h2> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                    </div> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5>Your Response Has Been Recorded</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset> -->
                         </form>
                     </div>
                 </div>
