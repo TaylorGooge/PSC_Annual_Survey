@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 app.set("views", path.join(__dirname))
 app.set("view engine", "ejs")
 app.use(express.static(__dirname))
-app.use('port',port)
+app.set('port',port)
 
 
 const config = {
