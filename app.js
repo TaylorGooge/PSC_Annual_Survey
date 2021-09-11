@@ -6,12 +6,12 @@ const { auth,requiresAuth } = require('express-openid-connect')
 const path = require('path')
 let mysql = require('mysql')
 const bodyParser = require('body-parser')
-const { body, validationResult } = require('express-validator')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.set("views", path.join(__dirname))
 app.set("view engine", "ejs")
 app.use(express.static(__dirname))
+app.use('port',port)
 
 
 const config = {
@@ -19,7 +19,7 @@ const config = {
     auth0Logout: true,
     secret: 'a long, randomly-generated string stored in env',
     //baseURL: 'http://localhost:3000',
-    baseURL:  'https://psc-annual-survey.herokuapp.com/',
+    baseURL:  'https://psc-annual-survey.herokuapp.com',
     clientID: 'tdMEnxkOd0V5hePoUwXWfjT59NrYf7Sr',
     issuerBaseURL: 'https://dev-stdf3vge.us.auth0.com'
 };
