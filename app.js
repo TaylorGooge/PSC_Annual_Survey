@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.port || 3000
+let port = process.env.PORT || 3000
 require('dotenv').config()
 const { auth,requiresAuth } = require('express-openid-connect')
 const path = require('path')
