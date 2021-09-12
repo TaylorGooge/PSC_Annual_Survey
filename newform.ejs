@@ -33,7 +33,7 @@
                             <fieldset>
                                 <div class="form-card" >
                                     <h2 class="fs-title">Instructions</h2> <p>Instructions placeholder</p>
-                                    <input type = "email" name= "completeremail" value = "<%= user.completeremail %>" >
+                                    <input type = "email" name= "completeremail" placeholder="Respondent Email" >
                                     </div> <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
@@ -167,7 +167,7 @@
                                     <h2 class="fs-title">Transfer Information 1</h2>
                                     <div class = "row">
                                         <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
-                                        <select class="list-dt" id="transferyes" name="transferyes" required onchange= "transferDetails()">
+                                        <select class="list-dt" id="transferyes" name="transferyes" required>
                                             <option selected = "selected" disabled = "disabled" value ="">Choose</option>
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
@@ -314,32 +314,36 @@
             if (!dname.value || !dadd.value || !dcity.value || !dzip.value || !dphone.value || !demail.value){
                 alert("Please provide designee for transfers information")
                 event.preventDefault()
+                return false
             }
             if (!cname.value || !cadd.value || !ccity.value || !czip.value || !cphone.value || !cemail.value){
                 alert("Please provide clerk of court information")
                 event.preventDefault()
+                return false
             }
             if (!transferreq.value) {
                 alert("Please provide transfer requirements")
                 event.preventDefault()
+                return false
             }
         }
-        if (transfers.value == "no"){
-            if (dname.value || dadd.value || dcity.value || dzip.value || dphone.value || demail.value){
+        alert(transferreq.value.length > 0)
+        if (transferreq.value.length > 0 ){
+            alert('You reported that this court does not accept transfers but provided transfer information')
+            event.preventDefault()
+        }
+        if (dname.value.length != 0 || dadd.value.length != 0 || dcity.value.length != 0 || dzip.value.length != 0 || dphone.value.length != 0 || demail.value.length != 0){
                 alert("You reported that this court does not accept transfers but provided designee contact information")
                 event.preventDefault()
-            }
-            if (cname.value || cadd.value || ccity.value || czip.value || cphone.value || cemail.value){
+        }
+        if (cname.value.length != 0 || cadd.value.length != 0 || ccity.value.length != 0 || czip.value.length != 0 || cphone.value.length != 0 || cemail.value.length != 0){
                 alert("You reported that this court does not accept transfers but provided clerk of court contact information")
                 event.preventDefault()
-            }
-            if (transferreq.value){
-                alert("You reported that this court does not accept transfers but provided transfer requirements")
-                event.preventDefault()
-            }
         }
         return true
     }
+      
+    
     function chargeReqNa() {
         let naBox = document.getElementById('chargena')
         let felBox = document.getElementById('chargefel')
