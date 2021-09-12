@@ -4,7 +4,7 @@
   "description": "app to collect annual site data",
   "main": "index.js",
   "scripts": {
-	 "start": "node app.js"
+    "start": "node app.js"
   },
   "author": "taylor googe",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "express-openid-connect": "^2.5.0",
     "express-session": "^1.17.2",
     "express-validator": "^6.12.1",
+    "jquery": "^3.6.0",
     "mysql": "^2.18.1",
     "passport": "^0.4.1",
     "passport-auth0": "^1.4.0"

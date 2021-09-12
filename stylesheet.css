@@ -8,8 +8,8 @@ html {
 }
 
 #grad1 {
-  background-color: : #9C27B0;
-  background-image: linear-gradient(120deg, #FF4081, #81D4FA)
+  background-color:  #9C27B0;
+  background-image: linear-gradient(120deg, #0f2844, #81D4FA)
 }
 
 #msform {
@@ -255,4 +255,12 @@ select.list-dt:focus {
   display: inline-block;
   margin-right: 20px;
 
+}
+
+.datelist {
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px 3px 5px;
+    margin: 2px
 }

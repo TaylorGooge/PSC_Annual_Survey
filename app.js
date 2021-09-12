@@ -18,7 +18,7 @@ const config = {
     authRequired: false,
     auth0Logout: true,
     secret: 'a long, randomly-generated string stored in env',
-    //baseURL: 'http://localhost:3000',
+    // baseURL: 'http://localhost:3000',
     baseURL:  'https://psc-annual-survey.herokuapp.com',
     clientID: 'tdMEnxkOd0V5hePoUwXWfjT59NrYf7Sr',
     issuerBaseURL: 'https://dev-stdf3vge.us.auth0.com'
@@ -51,7 +51,7 @@ app.get("/", requiresAuth(),function (req, res ) {
             throw (err)
         }
         if (result.length > 0) {
-            let user = {
+            let user1 = {
                 completeremail: result[0].completeremail,
                 circuit: result[0].circuit,
                 county: result[0].county,
@@ -104,10 +104,15 @@ app.get("/", requiresAuth(),function (req, res ) {
                 submitbutton: result[0].submitbutton
                 }
             res.render('form', {
-                user: user
+                user: user1
             })
         } else {
-            res.render('newform')
+            let user2 = {
+                completeremail: user,
+            }
+            res.render('newform',{
+                user: user2
+            })
         }
     })  
 })
@@ -127,7 +132,6 @@ app.post('/submit', function (req, res) {
        vals.push(data[i])
         }
     }
-
     pool.query(string,vals,function (err, result) {
         if(err) {
             throw(err)
