@@ -7,6 +7,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script type = "text/javascript" src="/javascript.js"></script>
+
         <link rel="stylesheet" href="/stylesheet.css" type="text/css"> 
     <body>
         <!-- MultiStep Form -->
@@ -21,7 +22,7 @@
                         <form action = "/submit" method = "POST" id="msform" onsubmit= "return validate()">
                             <!-- progressbar -->
                             <ul id="progressbar">
-                                <li class="active" id="instructions"><strong>Responder Information</strong></li>
+                                <li class="active" id="instructions"><strong>Instructions</strong></li>
                                 <li id="courtinfo"><strong>Court Information</strong></li>
                                 <li id="contactinfo"><strong>Contact Information</strong></li>
                                 <li id="transfer1"><strong>Transfer Information 1</strong></li>
@@ -30,10 +31,10 @@
                                 <li id="data"><strong>Data</strong></li>
                             </ul> <!-- fieldsets -->
                             <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Instructions</h2> <p>Responder Information</p>
-                                    <input type = "email" name= "completeremail" value = "Please enter your email address" required>
-                                </div> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <div class="form-card" >
+                                    <h2 class="fs-title">Instructions</h2> <p>Instructions placeholder</p>
+                                    <input type = "email" name= "completeremail" value = "<%= user.completeremail %>" >
+                                    </div> <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -134,11 +135,12 @@
                                     <div class = "row">
                                         <div class= "col-3"> <label class = "pay">Implementation Date</label> </div>
                                             <div class = "col-9">
-                                                <input class='form-control' name= "impdate" type= "date"  required>
+                                                <input class='datelist' name= "impdate" type= "date"  required>
                                             </div>
                                     </div>
                                  </div> 
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
+                                 <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -157,26 +159,25 @@
                                       <input type="tel" name="judgephone" placeholder="Phone Number" required/> 
                                       <input type="email" name="judgeemail" placeholder="Email"  required />
                                     
-                                </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
-                                <div class="form-card">
+                                <div class="form-card" >
                                     <h2 class="fs-title">Transfer Information 1</h2>
                                     <div class = "row">
                                         <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
-                                            <div class="checkbox">
-                                                <input class='form-check' name = "transferyes" type= "radio" id= "transferyes" value = "yes" required onclick = "transferyes()">
-                                                <label for="transferyes">This court accepts transfers </label>
-                                            </div>
-                                            <div class = "checkbox">
-                                                <input class='form-check' name = "transferyes" type = "radio" id = "transferno" value = "no" onclick = "transferCheck()"> 
-                                                <label for="transferno">This court does not accept transfers </label>
-                                            </div>
+                                        <select class="list-dt" id="transferyes" name="transferyes" required onchange= "transferDetails()">
+                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
                                     </div>
-                                </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
-                                <div class="form-card">
+                                <div class="form-card" id = "transferdetails">
                                     <h2 class="fs-title">Transfer Information 2 </h2>
                                     <h3 class="fs-title">Desinee for Handling Transfers Contact Information</h3>
                                     <input type="text" id = "designeename"name="designeename" placeholder="Designee Contact Name" />
@@ -194,7 +195,8 @@
                                     <input type="email" id = "clerkemail" name="clerkemail" placeholder="Email"  />
                                     <h3 class="fs-title">Transfer Requirements</h3>
                                     <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"></textarea>
-                                 </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                 </div>
+                                 <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                     <div class="form-card">
@@ -206,7 +208,8 @@
                                         <h3 class="fs-title">Eligibility Requirements</h3>
                                         <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required></textarea>
                                         
-                                    </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                    </div>
+                                    <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset> 
                             <fieldset>
                                     <div class="form-card">
@@ -218,7 +221,8 @@
                                         <h3 class="fs-title">Calendar Year Data</h3>
                                         <input type="number" name="numserved" placeholder="Number of Participants"  required/> 
                                        
-                                    </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm"/>
+                                    </div>
+                                    <input type="submit" name="submitbutton" class="next action-button" value="Confirm"/>
                             </fieldset>
                         </form>
                     </div>
@@ -231,6 +235,7 @@
 </html>
 
 <script>
+
     function caseProcNA() {
         let nabox = document.getElementById('caseprocessna')
         let preadj = document.getElementById('preadj')
