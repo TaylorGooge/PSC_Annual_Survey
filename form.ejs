@@ -111,7 +111,6 @@
                                     <h2 class="fs-title">Transfer Information 1</h2>
                                     <div class = "row">
                                         <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
-
                                         <select class="list-dt" id="transferyes" name="transferyes" required>
                                             <option selected = "selected" disabled = "disabled" value ="">Choose</option>
                                             <option value="yes">Yes</option>
@@ -295,7 +294,6 @@ function validate () {
     let cemail = document.getElementById('clerkemail')
 
     let transferreq = document.getElementById('transferreq')
-    alert(transferreq.value)
 
     if (transfers.value == "yes") {
         if (!dname.value || !dadd.value || !dcity.value || !dzip.value || !dphone.value || !demail.value){
@@ -312,7 +310,6 @@ function validate () {
         }
     }
     if (transfers.value == "no"){
-        alert('here')
         if (dname.value || dadd.value || dcity.value || dzip.value || dphone.value || demail.value){
             alert("You reported that this court does not accept transfers but provided designee contact information")
             event.preventDefault()

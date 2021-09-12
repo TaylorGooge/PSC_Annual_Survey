@@ -303,9 +303,6 @@
         let czip = document.getElementById('clerkzipcode')
         let cphone = document.getElementById('clerkphone')
 
-        alert(transfers.value)
-
-    
         let transferreq = document.getElementById('transferreq')
     
         if (transfers.value == "yes") {
@@ -323,7 +320,6 @@
             }
         }
         if (transfers.value == "no"){
-            alert('here')
             if (dname.value || dadd.value || dcity.value || dzip.value || dphone.value || demail.value){
                 alert("You reported that this court does not accept transfers but provided designee contact information")
                 event.preventDefault()
