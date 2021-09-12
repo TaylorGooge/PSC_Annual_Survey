@@ -18,7 +18,7 @@
                 <h2><strong>PSC Annual Survey</strong></h2>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form action = "/update" method = "POST" id="msform">
+                        <form action = "/update" method = "POST" id="msform" onsubmit= "return validate()">
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="instructions"><strong>Responder Information</strong></li>
@@ -31,8 +31,8 @@
                             </ul> <!-- fieldsets -->
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title">Responder Information</h2> <p>Instructions Placeholder</p>
-                                    <input type = "email" name= "completeremail" value = "<%= user.completeremail %>" required>
+                                    <h2 class="fs-title">Responder Information</h2> <p></p>
+                                    <input type = "email" name= "completeremail" value = "<%= user.completeremail %>" >
                                 </div> <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
@@ -50,7 +50,7 @@
                                                     <label for="chargemisd">Misdemeanor</label>
                                                 </div>
                                                 <div class = "checkbox mx-auto">
-                                                    <input name = "chargena" type = "checkbox" id= "chargena">
+                                                    <input name = "chargena" type = "checkbox" id= "chargena" onclick = "chargeReqNa()">
                                                     <label for="chargena">Not Applicable </label>
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@
                                                     <label for="postadj">Post-adjudication </label>
                                                 </div>
                                                 <div class = "checkbox">
-                                                    <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna">
+                                                    <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna" onclick = "caseProcNA()">
                                                     <label for="caseprocessna">Not Applicable </label>
                                                 </div>
                                             </div>
@@ -90,9 +90,19 @@
                             <fieldset>
                                 <div class="form-card">
                                     <h3 class="fs-title">Primary Contact Information</h3>
-                                    <input type="text" name="primaryname" value = "<%= user.primaryname %>" required /> <input type="text" name="primaryaddress" value = "<%= user.primaryaddress %>" required /> <input type="text" name="primarycity"  value = "<%= user.primarycity %>" required /><input type="text" name="primaryzip" value = "<%= user.primaryzip %>" required /><input type="tel" name="primaryphone" value = "<%= user.primaryphone %>" required /> <input type="email" name="primaryemail" value = "<%= user.primaryemail %>" required /> <br> <br>
+                                    <input type="text" name="primaryname" value = "<%= user.primaryname %>" required /> 
+                                    <input type="text" name="primaryaddress" value = "<%= user.primaryaddress %>" required /> 
+                                    <input type="text" name="primarycity" value = "<%= user.primarycity %>" required />
+                                    <input type="text" name="primaryzip" value = "<%= user.primaryzip %>" required />
+                                    <input type="tel" name="primaryphone" value = "<%= user.primaryphone %>" required /> 
+                                    <input type="email" name="primaryemail" value = "<%= user.primaryemail %>" required /> <br> <br>
                                     <h3 class="fs-title">Judge Contact Information</h3>
-                                    <input type="text" name="judgename" value = "<%= user.judgename %>" required/> <input type="text" name="judgeaddress" value = "<%= user.judgeaddress %>" required/> <input type="text" name="judgecity" value = "<%= user.judgecity %>" required /><input type="text" name="judgezipcode" value = "<%= user.judgezipcode %>"  required /><input type="tel" name="judgephone" value = "<%= user.judgephone %>" required/> <input type="email" name="judgeemail"  value = "<%= user.judgeemail %>" required />
+                                    <input type="text" name="judgename" value = "<%= user.judgename %>" required/>
+                                    <input type="text" name="judgeaddress" value = "<%= user.judgeaddress %>" required/> 
+                                    <input type="text" name="judgecity" value = "<%= user.judgecity %>" required />
+                                    <input type="text" name="judgezipcode" value = "<%= user.judgezipcode %>" required />
+                                    <input type="tel" name="judgephone" value = "<%= user.judgephone %>" required/> 
+                                    <input type="email" name="judgeemail" value = "<%= user.judgeemail %>" required />
                                     
                                 </div><input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
@@ -101,14 +111,12 @@
                                     <h2 class="fs-title">Transfer Information 1</h2>
                                     <div class = "row">
                                         <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
-                                            <div class="checkbox">
-                                                <input class='form-check' name = "transferyes" type= "checkbox" value = "<%= user.transferyes%>" id= "transferyes" >
-                                                <label for="transferyes">This court accepts transfers </label>
-                                            </div>
-                                            <div class = "checkbox">
-                                                <input class='form-check' name = "transferno" type = "checkbox" id = "transferno" value = "<%= user.transferno%>"> 
-                                                <label for="transferno">This court does not accept transfers </label>
-                                            </div>
+
+                                        <select class="list-dt" id="transferyes" name="transferyes" required>
+                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
                                     </div>
                                 </div><input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
@@ -116,11 +124,21 @@
                                 <div class="form-card">
                                     <h2 class="fs-title">Transfer Information 2 </h2>
                                     <h3 class="fs-title">Desinee for Handling Transfers Contact Information</h3>
-                                    <input type="text" name="designeename" value = "<%= user.designeename %>" required/> <input type="text" name="designeeaddress" value = "<%= user.designeeaddress %>" required /> <input type="text" name="designeecity" value = "<%= user.designeecity %>" required /><input type="text" name="designeezip" value = "<%= user.designeezip %>" required /><input type="tel" name="designeephone" value = "<%= user.designeephone %>"required/> <input type="email" name="designeeemail" value = "<%= user.designeeemail %>" required /> <br> <br>
+                                    <input type="text" id = "designeename" name="designeename" value = "<%= user.designeename %>"/> 
+                                    <input type="text" id = "designeeaddress" name="designeeaddress" value = "<%= user.designeeaddress %>"/> 
+                                    <input type="text" id = "designeecity" name="designeecity" value = "<%= user.designeecity %>" />
+                                    <input type="text" id = "designeezip" name="designeezip" value = "<%= user.designeezip %>" />
+                                    <input type="tel" id = "designeephone" name="designeephone" value = "<%= user.designeephone %>"/> 
+                                    <input type="email" id = "designeeemail" name="designeeemail" value = "<%= user.designeeemail %>" /> <br> <br>
                                     <h3 class="fs-title">Clerk of Court Contact Information</h3>
-                                    <input type="text" name="clerkname" value = "<%= user.clerkname %>" required/> <input type="text" name="clerkaddress" value = "<%= user.clerkaddress %>" required /> <input type="text" name="clerkcity" value = "<%= user.clerkcity %>" required /><input type="text" name="clerkzipcode" value = "<%= user.clerkzipcode %>" required/><input type="tel" name="clerkphone" value = "<%= user.clerkphone %>" required /> <input type="email" name="clerkemail" value = "<%= user.clerkemail %>" required />
+                                    <input type="text" id = "clerkname" name="clerkname" value = "<%= user.clerkname %>" /> 
+                                    <input type="text" id = "clerkaddress" name="clerkaddress" value = "<%= user.clerkaddress %>" /> 
+                                    <input type="text" id = "clerkcity" name="clerkcity" value = "<%= user.clerkcity %>" />
+                                    <input type="text" id = "clerkzipcode" name="clerkzipcode" value = "<%= user.clerkzipcode %>" />
+                                    <input type="tel" id = "clerkphone" name="clerkphone" value = "<%= user.clerkphone %>" /> 
+                                    <input type="email" id = "clerkemail" name="clerkemail" value = "<%= user.clerkemail %>" />
                                     <h3 class="fs-title">Transfer Requirements</h3>
-                                    <textarea class = "form-control" rows= "10" name = "transferreq"> <%=user.transferreq %> </textarea>
+                                    <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"> <%=user.transferreq %> </textarea>
                                  </div><input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
@@ -139,13 +157,13 @@
                                     <div class="form-card">
                                         <h2 class="fs-title">Data</h2>
                                         <h3 class="fs-title">FY 2020-2021 Data</h3>
-                                        <input type="number" name="admissions" placeholder="Number of Admissions" required/> 
-                                        <input type="number" name="completions" placeholder="Number of Sucessful Completions" required /> 
-                                        <input type="number" name="terminations" placeholder="Number of Unsuccesul Terminations" required /> 
+                                        <input type="number" name="admissions" placeholder= "Number of Admissions" required/> 
+                                        <input type="number" name="completions" placeholder = "Number of Sucessful Completions" required /> 
+                                        <input type="number" name="terminations" placeholder = "Number of Unsucessful Terminations" required /> 
                                         <h3 class="fs-title">Calendar Year 2020 Data</h3>
-                                        <input type="number" name="numserved" placeholder="Number of Participants" required/> 
+                                        <input type="number" name="numserved" placeholder= "Number of Participants" required/> 
                                        
-                                    </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm" />
+                                    </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm"/>
                             </fieldset>
                         </form>
                     </div>
@@ -159,6 +177,7 @@
 <script>
     let data = <%- JSON.stringify(user) %> 
     let chargefel = document.getElementById('chargefel')
+
     if (data.chargefel == "on") {
         chargefel.checked = true
     }
@@ -198,5 +217,130 @@
     if (data.transferno == "on") {
         tno.checked = true
     }
+    function courtTypeCheck(){
+    let drop = document.getElementById('courttype')
+    let other = document.getElementById('otherpsctype')
+    if (drop.value === "None of these"){
+        other.required = true
+    } else{
+        other.required = false
+    }
+}
+</script>
+<script>
+function caseProcNA() {
+    let nabox = document.getElementById('caseprocessna')
+    let preadj = document.getElementById('preadj')
+    let preplea = document.getElementById('preplea')
+    let postplea =document.getElementById('postplea')
+    let postadj = document.getElementById('postadj')
+    let pretrial = document.getElementById('pretrial')
 
+    if (nabox.checked) {
+        pretrial.disabled = true
+        pretrial.checked = false
+        preplea.disabled = true
+        preplea.checked = false
+        postplea.disabled = true
+        postplea.checked = false
+        preadj.disabled = true
+        preadj.checked = false
+        postadj.disabled = true
+        postadj.checked = false 
+    }
+    else {
+        pretrial.disabled = false
+        preplea.disabled = false
+        postplea.disabled = false
+        preadj.disabled = false
+        postadj.disabled = false
+
+    }
+}
+function validate () {
+    let felBox = document.getElementById('chargefel')
+    let misdBox = document.getElementById("chargemisd")
+    let naBox = document.getElementById('chargena')
+
+
+    if (!naBox.checked && !felBox.checked && !misdBox.checked) {
+        alert("Please indicate the level of charge your court accepts")
+        event.preventDefault()
+
+    }
+    let nabox = document.getElementById('caseprocessna')
+    let preadj = document.getElementById('preadj')
+    let preplea = document.getElementById('preplea')
+    let postplea =document.getElementById('postplea')
+    let postadj = document.getElementById('postadj')
+    let pretrial = document.getElementById('pretrial')
+    if (!nabox.checked && !preadj.checked && !preplea.checked && !postplea.checked && !postadj.checked && !pretrial.checked){
+        alert("Please indicate how your court processes cases")
+        event.preventDefault()
+    }
+    let transfers = document.getElementById('transferyes')
+  
+    let dname = document.getElementById('designeename')
+    let dadd = document.getElementById('designeeaddress')
+    let dcity = document.getElementById('designeecity')
+    let dzip = document.getElementById('designeezip')
+    let dphone = document.getElementById('designeephone')
+    let demail = document.getElementById('designeeemail')
+
+    let cname = document.getElementById('clerkname')
+    let cadd = document.getElementById('clerkaddress')
+    let ccity = document.getElementById('clerkcity')
+    let czip = document.getElementById('clerkzipcode')
+    let cphone = document.getElementById('clerkphone')
+    let cemail = document.getElementById('clerkemail')
+
+    let transferreq = document.getElementById('transferreq')
+    alert(transferreq.value)
+
+    if (transfers.value == "yes") {
+        if (!dname.value || !dadd.value || !dcity.value || !dzip.value || !dphone.value || !demail.value){
+            alert("Please provide designee for transfers information")
+            event.preventDefault()
+        }
+        if (!cname.value || !cadd.value || !ccity.value || !czip.value || !cphone.value || !cemail.value){
+            alert("Please provide clerk of court information")
+            event.preventDefault()
+        }
+        if (!transferreq.value) {
+            alert("Please provide transfer requirements")
+            event.preventDefault()
+        }
+    }
+    if (transfers.value == "no"){
+        alert('here')
+        if (dname.value || dadd.value || dcity.value || dzip.value || dphone.value || demail.value){
+            alert("You reported that this court does not accept transfers but provided designee contact information")
+            event.preventDefault()
+        }
+        if (cname.value || cadd.value || ccity.value || czip.value || cphone.value || cemail.value){
+            alert("You reported that this court does not accept transfers but provided clerk of court contact information")
+            event.preventDefault()
+        }
+        if (transferreq.value){
+            alert("You reported that this court does not accept transfers but provided transfer requirements")
+            event.preventDefault()
+        }
+    }
+    return true
+}
+function chargeReqNa() {
+    let naBox = document.getElementById('chargena')
+    let felBox = document.getElementById('chargefel')
+    let misdBox = document.getElementById("chargemisd")
+    if (naBox.checked) {
+        felBox.disabled = true
+        felBox.checked = false
+        misdBox.disabled = true
+        misdBox.checked = false
+    } else {
+        felBox.disabled = false
+        misdBox.disabled = false
+    }
+
+}
 </script>
