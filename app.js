@@ -80,7 +80,6 @@ app.get("/", requiresAuth(),function (req, res ) {
                 judgephone: result[0].judgephone,
                 judgeemail: result[0].judgeemail,
                 transferyes: result[0].transferyes,
-                transferno: result[0].transferno,
                 designeename: result[0].designeename,
                 designeeaddress: result[0].designeeaddress,
                 designeecity: result[0].designeecity,
@@ -167,7 +166,6 @@ app.post('/update', function (req, res) {
         res.render('complete')
     })
 })
-
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');

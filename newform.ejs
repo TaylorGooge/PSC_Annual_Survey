@@ -164,8 +164,8 @@
                                         <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
                                         <select class="list-dt" id="transferyes" name="transferyes" required>
                                             <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -315,7 +315,7 @@
 
         let transferreq = document.getElementById('transferreq')
     
-        if (transfers.value == "yes") {
+        if (transfers.value == "Yes") {
             if (!dname.value || !dadd.value || !dcity.value || !dzip.value || !dphone.value || !demail.value){
                 alert("Please provide designee for transfers information")
                 event.preventDefault()

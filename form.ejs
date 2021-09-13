@@ -113,8 +113,8 @@
                                         <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
                                         <select class="list-dt" id="transferyes" name="transferyes" required>
                                             <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                            <option id = "tyes" value="Yes">Yes</option>
+                                            <option id = "tno" value="No">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -195,6 +195,13 @@
     if (data.chargemisd == "on") {
         chargemisd.checked = true
     }
+    transfer = data.transferyes 
+    if (transfer == "Yes") {
+        document.getElementById('tyes').selected = true
+    } else {
+        document.getElementById('tno').selected = true
+    }
+
     let chargena = document.getElementById('chargena')
     if (data.chargena == "on" || data.chargena == "checked") {
         chargena.checked = true
@@ -297,7 +304,7 @@ function validate () {
 
       let transferreq = document.getElementById('transferreq')
   
-      if (transfers.value == "yes") {
+      if (transfers.value == "Yes") {
           if (!dname.value || !dadd.value || !dcity.value || !dzip.value || !dphone.value || !demail.value){
               alert("Please provide designee for transfers information")
               event.preventDefault()
