@@ -32,7 +32,7 @@
                             <fieldset>
                                 <div class="form-card" >
                                     <h2 class="fs-title">Instructions</h2> <p>Instructions placeholder</p>
-                                    <input type = "email" name= "completeremail" placeholder="Respondent Email" >
+                                    <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail">
                                     </div> <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
@@ -234,6 +234,12 @@
 </html>
 
 <script>
+    let data = <%- JSON.stringify(user) %> 
+    let user = data.completeremail
+    user = user.replace(/['"]+/g, '')
+    let email = document.getElementById('completeremail')
+    email.value = user
+    email.contentEditable = false
 
     function caseProcNA() {
         let nabox = document.getElementById('caseprocessna')

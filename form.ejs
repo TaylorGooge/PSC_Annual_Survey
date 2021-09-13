@@ -33,25 +33,25 @@
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Instructions</h2> <p>Instructions Placeholder</p>
-                                    <input type = "email" name= "completeremail" placeholder="Respondent Email">
+                                    <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail">
                                 </div> <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Court Information</h2> 
                                     <div class = "row">
-                                        <div class= "col-3"> <label class = "pay">What level of charge does your court accept?</label> </div>
+                                        <div class= "col-3"> <label class = "pay">What level of charge does your court accept? Choose all that apply</label> </div>
                                             <div class = "col-9">
                                                 <div class = "checkbox mx-auto">
-                                                    <input name = "chargefel" type= "checkbox" id = "chargefel">
+                                                    <input name = "chargefel" type= "checkbox" id = "chargefel" value = "checked">
                                                     <label for="chargefel"> Felony</label>
                                                 </div>
                                                 <div class = "checkbox mx-auto">
-                                                    <input name = "chargemisd" type = "checkbox" id= "chargemisd">
+                                                    <input name = "chargemisd" type = "checkbox" id= "chargemisd" value = "checked">
                                                     <label for="chargemisd">Misdemeanor</label>
                                                 </div>
                                                 <div class = "checkbox mx-auto">
-                                                    <input name = "chargena" type = "checkbox" id= "chargena" onclick = "chargeReqNa()">
+                                                    <input name = "chargena" type = "checkbox" id= "chargena" value = "checked" onclick= "chargeReqNa()">
                                                     <label for="chargena">Not Applicable </label>
                                                 </div>
                                             </div>
@@ -176,9 +176,13 @@
 </html>
 <script>
     let data = <%- JSON.stringify(user) %> 
+    let user = data.completeremail
+    user = user.replace(/['"]+/g, '')
+    let email = document.getElementById('completeremail')
+
     let chargefel = document.getElementById('chargefel')
 
-    if (data.chargefel == "on") {
+    if (data.chargefel == "on" || data.chargefel == "checked") {
         chargefel.checked = true
     }
     let chargemisd = document.getElementById('chargemisd')
@@ -186,37 +190,30 @@
         chargemisd.checked = true
     }
     let chargena = document.getElementById('chargena')
-    if (data.chargena == "on") {
+    if (data.chargena == "on" || data.chargena == "checked") {
         chargena.checked = true
     }
     let postadj = document.getElementById('postadj')
-    if (data.postadj == "on") {
+    if (data.postadj == "on" || data.postadj == "checked") {
        postadj.checked = true
     }
     let postplea= document.getElementById('postplea')
-    if (data.postplea == "on") {
+    if (data.postplea == "on" || data.postplea == "checked") {
         postplea.checked = true
     }
     let preadj = document.getElementById('preadj')
-    if (data.preadj == "on") {
+    if (data.preadj == "on" || data.preadj == "checked") {
         preadj.checked = true
     }
     let preplea = document.getElementById('preplea')
-    if (data.preplea == "on") {
+    if (data.preplea == "on" || data.preplea == "checked") {
         preplea.checked = true
     }
     let pretrial = document.getElementById('pretrial')
-    if (data.pretrial == "on") {
+    if (data.pretrial == "on" || data.pretrial == "checked") {
         pretrial.checked = true
     }
-    let tyes = document.getElementById('transferyes')
-    if (data.transferyes == "on") {
-        tyes.checked = true
-    }
-    let tno = document.getElementById('transferyes')
-    if (data.transferno == "on") {
-        tno.checked = true
-    }
+    
     function courtTypeCheck(){
     let drop = document.getElementById('courttype')
     let other = document.getElementById('otherpsctype')
