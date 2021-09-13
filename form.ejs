@@ -1,7 +1,11 @@
-<html>
-  
+<!DOCTYPE html>
+<html lang="en">
+<html>  
     <head>
         <title>PSC Annual Survey</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -12,171 +16,171 @@
     </head>
     <body>
         <!-- MultiStep Form -->
-<div class="container-fluid" id="grad1">
-    <div class="row justify-content-center mt-0">
-        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2><strong>PSC Annual Survey</strong></h2>
-                <div class="row">
-                    <div class="col-md-12 mx-0">
-                        <form action = "/update" method = "POST" id="msform" onsubmit= "return validate()">
-                            <!-- progressbar -->
-                            <div class="progress">
-                                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="container-fluid" id="grad1">
+            <div class="row justify-content-center mt-0">
+                <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                        <h2><strong>PSC Annual Survey</strong></h2>
+                        <div class="row">
+                            <div class="col-md-12 mx-0">
+                                <form action = "/update" method = "POST" id="msform" onsubmit= "return validate()">
+                                    <!-- progressbar -->
+                                    <div class="progress">
+                                        <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <!-- fieldsets -->
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Instructions</h2> <p>Instructions Placeholder</p>
+                                            <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail">
+                                        </div> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Court Information</h2> 
+                                            <div class = "row">
+                                                <div class= "col-3"> <label class = "pay">What level of charge does your court accept? Choose all that apply</label> </div>
+                                                    <div class = "col-9">
+                                                        <div class = "checkbox mx-auto">
+                                                            <input name = "chargefel" type= "checkbox" id = "chargefel" value = "checked">
+                                                            <label for="chargefel"> Felony</label>
+                                                        </div>
+                                                        <div class = "checkbox mx-auto">
+                                                            <input name = "chargemisd" type = "checkbox" id= "chargemisd" value = "checked">
+                                                            <label for="chargemisd">Misdemeanor</label>
+                                                        </div>
+                                                        <div class = "checkbox mx-auto">
+                                                            <input name = "chargena" type = "checkbox" id= "chargena" value = "checked" onclick= "chargeReqNa()">
+                                                            <label for="chargena">Not Applicable </label>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class = "row">
+                                                <div class= "col-3"> <label class = "pay">How are cases processed?</label> </div>
+                                                    <div class = "col-9 mx">
+                                                        <div class="checkbox">
+                                                            <input class='form-check' name = "pretrial" type= "checkbox" id = "pretrial"> 
+                                                            <label for="pretrial">Pre-trial </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "preplea" type = "checkbox" id= "preplea"> 
+                                                            <label for="preplea">Pre-plea </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "postplea" type = "checkbox" id = "postplea">
+                                                            <label for="postplea">Post-plea </label>
+                                                        </div>
+                                                        <div class ="checkbox">
+                                                            <input class='form-check' name = "preadj" type = "checkbox" id = "preadj">
+                                                            <label for="preadj">Pre-adjudication </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "postadj" type = "checkbox" id = "postadj">
+                                                            <label for="postadj">Post-adjudication </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna" onclick = "caseProcNA()">
+                                                            <label for="caseprocessna">Not Applicable </label>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div> 
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h3 class="fs-title">Primary Contact Information</h3>
+                                            <input type="text" name="primaryname" value = "<%= user.primaryname %>" required /> 
+                                            <input type="text" name="primaryaddress" value = "<%= user.primaryaddress %>" required /> 
+                                            <input type="text" name="primarycity" value = "<%= user.primarycity %>" required />
+                                            <input type="text" name="primaryzip" value = "<%= user.primaryzip %>" required />
+                                            <input type="tel" name="primaryphone" value = "<%= user.primaryphone %>" required /> 
+                                            <input type="email" name="primaryemail" value = "<%= user.primaryemail %>" required /> <br> <br>
+                                            <h3 class="fs-title">Judge Contact Information</h3>
+                                            <input type="text" name="judgename" value = "<%= user.judgename %>" required/>
+                                            <input type="text" name="judgeaddress" value = "<%= user.judgeaddress %>" required/> 
+                                            <input type="text" name="judgecity" value = "<%= user.judgecity %>" required />
+                                            <input type="text" name="judgezipcode" value = "<%= user.judgezipcode %>" required />
+                                            <input type="tel" name="judgephone" value = "<%= user.judgephone %>" required/> 
+                                            <input type="email" name="judgeemail" value = "<%= user.judgeemail %>" required />
+                                            
+                                        </div>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Transfer Information 1</h2>
+                                            <div class = "row">
+                                                <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
+                                                <select class="list-dt" id="transferyes" name="transferyes" required>
+                                                    <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                                    <option id = "tyes" value="Yes">Yes</option>
+                                                    <option id = "tno" value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Transfer Information 2 </h2>
+                                            <h3 class="fs-title">Desinee for Handling Transfers Contact Information</h3>
+                                            <input type="text" id = "designeename" name="designeename" value = "<%= user.designeename %>"/> 
+                                            <input type="text" id = "designeeaddress" name="designeeaddress" value = "<%= user.designeeaddress %>"/> 
+                                            <input type="text" id = "designeecity" name="designeecity" value = "<%= user.designeecity %>" />
+                                            <input type="text" id = "designeezip" name="designeezip" value = "<%= user.designeezip %>" />
+                                            <input type="tel" id = "designeephone" name="designeephone" value = "<%= user.designeephone %>"/> 
+                                            <input type="email" id = "designeeemail" name="designeeemail" value = "<%= user.designeeemail %>" /> <br> <br>
+                                            <h3 class="fs-title">Clerk of Court Contact Information</h3>
+                                            <input type="text" id = "clerkname" name="clerkname" value = "<%= user.clerkname %>" /> 
+                                            <input type="text" id = "clerkaddress" name="clerkaddress" value = "<%= user.clerkaddress %>" /> 
+                                            <input type="text" id = "clerkcity" name="clerkcity" value = "<%= user.clerkcity %>" />
+                                            <input type="text" id = "clerkzipcode" name="clerkzipcode" value = "<%= user.clerkzipcode %>" />
+                                            <input type="tel" id = "clerkphone" name="clerkphone" value = "<%= user.clerkphone %>" /> 
+                                            <input type="email" id = "clerkemail" name="clerkemail" value = "<%= user.clerkemail %>" />
+                                            <h3 class="fs-title">Transfer Requirements</h3>
+                                            <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"> <%=user.transferreq %> </textarea>
+                                        </div>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Eligibility Requirements and Procedures</h2>
+                                                <h3 class="fs-title">Referral Procedure</h3>
+                                                <textarea class = "form-control" rows= "10" name= "referralproc" required ><%= user.referralproc%></textarea>
+                                                <h3 class="fs-title">Screening Procedure</h3>
+                                                <textarea class = "form-control" rows= "10" name="screeningproc" required> <%= user.screeningproc%></textarea>
+                                                <h3 class="fs-title">Eligibility Requirements</h3>
+                                                <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required><%= user.eligibilitycrit%></textarea>
+                                                
+                                            </div>
+                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                            <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset> 
+                                    <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Data</h2>
+                                                <h3 class="fs-title">FY 2020-2021 Data</h3>
+                                                <input type="number" name="admissions" placeholder= "Number of Admissions" required/> 
+                                                <input type="number" name="completions" placeholder = "Number of Sucessful Completions" required /> 
+                                                <input type="number" name="terminations" placeholder = "Number of Unsucessful Terminations" required /> 
+                                                <h3 class="fs-title">Calendar Year 2020 Data</h3>
+                                                <input type="number" name="numserved" placeholder= "Number of Participants" required/> 
+                                            
+                                            </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm" onclick = "progressUpdate(this)" />
+                                    </fieldset>
+                                </form>
                             </div>
-                            <!-- fieldsets -->
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Instructions</h2> <p>Instructions Placeholder</p>
-                                    <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail">
-                                </div> 
-                                <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Court Information</h2> 
-                                    <div class = "row">
-                                        <div class= "col-3"> <label class = "pay">What level of charge does your court accept? Choose all that apply</label> </div>
-                                            <div class = "col-9">
-                                                <div class = "checkbox mx-auto">
-                                                    <input name = "chargefel" type= "checkbox" id = "chargefel" value = "checked">
-                                                    <label for="chargefel"> Felony</label>
-                                                </div>
-                                                <div class = "checkbox mx-auto">
-                                                    <input name = "chargemisd" type = "checkbox" id= "chargemisd" value = "checked">
-                                                    <label for="chargemisd">Misdemeanor</label>
-                                                </div>
-                                                <div class = "checkbox mx-auto">
-                                                    <input name = "chargena" type = "checkbox" id= "chargena" value = "checked" onclick= "chargeReqNa()">
-                                                    <label for="chargena">Not Applicable </label>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class = "row">
-                                        <div class= "col-3"> <label class = "pay">How are cases processed?</label> </div>
-                                            <div class = "col-9 mx">
-                                                <div class="checkbox">
-                                                    <input class='form-check' name = "pretrial" type= "checkbox" id = "pretrial"> 
-                                                    <label for="pretrial">Pre-trial </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "preplea" type = "checkbox" id= "preplea"> 
-                                                    <label for="preplea">Pre-plea </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "postplea" type = "checkbox" id = "postplea">
-                                                    <label for="postplea">Post-plea </label>
-                                                </div>
-                                                <div class ="checkbox">
-                                                    <input class='form-check' name = "preadj" type = "checkbox" id = "preadj">
-                                                    <label for="preadj">Pre-adjudication </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "postadj" type = "checkbox" id = "postadj">
-                                                    <label for="postadj">Post-adjudication </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna" onclick = "caseProcNA()">
-                                                    <label for="caseprocessna">Not Applicable </label>
-                                                </div>
-                                            </div>
-                                    </div>
-                                 </div> 
-                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h3 class="fs-title">Primary Contact Information</h3>
-                                    <input type="text" name="primaryname" value = "<%= user.primaryname %>" required /> 
-                                    <input type="text" name="primaryaddress" value = "<%= user.primaryaddress %>" required /> 
-                                    <input type="text" name="primarycity" value = "<%= user.primarycity %>" required />
-                                    <input type="text" name="primaryzip" value = "<%= user.primaryzip %>" required />
-                                    <input type="tel" name="primaryphone" value = "<%= user.primaryphone %>" required /> 
-                                    <input type="email" name="primaryemail" value = "<%= user.primaryemail %>" required /> <br> <br>
-                                    <h3 class="fs-title">Judge Contact Information</h3>
-                                    <input type="text" name="judgename" value = "<%= user.judgename %>" required/>
-                                    <input type="text" name="judgeaddress" value = "<%= user.judgeaddress %>" required/> 
-                                    <input type="text" name="judgecity" value = "<%= user.judgecity %>" required />
-                                    <input type="text" name="judgezipcode" value = "<%= user.judgezipcode %>" required />
-                                    <input type="tel" name="judgephone" value = "<%= user.judgephone %>" required/> 
-                                    <input type="email" name="judgeemail" value = "<%= user.judgeemail %>" required />
-                                    
-                                </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Transfer Information 1</h2>
-                                    <div class = "row">
-                                        <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
-                                        <select class="list-dt" id="transferyes" name="transferyes" required>
-                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option id = "tyes" value="Yes">Yes</option>
-                                            <option id = "tno" value="No">No</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Transfer Information 2 </h2>
-                                    <h3 class="fs-title">Desinee for Handling Transfers Contact Information</h3>
-                                    <input type="text" id = "designeename" name="designeename" value = "<%= user.designeename %>"/> 
-                                    <input type="text" id = "designeeaddress" name="designeeaddress" value = "<%= user.designeeaddress %>"/> 
-                                    <input type="text" id = "designeecity" name="designeecity" value = "<%= user.designeecity %>" />
-                                    <input type="text" id = "designeezip" name="designeezip" value = "<%= user.designeezip %>" />
-                                    <input type="tel" id = "designeephone" name="designeephone" value = "<%= user.designeephone %>"/> 
-                                    <input type="email" id = "designeeemail" name="designeeemail" value = "<%= user.designeeemail %>" /> <br> <br>
-                                    <h3 class="fs-title">Clerk of Court Contact Information</h3>
-                                    <input type="text" id = "clerkname" name="clerkname" value = "<%= user.clerkname %>" /> 
-                                    <input type="text" id = "clerkaddress" name="clerkaddress" value = "<%= user.clerkaddress %>" /> 
-                                    <input type="text" id = "clerkcity" name="clerkcity" value = "<%= user.clerkcity %>" />
-                                    <input type="text" id = "clerkzipcode" name="clerkzipcode" value = "<%= user.clerkzipcode %>" />
-                                    <input type="tel" id = "clerkphone" name="clerkphone" value = "<%= user.clerkphone %>" /> 
-                                    <input type="email" id = "clerkemail" name="clerkemail" value = "<%= user.clerkemail %>" />
-                                    <h3 class="fs-title">Transfer Requirements</h3>
-                                    <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"> <%=user.transferreq %> </textarea>
-                                 </div>
-                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Eligibility Requirements and Procedures</h2>
-                                        <h3 class="fs-title">Referral Procedure</h3>
-                                        <textarea class = "form-control" rows= "10" name= "referralproc" required ><%= user.referralproc%></textarea>
-                                        <h3 class="fs-title">Screening Procedure</h3>
-                                        <textarea class = "form-control" rows= "10" name="screeningproc" required> <%= user.screeningproc%></textarea>
-                                        <h3 class="fs-title">Eligibility Requirements</h3>
-                                        <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required><%= user.eligibilitycrit%></textarea>
-                                        
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                    <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset> 
-                            <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Data</h2>
-                                        <h3 class="fs-title">FY 2020-2021 Data</h3>
-                                        <input type="number" name="admissions" placeholder= "Number of Admissions" required/> 
-                                        <input type="number" name="completions" placeholder = "Number of Sucessful Completions" required /> 
-                                        <input type="number" name="terminations" placeholder = "Number of Unsucessful Terminations" required /> 
-                                        <h3 class="fs-title">Calendar Year 2020 Data</h3>
-                                        <input type="number" name="numserved" placeholder= "Number of Participants" required/> 
-                                       
-                                    </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm" onclick = "progressUpdate(this)" />
-                            </fieldset>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>   
+        </div>   
     </body>
 </html>
 <script>
