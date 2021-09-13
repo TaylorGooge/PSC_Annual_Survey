@@ -1,234 +1,239 @@
-<html>
-  
+<!DOCTYPE html>
+<html lang="en">
+<html>  
     <head>
+        <title>PSC Annual Survey</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         <title>PSC Annual Survey</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script type = "text/javascript" src="/javascript.js"></script>
-
         <link rel="stylesheet" href="/stylesheet.css" type="text/css"> 
+    </head>
     <body>
-        <!-- MultiStep Form -->
-<div class="container-fluid" id="grad1">
-    <div class="row justify-content-center mt-0">
-        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2><strong>PSC Annual Survey</strong></h2>
-                <div class="row">
-                    <div class="col-md-12 mx-0">
-                        <form action = "/submit" method = "POST" id="msform" onsubmit= "return validate()">
-                            <!-- progressbar -->
-                            <div class="progress">
-                                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+                <!-- MultiStep Form -->
+        <div class="container-fluid" id="grad1">
+            <div class="row justify-content-center mt-0">
+                <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                        <h2><strong>PSC Annual Survey</strong></h2>
+                        <div class="row">
+                            <div class="col-md-12 mx-0">
+                                <form action = "/submit" method = "POST" id="msform" onsubmit= "return validate()">
+                                    <!-- progressbar -->
+                                    <div class="progress">
+                                        <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <!-- fieldsets -->
+                                    <fieldset>
+                                        <div class="form-card" id = "card1" >
+                                            <h2 class="fs-title">Instructions</h2> <p>Instructions placeholder</p>
+                                            <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail">
+                                            </div> <input type="button" name="next" class="next action-button" value="Next Step"  onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Court Information</h2> 
+                                            <div class="row">
+                                                <div class="col-3"> <label class="pay">Circuit</label> </div>
+                                                <div class="col-9"> <select class="list-dt" id="circuit" name="circuit" required>
+                                                    <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option> </select>
+                                                </div>
+                                            </div>
+                                            <div class = "row">
+                                                <div class="col-3"> <label class="pay">County</label> </div>
+                                                <div class = "col-9"><input type="text" name="county" / required> </div>
+                                            </div>
+                                            <div class = "row">
+                                                <div class="col-3"> <label class="pay">Problem-solving Court Type</label> </div>
+                                                <div class="col-9 "> <select class="list-dt" id="courttype" name="courttype" required>
+                                                    <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                                    <option value="Adult Drug Court">Adult Drug Court</option>
+                                                    <option value="Mental Health Court">Mental Health Court</option>
+                                                    <option value="Veterans Court">Veterans Court</option>
+                                                    <option value="Early Childhood Court">Early Childhood Court</option>
+                                                    <option value="DUI Court">DUI Court</option>
+                                                    <option value="Juvenile Drug Court">Juvenile Drug Court</option>
+                                                    <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
+                                                    <option value="None of these" >None of these</option> </select>
+                                                </div>
+                                            </div>
+                                            <div class = "row">
+                                                <div class="col-3"> <label class="pay">Other problem-solving court type: </label> </div>
+                                                <div class = "col-9"><input type="text" name="otherpsctype" id = "otherpsctype" /> </div>
+                                            </div>
+                                            <div class = "row">
+                                                <div class= "col-3"> <label class = "pay">What level of charge does your court accept? Choose all that apply</label> </div>
+                                                    <div class = "col-9">
+                                                        <div class = "checkbox mx-auto">
+                                                            <input name = "chargefel" type= "checkbox" id = "chargefel" value = "checked">
+                                                            <label for="chargefel"> Felony</label>
+                                                        </div>
+                                                        <div class = "checkbox mx-auto">
+                                                            <input name = "chargemisd" type = "checkbox" id= "chargemisd" value = "checked">
+                                                            <label for="chargemisd">Misdemeanor</label>
+                                                        </div>
+                                                        <div class = "checkbox mx-auto">
+                                                            <input name = "chargena" type = "checkbox" id= "chargena" value = "checked" onclick= "chargeReqNa()">
+                                                            <label for="chargena">Not Applicable </label>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class = "row">
+                                                <div class= "col-3"> <label class = "pay">How are cases processed?</label> </div>
+                                                    <div class = "col-9 mx">
+                                                        <div class="checkbox">
+                                                            <input class='form-check' name = "pretrial"  type= "checkbox" id = "pretrial" value = "checked"> 
+                                                            <label for="pretrial">Pre-trial </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "preplea" type = "checkbox" id= "preplea" value = "checked"> 
+                                                            <label for="preplea">Pre-plea </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "postplea" type = "checkbox" id = "postplea" value = "checked">
+                                                            <label for="postplea">Post-plea </label>
+                                                        </div>
+                                                        <div class ="checkbox">
+                                                            <input class='form-check' name = "preadj" type = "checkbox" id = "preadj" value = "checked">
+                                                            <label for="preadj">Pre-adjudication </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "postadj" type = "checkbox" id = "postadj" value = "checked">
+                                                            <label for="postadj">Post-adjudication </label>
+                                                        </div>
+                                                        <div class = "checkbox">
+                                                            <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna" value = "checked" onclick = "caseProcNA()">
+                                                            <label for="caseprocessna">Not Applicable </label>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class = "row">
+                                                <div class= "col-3"> <label class = "pay">Implementation Date</label> </div>
+                                                    <div class = "col-9">
+                                                        <input class='datelist' name= "impdate" type= "date"  required>
+                                                    </div>
+                                            </div>
+                                        </div> 
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h3 class="fs-title">Primary Contact Information</h3>
+                                            <input type="text" id = "primaryname" name="primaryname" placeholder="Primary Contact Name"  required /> 
+                                            <input type="text" id = "primaryaddress" name="primaryaddress" placeholder="Street Address"  required /> 
+                                            <input type="text" id = "primarycity" name="primarycity" placeholder="City"  required />
+                                            <input type="text" id= "primarzip" name="primaryzip" placeholder="ZipCode"  required />
+                                            <input type="tel" id = "primaryphone" name="primaryphone" placeholder="Phone Number"  required /> 
+                                            <input type="email" id = "primary email" name="primaryemail" placeholder="Email"  required /> <br> <br>
+                                            <h3 class="fs-title">Judge Contact Information</h3>
+                                            <input type="text" name="judgename" placeholder="Judge Name"  required/>
+                                            <input type="text" name="judgeaddress" placeholder="Street Address"   required/>
+                                            <input type="text" name="judgecity" placeholder="City"  required />
+                                            <input type="text" name="judgezipcode" placeholder="Zip Code"  required />
+                                            <input type="tel" name="judgephone" placeholder="Phone Number" required/> 
+                                            <input type="email" name="judgeemail" placeholder="Email"  required />
+                                            
+                                        </div>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card" >
+                                            <h2 class="fs-title">Transfer Information 1</h2>
+                                            <div class = "row">
+                                                <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
+                                                <select class="list-dt" id="transferyes" name="transferyes" required>
+                                                    <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card" id = "transferdetails">
+                                            <h2 class="fs-title">Transfer Information 2 </h2>
+                                            <h3 class="fs-title">Desinee for Handling Transfers Contact Information</h3>
+                                            <input type="text" id = "designeename"name="designeename" placeholder="Designee Contact Name" />
+                                            <input type="text" id = "designeeaddress" name="designeeaddress" placeholder="Street Address"/>
+                                            <input type="text" id = "designeecity" name="designeecity" placeholder="City"/>
+                                            <input type="text"id = "designeezip" name="designeezip" placeholder="ZipCode" />
+                                            <input type="tel" id = "designeephone" name="designeephone"  placeholder="Designee Phone Number"/> 
+                                            <input type="email" id= "designeeemail" name="designeeemail" placeholder="Designee Email" /> <br> <br>
+                                            <h3 class="fs-title">Clerk of Court Contact Information</h3>
+                                            <input type="text" id = "clerkname" name="clerkname" placeholder="Clerk of Court Name"/> 
+                                            <input type="text" id = "clerkaddress" name="clerkaddress" placeholder="Street Address"/> 
+                                            <input type="text" id = "clerkcity" name="clerkcity" placeholder="City"/>
+                                            <input type="text" id = "clerkzipcode" name="clerkzipcode" placeholder="Zip Code"/>
+                                            <input type="tel" id = "clerkphone" name="clerkphone" placeholder="Phone Number" /> 
+                                            <input type="email" id = "clerkemail" name="clerkemail" placeholder="Email"  />
+                                            <h3 class="fs-title">Transfer Requirements</h3>
+                                            <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"></textarea>
+                                        </div>
+                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Eligibility Requirements and Procedures</h2>
+                                                <h3 class="fs-title">Referral Procedure</h3>
+                                                <textarea class = "form-control" rows= "10" name= "referralproc"  required></textarea>
+                                                <h3 class="fs-title">Screening Procedure</h3>
+                                                <textarea class = "form-control" rows= "10" name="screeningproc"  required></textarea>
+                                                <h3 class="fs-title">Eligibility Requirements</h3>
+                                                <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required></textarea>
+                                                
+                                            </div>
+                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                            <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset> 
+                                    <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Data</h2>
+                                                <h3 class="fs-title">Fiscal Year 2021-2021 Data</h3>
+                                                <input type="number" name="admissions" placeholder="Number of Admissions"  required/> 
+                                                <input type="number" name="completions" placeholder="Number of Sucessful Completions"  required /> 
+                                                <input type="number" name="terminations" placeholder="Number of Unsuccesul Terminations"  required /> 
+                                                <h3 class="fs-title">Calendar Year Data</h3>
+                                                <input type="number" name="numserved" placeholder="Number of Participants"  required/> 
+                                            
+                                            </div>
+                                            <input type="submit" name="submitbutton" class="next action-button" value="Confirm"/ onclick = "progressUpdate(this)">
+                                    </fieldset>
+                                </form>
                             </div>
-                            <!-- fieldsets -->
-                            <fieldset>
-                                <div class="form-card" id = "card1" >
-                                    <h2 class="fs-title">Instructions</h2> <p>Instructions placeholder</p>
-                                    <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail">
-                                    </div> <input type="button" name="next" class="next action-button" value="Next Step"  onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Court Information</h2> 
-                                    <div class="row">
-                                        <div class="col-3"> <label class="pay">Circuit</label> </div>
-                                        <div class="col-9"> <select class="list-dt" id="circuit" name="circuit" required>
-                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option> </select>
-                                        </div>
-                                    </div>
-                                    <div class = "row">
-                                        <div class="col-3"> <label class="pay">County</label> </div>
-                                        <div class = "col-9"><input type="text" name="county" / required> </div>
-                                    </div>
-                                    <div class = "row">
-                                        <div class="col-3"> <label class="pay">Problem-solving Court Type</label> </div>
-                                        <div class="col-9 "> <select class="list-dt" id="courttype" name="courttype" required>
-                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option value="Adult Drug Court">Adult Drug Court</option>
-                                            <option value="Mental Health Court">Mental Health Court</option>
-                                            <option value="Veterans Court">Veterans Court</option>
-                                            <option value="Early Childhood Court">Early Childhood Court</option>
-                                            <option value="DUI Court">DUI Court</option>
-                                            <option value="Juvenile Drug Court">Juvenile Drug Court</option>
-                                            <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
-                                            <option value="None of these" >None of these</option> </select>
-                                        </div>
-                                    </div>
-                                    <div class = "row">
-                                        <div class="col-3"> <label class="pay">Other problem-solving court type: </label> </div>
-                                        <div class = "col-9"><input type="text" name="otherpsctype" id = "otherpsctype" /> </div>
-                                    </div>
-                                    <div class = "row">
-                                        <div class= "col-3"> <label class = "pay">What level of charge does your court accept? Choose all that apply</label> </div>
-                                            <div class = "col-9">
-                                                <div class = "checkbox mx-auto">
-                                                    <input name = "chargefel" type= "checkbox" id = "chargefel" value = "checked">
-                                                    <label for="chargefel"> Felony</label>
-                                                </div>
-                                                <div class = "checkbox mx-auto">
-                                                    <input name = "chargemisd" type = "checkbox" id= "chargemisd" value = "checked">
-                                                    <label for="chargemisd">Misdemeanor</label>
-                                                </div>
-                                                <div class = "checkbox mx-auto">
-                                                    <input name = "chargena" type = "checkbox" id= "chargena" value = "checked" onclick= "chargeReqNa()">
-                                                    <label for="chargena">Not Applicable </label>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class = "row">
-                                        <div class= "col-3"> <label class = "pay">How are cases processed?</label> </div>
-                                            <div class = "col-9 mx">
-                                                <div class="checkbox">
-                                                    <input class='form-check' name = "pretrial"  type= "checkbox" id = "pretrial" value = "checked"> 
-                                                    <label for="pretrial">Pre-trial </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "preplea" type = "checkbox" id= "preplea" value = "checked"> 
-                                                    <label for="preplea">Pre-plea </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "postplea" type = "checkbox" id = "postplea" value = "checked">
-                                                    <label for="postplea">Post-plea </label>
-                                                </div>
-                                                <div class ="checkbox">
-                                                    <input class='form-check' name = "preadj" type = "checkbox" id = "preadj" value = "checked">
-                                                    <label for="preadj">Pre-adjudication </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "postadj" type = "checkbox" id = "postadj" value = "checked">
-                                                    <label for="postadj">Post-adjudication </label>
-                                                </div>
-                                                <div class = "checkbox">
-                                                    <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna" value = "checked" onclick = "caseProcNA()">
-                                                    <label for="caseprocessna">Not Applicable </label>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class = "row">
-                                        <div class= "col-3"> <label class = "pay">Implementation Date</label> </div>
-                                            <div class = "col-9">
-                                                <input class='datelist' name= "impdate" type= "date"  required>
-                                            </div>
-                                    </div>
-                                 </div> 
-                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h3 class="fs-title">Primary Contact Information</h3>
-                                    <input type="text" id = "primaryname" name="primaryname" placeholder="Primary Contact Name"  required /> 
-                                    <input type="text" id = "primaryaddress" name="primaryaddress" placeholder="Street Address"  required /> 
-                                    <input type="text" id = "primarycity" name="primarycity" placeholder="City"  required />
-                                    <input type="text" id= "primarzip" name="primaryzip" placeholder="ZipCode"  required />
-                                    <input type="tel" id = "primaryphone" name="primaryphone" placeholder="Phone Number"  required /> 
-                                    <input type="email" id = "primary email" name="primaryemail" placeholder="Email"  required /> <br> <br>
-                                    <h3 class="fs-title">Judge Contact Information</h3>
-                                    <input type="text" name="judgename" placeholder="Judge Name"  required/>
-                                     <input type="text" name="judgeaddress" placeholder="Street Address"   required/>
-                                      <input type="text" name="judgecity" placeholder="City"  required />
-                                      <input type="text" name="judgezipcode" placeholder="Zip Code"  required />
-                                      <input type="tel" name="judgephone" placeholder="Phone Number" required/> 
-                                      <input type="email" name="judgeemail" placeholder="Email"  required />
-                                    
-                                </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card" >
-                                    <h2 class="fs-title">Transfer Information 1</h2>
-                                    <div class = "row">
-                                        <div class= "col-6"> <label class = "pay">Does your court accept transfers?</label> </div>
-                                        <select class="list-dt" id="transferyes" name="transferyes" required>
-                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card" id = "transferdetails">
-                                    <h2 class="fs-title">Transfer Information 2 </h2>
-                                    <h3 class="fs-title">Desinee for Handling Transfers Contact Information</h3>
-                                    <input type="text" id = "designeename"name="designeename" placeholder="Designee Contact Name" />
-                                     <input type="text" id = "designeeaddress" name="designeeaddress" placeholder="Street Address"/>
-                                      <input type="text" id = "designeecity" name="designeecity" placeholder="City"/>
-                                      <input type="text"id = "designeezip" name="designeezip" placeholder="ZipCode" />
-                                      <input type="tel" id = "designeephone" name="designeephone"  placeholder="Designee Phone Number"/> 
-                                      <input type="email" id= "designeeemail" name="designeeemail" placeholder="Designee Email" /> <br> <br>
-                                    <h3 class="fs-title">Clerk of Court Contact Information</h3>
-                                    <input type="text" id = "clerkname" name="clerkname" placeholder="Clerk of Court Name"/> 
-                                    <input type="text" id = "clerkaddress" name="clerkaddress" placeholder="Street Address"/> 
-                                    <input type="text" id = "clerkcity" name="clerkcity" placeholder="City"/>
-                                    <input type="text" id = "clerkzipcode" name="clerkzipcode" placeholder="Zip Code"/>
-                                    <input type="tel" id = "clerkphone" name="clerkphone" placeholder="Phone Number" /> 
-                                    <input type="email" id = "clerkemail" name="clerkemail" placeholder="Email"  />
-                                    <h3 class="fs-title">Transfer Requirements</h3>
-                                    <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"></textarea>
-                                 </div>
-                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset>
-                            <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Eligibility Requirements and Procedures</h2>
-                                        <h3 class="fs-title">Referral Procedure</h3>
-                                        <textarea class = "form-control" rows= "10" name= "referralproc"  required></textarea>
-                                        <h3 class="fs-title">Screening Procedure</h3>
-                                        <textarea class = "form-control" rows= "10" name="screeningproc"  required></textarea>
-                                        <h3 class="fs-title">Eligibility Requirements</h3>
-                                        <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required></textarea>
-                                        
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
-                                    <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
-                            </fieldset> 
-                            <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Data</h2>
-                                        <h3 class="fs-title">Fiscal Year 2021-2021 Data</h3>
-                                        <input type="number" name="admissions" placeholder="Number of Admissions"  required/> 
-                                        <input type="number" name="completions" placeholder="Number of Sucessful Completions"  required /> 
-                                        <input type="number" name="terminations" placeholder="Number of Unsuccesul Terminations"  required /> 
-                                        <h3 class="fs-title">Calendar Year Data</h3>
-                                        <input type="number" name="numserved" placeholder="Number of Participants"  required/> 
-                                       
-                                    </div>
-                                    <input type="submit" name="submitbutton" class="next action-button" value="Confirm"/ onclick = "progressUpdate(this)">
-                            </fieldset>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>   
+        </div>   
     </body>
 </html>
 
