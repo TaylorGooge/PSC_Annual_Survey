@@ -21,20 +21,16 @@
                     <div class="col-md-12 mx-0">
                         <form action = "/update" method = "POST" id="msform" onsubmit= "return validate()">
                             <!-- progressbar -->
-                            <ul id="progressbar">
-                                <li class="active" id="instructions"><strong>Instructions</strong></li>
-                                <li id="courtinfo"><strong>Court Information</strong></li>
-                                <li id="contactinfo"><strong>Contact Information</strong></li>
-                                <li id="transfer1"><strong>Transfer Information 1</strong></li>
-                                <li id="transfer2"><strong>Transfer Information 2</strong></li>
-                                <li id="screening"><strong>Eligibility Requirements and Procedures</strong></li>
-                                <li id="data"><strong>Data</strong></li>
-                            </ul> <!-- fieldsets -->
+                            <div class="progress">
+                                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <!-- fieldsets -->
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Instructions</h2> <p>Instructions Placeholder</p>
                                     <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail">
-                                </div> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                </div> 
+                                <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -86,7 +82,8 @@
                                             </div>
                                     </div>
                                  </div> 
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -105,7 +102,9 @@
                                     <input type="tel" name="judgephone" value = "<%= user.judgephone %>" required/> 
                                     <input type="email" name="judgeemail" value = "<%= user.judgeemail %>" required />
                                     
-                                </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -118,7 +117,9 @@
                                             <option value="no">No</option>
                                         </select>
                                     </div>
-                                </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
@@ -139,7 +140,9 @@
                                     <input type="email" id = "clerkemail" name="clerkemail" value = "<%= user.clerkemail %>" />
                                     <h3 class="fs-title">Transfer Requirements</h3>
                                     <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"> <%=user.transferreq %> </textarea>
-                                 </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                 </div>
+                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                 <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                             </fieldset>
                             <fieldset>
                                     <div class="form-card">
@@ -151,7 +154,9 @@
                                         <h3 class="fs-title">Eligibility Requirements</h3>
                                         <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required><%= user.eligibilitycrit%></textarea>
                                         
-                                    </div><input type="button" name="next" class="next action-button" value="Next Step" />
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
+                                    <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                             </fieldset> 
                             <fieldset>
                                     <div class="form-card">
@@ -163,7 +168,7 @@
                                         <h3 class="fs-title">Calendar Year 2020 Data</h3>
                                         <input type="number" name="numserved" placeholder= "Number of Participants" required/> 
                                        
-                                    </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm"/>
+                                    </div><input type="submit" name="submitbutton" class="next action-button" value="Confirm" onclick = "progressUpdate(this)" />
                             </fieldset>
                         </form>
                     </div>
@@ -179,6 +184,7 @@
     let user = data.completeremail
     user = user.replace(/['"]+/g, '')
     let email = document.getElementById('completeremail')
+    email.style.opacity = 0.0
 
     let chargefel = document.getElementById('chargefel')
 
@@ -337,5 +343,18 @@ function chargeReqNa() {
     }
 
 }
+function progressUpdate(node) {
+        let progress = document.getElementById("progressbar")
+        let percent = parseInt(progress.style.width)
+        if (node.value == "Next Step") {
+            percent = percent + 14.28
+            progress.style.width = percent + "%"
+            progress.setAttribute('aria-valuenow', percent)
+        } else {
+            percent = percent - 14.28
+            progress.style.width = percent + "%"
+            progress.setAttribute('aria-valuenow', percent)
+        }
 
+    }
 </script>
