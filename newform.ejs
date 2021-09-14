@@ -16,6 +16,11 @@
     </head>
     <body>
                 <!-- MultiStep Form -->
+        <div class = "navbar fixed-top">
+            <div class="progress">
+                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
         <div class="container-fluid" id="grad1">
             <div class="row justify-content-center mt-0">
                 <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
@@ -24,10 +29,6 @@
                         <div class="row">
                             <div class="col-md-12 mx-0">
                                 <form action = "/submit" method = "POST" id="msform" onsubmit= "return validate()">
-                                    <!-- progressbar -->
-                                    <div class="progress">
-                                        <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
                                     <!-- fieldsets -->
                                     <fieldset>
                                         <div class="form-card" id = "card1" >
@@ -85,51 +86,60 @@
                                                 <div class="col-3"> <label class="pay">Other problem-solving court type: </label> </div>
                                                 <div class = "col-9"><input type="text" name="otherpsctype" id = "otherpsctype" /> </div>
                                             </div>
-                                            <div class = "row">
-                                                <div class= "col-3"> <label class = "pay">What level of charge does your court accept? Choose all that apply</label> </div>
-                                                    <div class = "col-9">
-                                                        <div class = "checkbox mx-auto">
-                                                            <input name = "chargefel" type= "checkbox" id = "chargefel" value = "checked">
-                                                            <label for="chargefel"> Felony</label>
-                                                        </div>
-                                                        <div class = "checkbox mx-auto">
-                                                            <input name = "chargemisd" type = "checkbox" id= "chargemisd" value = "checked">
-                                                            <label for="chargemisd">Misdemeanor</label>
-                                                        </div>
-                                                        <div class = "checkbox mx-auto">
-                                                            <input name = "chargena" type = "checkbox" id= "chargena" value = "checked" onclick= "chargeReqNa()">
-                                                            <label for="chargena">Not Applicable </label>
-                                                        </div>
-                                                    </div>
+                                            <div class = "flex-container">
+                                                <label class = "pay" >Level of charge accepted: </label>
                                             </div>
-                                            <div class = "row">
-                                                <div class= "col-3"> <label class = "pay">How are cases processed?</label> </div>
-                                                    <div class = "col-9 mx">
-                                                        <div class="checkbox">
-                                                            <input class='form-check' name = "pretrial"  type= "checkbox" id = "pretrial" value = "checked"> 
-                                                            <label for="pretrial">Pre-trial </label>
-                                                        </div>
-                                                        <div class = "checkbox">
-                                                            <input class='form-check' name = "preplea" type = "checkbox" id= "preplea" value = "checked"> 
-                                                            <label for="preplea">Pre-plea </label>
-                                                        </div>
-                                                        <div class = "checkbox">
-                                                            <input class='form-check' name = "postplea" type = "checkbox" id = "postplea" value = "checked">
-                                                            <label for="postplea">Post-plea </label>
-                                                        </div>
-                                                        <div class ="checkbox">
-                                                            <input class='form-check' name = "preadj" type = "checkbox" id = "preadj" value = "checked">
-                                                            <label for="preadj">Pre-adjudication </label>
-                                                        </div>
-                                                        <div class = "checkbox">
-                                                            <input class='form-check' name = "postadj" type = "checkbox" id = "postadj" value = "checked">
-                                                            <label for="postadj">Post-adjudication </label>
-                                                        </div>
-                                                        <div class = "checkbox">
-                                                            <input class='form-check' name = "caseprocessna" type = "checkbox" id = "caseprocessna" value = "checked" onclick = "caseProcNA()">
-                                                            <label for="caseprocessna">Not Applicable </label>
-                                                        </div>
-                                                    </div>
+                                            <div class = "flex-container">
+                                                <p>Misdemeanor</p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox"  id = "chargemisd" name = "chargemisd" value = "checked" /> 
+                                                    <span class = "slider round"></span>
+                                                </label> 
+                                                <p>Felony</p>
+                                                <label class = "switch" > 
+                                                    <input type = "checkbox" id = "chargefel" name = "chargefel" value = "checked" /> 
+                                                    <span class = "slider round"></span>
+                                                </label>
+                                                <p>Not Applicable</p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox" id = "chargena" name = "chargena" onclick= "chargeReqNa()" value = "checked"/> 
+                                                    <span class = "slider round" ></span>
+                                                </label>    
+                                            </div>
+                                            <div class = "flex-container">
+                                                <label class = "pay">How are cases processed?</label>
+                                            </div>
+                                            <div class = "flex-container">
+                                                <p>Pre-trial</p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox"  id = "pretrial" name = "pretrial" value = "checked" /> 
+                                                    <span class = "slider round"></span>
+                                                </label> 
+                                                <p>Pre-plea</p>
+                                                <label class = "switch" > 
+                                                    <input type = "checkbox" id = "preplea" name = "preplea" value = "checked" /> 
+                                                    <span class = "slider round"></span>
+                                                </label>
+                                                <p>Post-plea </p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox" id = "postplea" name = "postplea" value = "checked"/> 
+                                                    <span class = "slider round" ></span>
+                                                </label>    
+                                                <p>Pre-adjudication</p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox"  id = "preadj" name = "preadj" value = "checked" /> 
+                                                    <span class = "slider round"></span>
+                                                </label> 
+                                                <p>Post-adjudication</p>
+                                                <label class = "switch" > 
+                                                    <input type = "checkbox" id = "postadj" name = "postadj" value = "checked" /> 
+                                                    <span class = "slider round"></span>
+                                                </label>
+                                                <p>Not Applicable</p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox" id = "caseprocessna" name = "caseprocessna" onclick= "caseProcNA()" value = "checked"/> 
+                                                    <span class = "slider round" ></span>
+                                                </label>  
                                             </div>
                                             <div class = "row">
                                                 <div class= "col-3"> <label class = "pay">Implementation Date</label> </div>
@@ -138,7 +148,6 @@
                                                     </div>
                                             </div>
                                         </div> 
-                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
                                         <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                                     </fieldset>
                                     <fieldset>
@@ -159,7 +168,6 @@
                                             <input type="email" name="judgeemail" placeholder="Email"  required />
                                             
                                         </div>
-                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
                                         <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                                     </fieldset>
                                     <fieldset>
@@ -174,7 +182,6 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
                                         <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                                     </fieldset>
                                     <fieldset>
@@ -211,7 +218,6 @@
                                                 <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required></textarea>
                                                 
                                             </div>
-                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick ="progressUpdate(this)" /> 
                                             <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                                     </fieldset> 
                                     <fieldset>
@@ -337,7 +343,6 @@
                 return false
             }
         }
-        alert(transferreq.value.length > 0)
         if (transferreq.value.length > 0 ){
             alert('You reported that this court does not accept transfers but provided transfer information')
             event.preventDefault()
