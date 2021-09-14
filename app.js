@@ -157,8 +157,6 @@ app.post('/update', function (req, res) {
         } 
     }
     string = string + "WHERE completeremail= " + email
-
-
     pool.query(string,vals, function (err, result) {
         if (err){
             throw(err)
