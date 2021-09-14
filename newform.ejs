@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/stylesheet.css" type="text/css"/> 
     </head>
     <body>
-         <div class = "navbar fixed-top">
+         <div class = "progress-container fixed-top">
             <div class="progress">
                 <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
@@ -25,151 +25,163 @@
                         <h2><strong>PSC Annual Survey</strong></h2>
                         <div class="row">
                             <div class="col-md-12 mx-0">
-                                <form action = "/update" method = "POST" id="msform" onsubmit= "return validate()" >
+                                <form action = "/submit" method = "POST" id="msform" onsubmit= "return validate()" >
                                     <div class="tab form-card">  
                                     <h2 class="fs-title">Instructions</h2> <p>Instructions placeholder</p>
                                     <input type = "email" name= "completeremail" placeholder="Respondent Email" id = "completeremail"/>
                                     </div> 
                                     <div class="tab form-card"> 
-                         
-                                        <h4>Circuit</h4> 
-                                        <div class="container-fluid"> <select class="list-dt" id="circuit" name="circuit" required>
-                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option> </select>
+                                        <h2 class="fs-title">Site Information</h2>
+                                        <div class="flex-container">
+                                            <div class="flex-container">
+                                                <label class = "pay" >Circuit</label > 
+                                            </div>
+                                            <div class="flex-container">
+                                                <select class="list-dt" id="circuit" name="circuit" required>
+                                                    <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option> 
+                                                </select>
+                                            </div>
                                         </div>
-                                    
-                                        <h4>County</h4>
-                                        <div class = "container-fluid"><input type="text" name="county" / required> 
+                                        <div class = "flex-container">
+                                            <div class="flex-container">
+                                                <label class = "pay">County</label>
+                                            </div>
+                                            <div class="flex-container">
+                                                <input type="text" name="county"  required > 
+                                            </div>
                                         </div>
-                                        
-                                        <h4>Problem-solving Court Type</h4>
-                                        <div class="container-fluid"> <select class="list-dt" id="courttype" name="courttype" required>
-                                            <option selected = "selected" disabled = "disabled" value ="">Choose</option>
-                                            <option value="Adult Drug Court">Adult Drug Court</option>
-                                            <option value="Mental Health Court">Mental Health Court</option>
-                                            <option value="Veterans Court">Veterans Court</option>
-                                            <option value="Early Childhood Court">Early Childhood Court</option>
-                                            <option value="DUI Court">DUI Court</option>
-                                            <option value="Juvenile Drug Court">Juvenile Drug Court</option>
-                                            <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
-                                            <option value="None of these" >None of these</option> </select>
+                                        <div class="flex-container"> 
+                                            <div class="flex-container">
+                                                <label class = "pay">Problem-solving Court Type</label>
+                                            </div>
+                                            <div class="flex-container">
+                                                <select class="list-dt" id="courttype" name="courttype" required>
+                                                    <option selected = "selected" disabled = "disabled" value ="">Choose</option>
+                                                    <option value="Adult Drug Court">Adult Drug Court</option>
+                                                    <option value="Mental Health Court">Mental Health Court</option>
+                                                    <option value="Veterans Court">Veterans Court</option>
+                                                    <option value="Early Childhood Court">Early Childhood Court</option>
+                                                    <option value="DUI Court">DUI Court</option>
+                                                    <option value="Juvenile Drug Court">Juvenile Drug Court</option>
+                                                    <option value="Family Dependency Drug Court">Family Dependency Drug Court</option>
+                                                    <option value="None of these" >None of these</option> 
+                                                </select>
+                                            </div>
                                         </div>
-
-                                        <h4>Other problem-solving court type: </h4> 
-                                        <div class = "container-fluid">
-                                            <input type="text" name="otherpsctype" id = "otherpsctype" />
+                                        <div class = "flex-container">
+                                            <div class = "flex-container">
+                                                <label class = "pay" >Other problem-solving court type: </label>
+                                            </div>
+                                            <div class = "flex-container">
+                                                <input type="text" name="otherpsctype" id = "otherpsctype" />
+                                            </div>
                                          </div>
-
-      
-                                        <h4>What level of charge does your court accept? Choose all that apply</h4>
-                                        <div class = "container-fluid">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="chargefel" id="chargefel" name = "chargefel">
-                                                <label class="form-check-label" for="Pre-Trial">
-                                                    Felony
-                                                </label>
+                                        <div class = "flex-container">
+                                            <div class = "flex-container">
+                                                <label class = "pay" >Level of charge accepted: </label>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="chargemisd" id="chargemisd" name = "chargemisd">
-                                                <label class="form-check-label" for="chargemisd">
-                                                    Misdemeanor
+                                            <div class = "flex-container">
+                                                <p>Misdemeanor</p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox"  id = "chargemisd" name = "chargemisd" value = "checked" /> 
+                                                    <span class = "slider round"></span>
+                                                </label> 
+                                                <p>Felony</p>
+                                                <label class = "switch" > 
+                                                    <input type = "checkbox" id = "chargefel" name = "chargefel" value = "checked" /> 
+                                                    <span class = "slider round"></span>
                                                 </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="chargena" id="chargena" name = "chargena">
-                                                <label class="form-check-label" for="chargena">
-                                                    Not Applicable
-                                                </label>
+                                                <p>Not Applicable</p>
+                                                <label class = "switch" >
+                                                    <input type = "checkbox" id = "chargena" name = "chargena" onclick= "chargeReqNa()" value = "checked"/> 
+                                                    <span class = "slider round" ></span>
+                                                </label>    
                                             </div>
                                         </div>
-
-                                 
-                                        <h4>How are cases processed?</h4>
-                                        <div class = "container-fluid">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="pretrial" id="pretrial" name = "pretrial">
-                                                <label class="form-check-label" for="Pre-Trial">
-                                                    Pre-trial
-                                                </label>
-                                                </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="preplea" id="preplea" name = "preplea">
-                                                <label class="form-check-label" for="preplea">
-                                                    Pre-Plea
-                                                </label>
+                                        <div class = "flex-container">
+                                            <label class = "pay">How are cases processed?</label>
+                                        </div>
+                                        <div class = "flex-container">
+                                            <p>Pre-trial</p>
+                                            <label class = "switch" >
+                                                <input type = "checkbox"  id = "pretrial" name = "pretrial" value = "checked" /> 
+                                                <span class = "slider round"></span>
+                                            </label> 
+                                            <p>Pre-plea</p>
+                                            <label class = "switch" > 
+                                                <input type = "checkbox" id = "preplea" name = "preplea" value = "checked" /> 
+                                                <span class = "slider round"></span>
+                                            </label>
+                                            <p>Post-plea </p>
+                                            <label class = "switch" >
+                                                <input type = "checkbox" id = "postplea" name = "postplea" value = "checked"/> 
+                                                <span class = "slider round" ></span>
+                                            </label>    
+                                            <p>Pre-adjudication</p>
+                                            <label class = "switch" >
+                                                <input type = "checkbox"  id = "preadj" name = "preadj" value = "checked" /> 
+                                                <span class = "slider round"></span>
+                                            </label> 
+                                            <p>Post-adjudication</p>
+                                            <label class = "switch" > 
+                                                <input type = "checkbox" id = postadj" name = "postadj" value = "checked" /> 
+                                                <span class = "slider round"></span>
+                                            </label>
+                                            <p>Not Applicable</p>
+                                            <label class = "switch" >
+                                                <input type = "checkbox" id = "caseprocessna" name = "caseprocessna" onclick= "caseProcNA()" value = "checked"/> 
+                                                <span class = "slider round" ></span>
+                                            </label>  
+                                        </div>
+                                        <div class = "flex-container">
+                                            <div class = "flex-container">
+                                                <label class = "pay" >Implementation Date</label>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="postplea" id="postplea" name = "postplea">
-                                                <label class="form-check-label" for="postplea">
-                                                    Post-Plea
-                                                </label>
+                                            <div class = "flex-container">
+                                                <input class='datelist' name= "impdate" type= "date"  required />
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="preadj" id="preadj" name = "preadj">
-                                                <label class="form-check-label" for="postplea">
-                                                    Post-Plea
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="preadj" id="preadj" name = "preadj">
-                                                <label class="form-check-label" for="preadj">
-                                                    Pre-adjudicatory
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="postadj" id="preadj" name = "postadj">
-                                                <label class="form-check-label" for="postadj">
-                                                    Post-adjudicatory
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="caseprocessna" id="caseprocessna" name = "caseprocessna">
-                                                <label class="form-check-label" for="caseprocessna">
-                                                    Not Applicable
-                                                </label>
-                                            </div>
-                                                
                                         </div>
                                     </div>
                                     <div class="tab form-card"> 
                                         <h3 class="fs-title">Primary Contact Information</h3>
-                                        <input type="text" id = "primaryname" name="primaryname" placeholder="Primary Contact Name"  required="true" /> 
-                                        <input type="text" id = "primaryaddress" name="primaryaddress" placeholder="Street Address"  required="true" /> 
-                                        <input type="text" id = "primarycity" name="primarycity" placeholder="City"  required="true" />
-                                        <input type="text" id= "primarzip" name="primaryzip" placeholder="ZipCode"  required="true" />
-                                        <input type="tel" id = "primaryphone" name="primaryphone" placeholder="Phone Number"  required="true" /> 
-                                        <input type="email" id = "primaryemail" name="primaryemail" placeholder="Email"  required="true" />
+                                        <input type="text" id = "primaryname" name="primaryname" placeholder="Primary Contact Name"  required /> 
+                                        <input type="text" id = "primaryaddress" name="primaryaddress" placeholder="Street Address"  required /> 
+                                        <input type="text" id = "primarycity" name="primarycity" placeholder="City"  required />
+                                        <input type="text" id= "primarzip" name="primaryzip" placeholder="ZipCode"  required />
+                                        <input type="tel" id = "primaryphone" name="primaryphone" placeholder="Phone Number"  required /> 
+                                        <input type="email" id = "primaryemail" name="primaryemail" placeholder="Email"  required />
                                         <h3 class="fs-title">Judge Contact Information</h3>
-                                        <input type="text" name="judgename" placeholder="Judge Name"  required="true"/>
-                                        <input type="text" name="judgeaddress" placeholder="Street Address"   required="true"/>
-                                        <input type="text" name="judgecity" placeholder="City"  required="true" />
-                                        <input type="text" name="judgezipcode" placeholder="Zip Code"  required="true" />
-                                        <input type="tel" name="judgephone" placeholder="Phone Number" required="true"/> 
-                                        <input type="email" name="judgeemail" placeholder="Email"  required="true" />
+                                        <input type="text" name="judgename" placeholder="Judge Name"  required/>
+                                        <input type="text" name="judgeaddress" placeholder="Street Address"   required/>
+                                        <input type="text" name="judgecity" placeholder="City"  required />
+                                        <input type="text" name="judgezipcode" placeholder="Zip Code"  required />
+                                        <input type="tel" name="judgephone" placeholder="Phone Number" required/> 
+                                        <input type="email" name="judgeemail" placeholder="Email"  required />
                                     </div>
                                     <div class="tab form-card">   
                                         <h2 class="fs-title">Transfer Information 1</h2>
                                         <div class = "row">
                                             <div class= "col-4"> <label>Does your court accept transfers?</label> </div>
-                                            <select class="list-dt" id="transferyes" name="transferyes" required="true">
+                                            <select class="list-dt" id="transferyes" name="transferyes" required>
                                                 <option selected = "selected" disabled = "disabled" value ="">Choose</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
@@ -199,20 +211,20 @@
                                     <div class="tab form-card">    
                                         <h2 class="fs-title">Eligibility Requirements and Procedures</h2>
                                             <h3 class="fs-title">Referral Procedure</h3>
-                                            <textarea class = "form-control" rows= "10" name= "referralproc"  required="true"></textarea>
+                                            <textarea class = "form-control" rows= "10" name= "referralproc"  required></textarea>
                                             <h3 class="fs-title">Screening Procedure</h3>
-                                            <textarea class = "form-control" rows= "10" name="screeningproc"  required="true"></textarea>
+                                            <textarea class = "form-control" rows= "10" name="screeningproc"  required></textarea>
                                             <h3 class="fs-title">Eligibility Requirements</h3>
-                                            <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required="true"></textarea>
+                                            <textarea class = "form-control" rows= "10" name= "eligibilitycrit" required></textarea>
                                     </div>
                                     <div class="tab form-card">  
                                         <h2 class="fs-title">Data</h2>
                                             <h3 class="fs-title">Fiscal Year 2021-2021 Data</h3>
-                                            <input type="number" name="admissions" placeholder="Number of Admissions"  required="true"/> 
-                                            <input type="number" name="completions" placeholder="Number of Sucessful Completions"  required="true" /> 
-                                            <input type="number" name="terminations" placeholder="Number of Unsuccesul Terminations"  required="true" /> 
+                                            <input type="number" name="admissions" placeholder="Number of Admissions"  required/> 
+                                            <input type="number" name="completions" placeholder="Number of Sucessful Completions"  required /> 
+                                            <input type="number" name="terminations" placeholder="Number of Unsuccesul Terminations"  required /> 
                                             <h3 class="fs-title">Calendar Year Data</h3>
-                                            <input type="number" name="numserved" placeholder="Number of Participants"  required="true"/>  
+                                            <input type="number" name="numserved" placeholder="Number of Participants"  required/>  
                                     </div>
                                 </form>
                                 <div class = "form-card button">
