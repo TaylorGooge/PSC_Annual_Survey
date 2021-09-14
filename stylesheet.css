@@ -18,7 +18,7 @@ html {
   margin-top: 20px
 }
 
-#msform fieldset .form-card {
+#msform fieldset .tab.form-card {
   background: white;
   border: 0 none;
   border-radius: 0px;
@@ -45,7 +45,7 @@ html {
   display: none
 }
 
-#msform fieldset .form-card {
+#msform fieldset .tab.form-card {
   text-align: left;
   color: #9E9E9E
 }
@@ -77,7 +77,7 @@ html {
   outline-width: 0
 }
 
-#msform .action-button {
+input .action-button {
   width: 100px;
   background: skyblue;
   font-weight: bold;
@@ -89,12 +89,12 @@ html {
   margin: 10px 5px
 }
 
-#msform .action-button:hover,
+input.action-button:hover,
 #msform .action-button:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue
 }
 
-#msform .action-button-previous {
+input .action-button-previous {
   width: 100px;
   background: #616161;
   font-weight: bold;
@@ -106,8 +106,8 @@ html {
   margin: 10px 5px
 }
 
-#msform .action-button-previous:hover,
-#msform .action-button-previous:focus {
+input.action-button-previous:hover,
+input .action-button-previous:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
 }
 
@@ -195,4 +195,21 @@ select.list-dt:focus {
     border-bottom: 1px solid #ccc;
     padding: 2px 5px 3px 5px;
     margin: 2px
+}
+/* /////////// */
+.tab {
+  display: none;
+}
+
+.button {
+  margin: 10px;
+}
+
+
+h2, h3 {
+  margin-left: 10px;
+}
+
+input {
+  padding: 5px;
 }
