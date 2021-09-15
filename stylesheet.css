@@ -282,6 +282,8 @@ input:checked + .slider:before {
 }
 
 .switches {
-  justify-content:  right;
-  color:black
+ color:black;
+ justify-content: right;
+ overflow: auto;
+
 }
