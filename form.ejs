@@ -43,60 +43,54 @@
                                             <div class = "flex-container">
                                                 <label class = "pay" >Level of charge accepted: </label>
                                             </div>
+                                            <div class = "flex-container">
+                                                <label class = "pay" >Level of charge accepted: </label>
+                                            </div>
                                             <div class = "flex-container switches">
-                                                <p>Misdemeanor</p>
-                                                <label class = "switch" >
-                                                    <input type = "checkbox"  id = "chargemisd" name = "chargemisd" value = "checked" /> 
-                                                    <span class = "slider round"></span>
-                                                </label> 
-                                                <p>Felony</p>
-                                                <label class = "switch" > 
-                                                    <input type = "checkbox" id = "chargefel" name = "chargefel" value = "checked" /> 
-                                                    <span class = "slider round"></span>
-                                                </label>
-                                                <p>Not Applicable</p>
-                                                <label class = "switch" >
-                                                    <input type = "checkbox" id = "chargena" name = "chargena" onclick= "chargeReqNa()" value = "checked"/> 
-                                                    <span class = "slider round" ></span>
-                                                </label>    
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="chargemisd" name ="chargemisd" />
+                                                    <label class="custom-control-label" for="chargemisd">Misdemeanor</label>
+                                                  </div>
+                                                  <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="chargefel" name= "chargefel" />
+                                                    <label class="custom-control-label" for="chargefel">Felony</label>
+                                                  </div>
+                                                  <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="chargena" name = "chargena" onclick ="chargeReqNa()" />
+                                                    <label class="custom-control-label" for="chargena">Not Applicable</label>
+                                                  </div>
                                             </div>
                                             <div class = "flex-container">
                                                 <label class = "pay">How are cases processed?</label>
                                             </div>
                                             <div class = "flex-container switches">
-                                                <p>Pre-trial</p>
-                                                <label class = "switch" >
-                                                    <input type = "checkbox"  id = "pretrial" name = "pretrial" value = "checked" /> 
-                                                    <span class = "slider round"></span>
-                                                </label> 
-                                            <p>Pre-plea</p>
-                                                <label class = "switch" > 
-                                                    <input type = "checkbox" id = "preplea" name = "preplea" value = "checked" /> 
-                                                    <span class = "slider round"></span>
-                                                </label>
-                                                <p>Post-plea </p>
-                                                <label class = "switch" >
-                                                    <input type = "checkbox" id = "postplea" name = "postplea" value = "checked"/> 
-                                                    <span class = "slider round" ></span>
-                                                </label>    
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="pretrial" name = "pretrial" />
+                                                    <label class="custom-control-label" for="pretrial">Pre-trial</label>
+                                                  </div>
+                                                  <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="preplea" name = "preplea" />
+                                                    <label class="custom-control-label" for="preplea">Pre-plea</label>
+                                                  </div>
+                                                  <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="postplea" name = "postplea" />
+                                                    <label class="custom-control-label" for="postplea">Post-plea</label>
+                                                  </div>   
                                             </div>
                                             <div class= "flex-container switches">
-                                                <p>Pre-adjudication</p>
-                                                <label class = "switch" >
-                                                    <input type = "checkbox"  id = "preadj" name = "preadj" value = "checked" /> 
-                                                    <span class = "slider round"></span>
-                                                </label> 
-                                                <p>Post-adjudication</p>
-                                                <label class = "switch" > 
-                                                    <input type = "checkbox" id = "postadj" name = "postadj" value = "checked" /> 
-                                                    <span class = "slider round"></span>
-                                                </label>
-                                                <p>Not Applicable</p>
-                                                <label class = "switch" >
-                                                    <input type = "checkbox" id = "caseprocessna" name = "caseprocessna" onclick= "caseProcNA()" value = "checked"/> 
-                                                    <span class = "slider round" ></span>
-                                                </label>  
-                                            </div>
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="preadj" name = "preadj" />
+                                                    <label class="custom-control-label" for="preadj">Pre-adjucation</label>
+                                                  </div>
+                                                  <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="postadj" name = "postadj" />
+                                                    <label class="custom-control-label" for="postadj">Post-adjudication</label>
+                                                  </div>
+                                                  <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="caseprocessna" name = "caseprocessna" onclick = "caseProcNA()" />
+                                                    <label class="custom-control-label" for="caseprocessna">Not Applicable</label>
+                                                  </div>
+                                            </div> 
                                         </div> 
                                         <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                                     </fieldset>
@@ -247,6 +241,7 @@
         postplea.disabled = true
         preadj.disabled = true
         postadj.disabled = true
+        caseprocessna.checked = true
     }
     
     function courtTypeCheck(){
