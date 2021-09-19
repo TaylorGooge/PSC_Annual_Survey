@@ -6,6 +6,7 @@ const { auth,requiresAuth } = require('express-openid-connect')
 const path = require('path')
 let mysql = require('mysql')
 const bodyParser = require('body-parser')
+const e = require('express')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.set("views", path.join(__dirname, "views"))
@@ -56,8 +57,7 @@ app.get("/", requiresAuth(),function (req, res ) {
                 let info = {
                     "ID": result[i]['id'],
                     "Circuit" : result[i]['circuit'],
-                    "County" : result[i]['circuit'],
-                    "Circuit" : result[i]['county'],
+                    "County" : result[i]['county'],
                     'PSC Type': result[i]['courttype'],
                 }
                 profiles.push(info)
@@ -93,11 +93,10 @@ app.get("/profilelist", requiresAuth(),function (req, res ) {
 
 app.get("/updateprofile", requiresAuth(), function(req,res) {
     let string = "Select * FROM survey WHERE id = " +  req.query.id
-    pool.query(string, function (err,result) {
+    pool.query(string, function (err, result) {
         if (err) {
             throw (err)
-        }
-        if (result.length > 0) {
+        } else{
             let user1 = {
                 completeremail: result[0].completeremail,
                 circuit: result[0].circuit,
