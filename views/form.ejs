@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>  
     <head>
         <title>PSC Annual Survey</title>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script type = "text/javascript" src="/javascript.js"></script>
+        <script type = "text/javascript" src="../javascript.js"></script>       
 
-        <link rel="stylesheet" href="/stylesheet.css" type="text/css"> 
+        <link rel="stylesheet" href="/stylesheet.css" type="text/css" /> 
     </head>
     <body>
+        <%- include('maintemplate.ejs') %>
         <div class = "navbar fixed-top">
             <div class="progress">
                 <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
@@ -96,7 +96,7 @@
                                             <input type="text" name="primaryname" value = "<%= user.primaryname %>" placeholder="Primary Contact Name" required /> 
                                             <input type="text" name="primaryaddress" value = "<%= user.primaryaddress %>" placeholder="Address" required /> 
                                             <input type="text" name="primarycity" value = "<%= user.primarycity %>" placeholder="City" required />
-                                            <input type="text" name="primaryzip" value = "<%= user.primaryzip %>" placeholder="Zipcode required />
+                                            <input type="text" name="primaryzip" value = "<%= user.primaryzip %>" placeholder="Zipcode" required />
                                             <input type="tel" name="primaryphone" value = "<%= user.primaryphone %>" placeholder="Primary Phone" required /> 
                                             <input type="email" name="primaryemail" value = "<%= user.primaryemail %>"  placeholder="Email" required /> <br> <br>
                                             <h3 class="fs-title">Judge Contact Information</h3>
@@ -187,9 +187,7 @@
     let email = document.getElementById('completeremail')
     email.value = user
     email.style.opacity = 0.0
-
     let chargefel = document.getElementById('chargefel')
-
     if (data.chargefel == "on" || data.chargefel == "checked") {
         chargefel.checked = true
     }
@@ -209,7 +207,6 @@
     } else {
         document.getElementById('tno').selected = true
     }
-
     let postadj = document.getElementById('postadj')
     if (data.postadj == "on" || data.postadj == "checked") {
        postadj.checked = true
@@ -251,7 +248,6 @@
 }
 </script>
 <script>
-
 function caseProcNA() {
     let nabox = document.getElementById('caseprocessna')
     let preadj = document.getElementById('preadj')
@@ -259,7 +255,6 @@ function caseProcNA() {
     let postplea =document.getElementById('postplea')
     let postadj = document.getElementById('postadj')
     let pretrial = document.getElementById('pretrial')
-
     if (nabox.checked) {
         pretrial.disabled = true
         pretrial.checked = false
@@ -278,7 +273,6 @@ function caseProcNA() {
         postplea.disabled = false
         preadj.disabled = false
         postadj.disabled = false
-
     }
 }
 function validate () {
@@ -314,7 +308,6 @@ function validate () {
       let ccity = document.getElementById('clerkcity')
       let czip = document.getElementById('clerkzipcode')
       let cphone = document.getElementById('clerkphone')
-
       let transferreq = document.getElementById('transferreq')
   
       if (transfers.value == "Yes") {
@@ -361,7 +354,6 @@ function chargeReqNa() {
         felBox.disabled = false
         misdBox.disabled = false
     }
-
 }
 function progressUpdate(node) {
         let progress = document.getElementById("progressbar")
@@ -375,6 +367,5 @@ function progressUpdate(node) {
             progress.style.width = percent + "%"
             progress.setAttribute('aria-valuenow', percent)
         }
-
     }
 </script>

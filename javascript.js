@@ -1,5 +1,4 @@
-$(document).ready(function(){
-
+window.onload = function () {
     var current_fs, next_fs, previous_fs; //fieldsets
   
     
@@ -36,5 +35,4 @@ $(document).ready(function(){
     $(".submit").click(function(){
     return false;
     })
-    
-    });
+}
