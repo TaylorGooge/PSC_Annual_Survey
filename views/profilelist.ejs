@@ -9,8 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type = "text/javascript" src="../javascript.js"></script>
-    <script type = "text/javascript" src="../reviseform.js"></script>
     <link rel="stylesheet" href="/stylesheet.css" type="text/css"> 
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>PSC Annual Survey</title>
 </head>
 <body>
@@ -20,11 +20,35 @@
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3 flex-container">
                 <%- include('maintemplate.ejs') %>
                 <div id = "tablediv">
-                    <button class = "action-button" onclick = "createNew()">Create New</button>
+                    <button class = "action-button" onclick = 'location.href="/createnew"'> Create New</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="container-fluid" id="grad2" style= "display: none;">
+        <div class="row justify-content-center mt-0">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 ">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3 flex-container">
+                    <div id = "popupcontact">
+                        <form action = "https://formspree.io/f/mleazwnd" id= "delrequest" name = "delrequest" method = "POST">
+                            <h2>Request to close court <i class="fa fa-window-close" aria-hidden="true"" onclick = "popuphide()"></i></h2> 
+                            <input id = 'closeid' type = text style = "opacity: 0%;"/>
+                            <input id = 'closecircuit' style = "opacity: 0%;"/>
+                            <input id = 'closecounty'style = "opacity: 0%;"/> <br>
+                            <input id = 'closetype' type = text style = "opacity: 0%;"/> <br>
+                            <label for= 'closedate'> When did this court close? </label> 
+                            <input name = 'closedate' id = 'closedate' type= "date" required/> <br>
+                            <label for 'reason'>Why did this court close?</label>
+                            <input type = "text" required id ='reason' name = 'reason' /> <br>
+                            <button type= 'submit' class = "action-button" onclick = "popuphide()">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 <script>
@@ -57,41 +81,31 @@
             cell.innerText = vals[x]
        }
        let cellup  = row.insertCell()
-       cellup.innerHTML = '<input type="button" value="Update" class = "action-button" onclick = getProfile(this)>'
+       cellup.innerHTML = '<input type="button" value="Update" class = "action-button" onclick = "getProfile(this)")>'
        let celldel = row.insertCell()
-       celldel.innerHTML = '<input type="button" value="Delete" class = "action-button">'
-    }
-
+       celldel.innerHTML = '<input type="button" value="Delete" class = "action-button" onclick = "popup(this)">'
+    }        
     function getProfile(obj) {
-        var getUrl = window.location;
-        var baseUrl = getUrl .protocol + "//" + getUrl.host;
+        let parent= event.target.parentNode.parentNode
+        let id  =  parent.firstChild.innerText
+        window.location.href="/updateprofile?id=" + id
+    }
+
+    function popup(obj) {
         let parent = event.target.parentNode.parentNode
-        let id = parent.firstChild.innerText
-        let query = baseUrl + '/updateprofile?id=' + id
-        let req = new XMLHttpRequest()
-        req.open("GET", query, true)
-        req.addEventListener('load', function () {
-            let response = req.responseText
-            document.querySelector("html").innerHTML = response
-        })
-        req.send()
+        let childNodes = parent.childNodes
+        document.getElementById('closeid').value = childNodes[0].innerText
+        document.getElementById('closecircuit').value = childNodes[1].innerText
+        document.getElementById('closecounty').value = childNodes[2].innerText
+        document.getElementById('closetype').value = childNodes[3].innerText
+        console.log(childNodes[0].innerText)
+        
+
+        document.getElementById('grad2').style.display = "block";
     }
-
-    function createNew() {
-        var getUrl = window.location;
-        var baseUrl = getUrl .protocol + "//" + getUrl.host;
-        let query = baseUrl + '/createnew?'
-        let req = new XMLHttpRequest()
-        req.open("GET", query, true)
-        req.addEventListener('load', function () {
-            let response = req.responseText
-            document.querySelector("html").innerHTML = response
-        })
-        req.send()
+    function popuphide() {
+        document.getElementById('grad2').style.display = "None";
     }
-
-
-    
 </script>
     
 </body>
