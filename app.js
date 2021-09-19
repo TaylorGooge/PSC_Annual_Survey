@@ -8,7 +8,7 @@ let mysql = require('mysql')
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.set("views", path.join(__dirname))
+app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
 app.use(express.static(__dirname))
 app.set('port',port)
@@ -18,8 +18,8 @@ const config = {
     authRequired: false,
     auth0Logout: true,
     secret: 'a long, randomly-generated string stored in env',
-    // baseURL: 'http://localhost:3000',
-    baseURL:  'https://psc-annual-survey.herokuapp.com',
+    baseURL: 'http://localhost:3000',
+    //baseURL:  'https://psc-annual-survey.herokuapp.com',
     clientID: 'tdMEnxkOd0V5hePoUwXWfjT59NrYf7Sr',
     issuerBaseURL: 'https://dev-stdf3vge.us.auth0.com'
 };
@@ -41,11 +41,58 @@ if (pool) { // mysql is started && connected successfully.
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
+
+
 app.get("/", requiresAuth(),function (req, res ) {
-    //res.send(req.oidc.isAuthenticated() ? 'Logged in' :  'Denied')
     let user = (JSON.stringify(req.oidc.user.email))
     user = user.replace(/"/g, '\'');
     let string = "Select * FROM survey WHERE completeremail = " +  user 
+    pool.query(string, function (err,result) {
+        if (err) {
+            throw (err)
+        } else {
+            let profiles = []
+            for (let i = 0;  i < result.length ; i++){
+                let info = {
+                    "ID": result[i]['id'],
+                    "Circuit" : result[i]['circuit'],
+                    "County" : result[i]['circuit'],
+                    "Circuit" : result[i]['county'],
+                    'PSC Type': result[i]['courttype'],
+                }
+                profiles.push(info)
+            } 
+            res.render('profilelist', {profile : profiles})
+        }
+    })
+})
+
+app.get("/profilelist", requiresAuth(),function (req, res ) {
+    let user = (JSON.stringify(req.oidc.user.email))
+    user = user.replace(/"/g, '\'');
+    let string = "Select * FROM survey WHERE completeremail = " +  user 
+    pool.query(string, function (err,result) {
+        if (err) {
+            throw (err)
+        } else {
+            let profiles = []
+            for (let i = 0;  i < result.length ; i++){
+                let info = {
+                    "ID": result[i]['id'],
+                    "Circuit" : result[i]['circuit'],
+                    "County" : result[i]['circuit'],
+                    "Circuit" : result[i]['county'],
+                    'PSC Type': result[i]['courttype'],
+                }
+                profiles.push(info)
+            } 
+            res.render('profilelist', {profile : profiles})
+        }
+    })
+})
+
+app.get("/updateprofile", requiresAuth(), function(req,res) {
+    let string = "Select * FROM survey WHERE id = " +  req.query.id
     pool.query(string, function (err,result) {
         if (err) {
             throw (err)
@@ -101,19 +148,19 @@ app.get("/", requiresAuth(),function (req, res ) {
                 terminations: result[0].terminations,
                 numserved: result[0].numserved,
                 submitbutton: result[0].submitbutton
-                }
-            res.render('form', {
-                user: user1
-            })
-        } else {
-            let user2 = {
-                completeremail: user,
             }
-            res.render('newform',{
-                user: user2
-            })
+        res.render('form', {user: user1})
         }
-    })  
+    })
+})
+
+app.get('/createnew', requiresAuth(), function (req, res) {
+    let user = (JSON.stringify(req.oidc.user.email))
+    user = user.replace(/"/g, '\'');
+    let user1 = {
+        completeremail: user,
+    }
+    res.render('newform', {user : user1})
 })
 
 app.post('/submit', function (req, res) {
