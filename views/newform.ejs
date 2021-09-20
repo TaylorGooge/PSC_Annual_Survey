@@ -24,8 +24,8 @@
         </div>
         <div class="container-fluid" id="grad1">
             <div class="row justify-content-center mt-0">
-                <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <div class="col-11 col-sm-9 col-md-7 col-lg-8 text-center p-0 mt-3 mb-2">
+                    <div class="card px-0 pt-4 pb-0 mt mb">
                         <h2><strong>PSC Annual Survey</strong></h2>
                         <div class="row">
                             <div class="col-md-12 mx-0">
@@ -41,8 +41,8 @@
                                         <div class="form-card">
                                             <h2 class="fs-title">Court Information</h2> 
                                             <div class="row">
-                                                <div class="col-3"> <label class="pay">Circuit</label> </div>
-                                                <div class="col-9"> <select class="list-dt" id="circuit" name="circuit" required>
+                                                <div class="col-3 flex-container"> <label class="pay">Circuit</label> </div>
+                                                <div class="col-9 flex-container"> <select class="list-dt" id="circuit" name="circuit" required>
                                                     <option selected = "selected" disabled = "disabled" value ="">Choose</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -66,12 +66,12 @@
                                                 </div>
                                             </div>
                                             <div class = "row">
-                                                <div class="col-3"> <label class="pay">County</label> </div>
-                                                <div class = "col-9"><input type="text" name="county" / required> </div>
+                                                <div class="col-3 flex-container"> <label class="pay">County</label> </div>
+                                                <div class = "col-9 flex-container"><input type="text" name="county" / required> </div>
                                             </div>
                                             <div class = "row">
                                                 <div class="col-3"> <label class="pay">Problem-solving Court Type</label> </div>
-                                                <div class="col-9 "> <select class="list-dt" id="courttype" name="courttype" required>
+                                                <div class="flex-container"> <select class="list-dt" id="courttype" name="courttype" required>
                                                     <option selected = "selected" disabled = "disabled" value ="">Choose</option>
                                                     <option value="Adult Drug Court">Adult Drug Court</option>
                                                     <option value="Mental Health Court">Mental Health Court</option>
@@ -85,21 +85,21 @@
                                             </div>
                                             <div class = "row">
                                                 <div class="col-3"> <label class="pay">Other problem-solving court type: </label> </div>
-                                                <div class = "col-9"><input type="text" name="otherpsctype" id = "otherpsctype" /> </div>
+                                                <div class = "col-9 flex-container"><input type="text" name="otherpsctype" id = "otherpsctype" /> </div>
                                             </div>
-                                            <div class = "flex-container">
-                                                <label class = "pay" >Level of charge accepted: </label>
+                                            <div class = "row">
+                                                <label class = "col-3 flex-container" >Level of charge accepted: </label>
                                             </div>
                                             <div class = "flex-container switches">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="chargemisd" name ="chargemisd" />
+                                                <div class="custom-control custom-switch flex-container"> 
+                                                    <input type="checkbox" class="custom-control-input flex-container" id="chargemisd" name ="chargemisd" />
                                                     <label class="custom-control-label" for="chargemisd">Misdemeanor</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
+                                                  </div> 
+                                                  <div class="custom-control custom-switch flex-container"> <br>
                                                     <input type="checkbox" class="custom-control-input" id="chargefel" name= "chargefel" />
                                                     <label class="custom-control-label" for="chargefel">Felony</label>
                                                   </div>
-                                                  <div class="custom-control custom-switch">
+                                                  <div class="custom-control custom-switch flex-container">
                                                     <input type="checkbox" class="custom-control-input" id="chargena" name = "chargena" onclick ="chargeReqNa()" />
                                                     <label class="custom-control-label" for="chargena">Not Applicable</label>
                                                   </div>

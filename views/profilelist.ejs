@@ -16,11 +16,13 @@
 <body>
     <div class="container-fluid" id="grad1">
         <div class="row justify-content-center mt-0">
-            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 ">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-8 text-center p-0 mt-3 ">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3 flex-container">
                 <%- include('maintemplate.ejs') %>
-                <div id = "tablediv">
-                    <button class = "action-button" onclick = 'location.href="/createnew"'> Create New</button>
+                <div class = "flex-container">
+                    <div id = "tablediv" class="table-responsive" >
+                        <button class = "action-button" onclick = 'location.href="/createnew"'> Create New</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,10 +35,10 @@
                     <div id = "popupcontact">
                         <form action = "https://formspree.io/f/mleazwnd" id= "delrequest" name = "delrequest" method = "POST">
                             <h2>Request to close court <i class="fa fa-window-close" aria-hidden="true"" onclick = "popuphide()"></i></h2> 
-                            <input id = 'closeid' type = text style = "opacity: 0%;"/>
-                            <input id = 'closecircuit' style = "opacity: 0%;"/>
-                            <input id = 'closecounty'style = "opacity: 0%;"/> <br>
-                            <input id = 'closetype' type = text style = "opacity: 0%;"/> <br>
+                            <input name = "circuit" id = 'closeid' type = text style = "opacity: 0%;"/>
+                            <input name = "circuit" id = 'closecircuit' style = "opacity: 0%;"/>
+                            <input name = "county" id = 'closecounty'style = "opacity: 0%;"/> <br>
+                            <input name = "court type" id = 'closetype' type = text style = "opacity: 0%;"/> <br>
                             <label for= 'closedate'> When did this court close? </label> 
                             <input name = 'closedate' id = 'closedate' type= "date" required/> <br>
                             <label for 'reason'>Why did this court close?</label>
