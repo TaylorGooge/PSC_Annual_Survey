@@ -3,6 +3,10 @@
   padding: 0
 }
 
+body {
+  position: relative;
+}
+
 html {
   height: 100%
 }
@@ -222,10 +226,9 @@ progress-bar {
 
 .switches {
  color:black;
- justify-content: space-between;
+ justify-content:space-between;
 }
 
-/* new stuff */
 .action-button {
   width: 100px;
   background: skyblue;
@@ -258,4 +261,18 @@ progress-bar {
 .action-button-previous:hover,
 .action-button-previous:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+}
+
+#grad2 {
+  position: absolute;
+  max-width: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#popupcontact {
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
 }

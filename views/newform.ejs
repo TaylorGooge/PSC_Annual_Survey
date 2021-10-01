@@ -1,30 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<html>  
-    <head>
-        <title>PSC Annual Survey</title>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        <title>PSC Annual Survey</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script type = "text/javascript" src="/javascript.js"></script>
-        <link rel="stylesheet" href="/stylesheet.css" type="text/css"> 
-    </head>
-    <body>
         <%- include('maintemplate.ejs') %>
                 <!-- MultiStep Form -->
         <div class = "navbar fixed-top">
             <div class="progress">
-                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 10%;" aria-valuenow = "10" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
         <div class="container-fluid" id="grad1">
             <div class="row justify-content-center mt-0">
-                <div class="col-11 col-sm-9 col-md-7 col-lg-8 text-center p-0 mt-3 mb-2">
+                <div class="col col-sm col-md-7 col-lg-8 text-center p-0 mt-3 mb-2">
                     <div class="card px-0 pt-4 pb-0 mt mb">
                         <h2><strong>PSC Annual Survey</strong></h2>
                         <div class="row">
@@ -41,8 +24,8 @@
                                         <div class="form-card">
                                             <h2 class="fs-title">Court Information</h2> 
                                             <div class="row">
-                                                <div class="col-3 flex-container"> <label class="pay">Circuit</label> </div>
-                                                <div class="col-9 flex-container"> <select class="list-dt" id="circuit" name="circuit" required>
+                                                <div class="col-auto flex-container"> <label class="pay">Circuit</label> </div>
+                                                <div class="col-auto flex-container"> <select class="list-dt" id="circuit" name="circuit" required>
                                                     <option selected = "selected" disabled = "disabled" value ="">Choose</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -66,12 +49,12 @@
                                                 </div>
                                             </div>
                                             <div class = "row">
-                                                <div class="col-3 flex-container"> <label class="pay">County</label> </div>
-                                                <div class = "col-9 flex-container"><input type="text" name="county" / required> </div>
+                                                <div class="col-auto flex-container"> <label class="pay">County</label> </div>
+                                                <div class = "col-auto flex-container"><input type="text" name="county" / required> </div>
                                             </div>
                                             <div class = "row">
-                                                <div class="col-3"> <label class="pay">Problem-solving Court Type</label> </div>
-                                                <div class="flex-container"> <select class="list-dt" id="courttype" name="courttype" required>
+                                                <div class="col-auto"> <label class="pay">Problem-solving Court Type</label> </div>
+                                                <div class="col-auto flex-container"> <select class="list-dt" id="courttype" name="courttype" required>
                                                     <option selected = "selected" disabled = "disabled" value ="">Choose</option>
                                                     <option value="Adult Drug Court">Adult Drug Court</option>
                                                     <option value="Mental Health Court">Mental Health Court</option>
@@ -84,64 +67,72 @@
                                                 </div>
                                             </div>
                                             <div class = "row">
-                                                <div class="col-3"> <label class="pay">Other problem-solving court type: </label> </div>
-                                                <div class = "col-9 flex-container"><input type="text" name="otherpsctype" id = "otherpsctype" /> </div>
+                                                <div class="col-auto"> <label class="pay">Other problem-solving court type: </label> </div>
+                                                <div class = "col-auto flex-container"><input type="text" name="otherpsctype" id = "otherpsctype" /> </div>
                                             </div>
                                             <div class = "row">
-                                                <label class = "col-3 flex-container" >Level of charge accepted: </label>
-                                            </div>
-                                            <div class = "flex-container switches">
-                                                <div class="custom-control custom-switch flex-container"> 
-                                                    <input type="checkbox" class="custom-control-input flex-container" id="chargemisd" name ="chargemisd" />
-                                                    <label class="custom-control-label" for="chargemisd">Misdemeanor</label>
-                                                  </div> 
-                                                  <div class="custom-control custom-switch flex-container"> <br>
-                                                    <input type="checkbox" class="custom-control-input" id="chargefel" name= "chargefel" />
-                                                    <label class="custom-control-label" for="chargefel">Felony</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch flex-container">
-                                                    <input type="checkbox" class="custom-control-input" id="chargena" name = "chargena" onclick ="chargeReqNa()" />
-                                                    <label class="custom-control-label" for="chargena">Not Applicable</label>
-                                                  </div>
-                                            </div>
-                                            <div class = "flex-container">
-                                                <label class = "pay">How are cases processed?</label>
-                                            </div>
-                                            <div class = "flex-container switches">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="pretrial" name = "pretrial" />
-                                                    <label class="custom-control-label" for="pretrial">Pre-trial</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="preplea" name = "preplea" />
-                                                    <label class="custom-control-label" for="preplea">Pre-plea</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="postplea" name = "postplea" />
-                                                    <label class="custom-control-label" for="postplea">Post-plea</label>
-                                                  </div>   
-                                            </div>
-                                            <div class= "flex-container switches">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="preadj" name = "preadj" />
-                                                    <label class="custom-control-label" for="preadj">Pre-adjucation</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="postadj" name = "postadj" />
-                                                    <label class="custom-control-label" for="postadj">Post-adjudication</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="caseprocessna" name = "caseprocessna" onclick = "caseProcNA()" />
-                                                    <label class="custom-control-label" for="caseprocessna">Not Applicable</label>
-                                                  </div>
-                                            </div> 
-                                            <div class = "row">
-                                                <div class= "col-3"> <label class = "pay">Implementation Date</label> </div>
-                                                    <div class = "col-9">
+                                                <div class= "col-auto"> <label class = "pay">Implementation Date</label> </div>
+                                                    <div class = "col-auto">
                                                         <input class='datelist' name= "impdate" type= "date"  required>
                                                     </div>
                                             </div>
                                         </div> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class = "form-card">
+                                            <div class = "flex-container">
+                                                <h2 class="fs-title">Level of charge accepted: </h2>
+                                            </div>
+                                            <ul class = "flex-container switches">
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="chargemisd" name ="chargemisd" />
+                                                    <label class="custom-control-label" for="chargemisd">Misdemeanor</label>
+                                                </li>
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="chargefel" name= "chargefel" />
+                                                    <label class="custom-control-label" for="chargefel">Felony</label>
+                                                </li>
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="chargena" name = "chargena" onclick ="chargeReqNa()" />
+                                                    <label class="custom-control-label" for="chargena">Not Applicable</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class = "form-card">
+                                            <div class = "flex-container">
+                                                <h2 class="fs-title">How are cases processed?</h2>
+                                            </div>
+                                            <ul class = "flex-container switches">
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="pretrial" name = "pretrial" />
+                                                    <label class="custom-control-label" for="pretrial">Pre-trial</label>
+                                                </li>
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="preplea" name = "preplea" />
+                                                    <label class="custom-control-label" for="preplea">Pre-plea</label>
+                                                </li>
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="postplea" name = "postplea" />
+                                                    <label class="custom-control-label" for="postplea">Post-plea</label>
+                                                </li>   
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="preadj" name = "preadj" />
+                                                    <label class="custom-control-label" for="preadj">Pre-adjucation</label>
+                                                </li>
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="postadj" name = "postadj" />
+                                                    <label class="custom-control-label" for="postadj">Post-adjudication</label>
+                                                </li>
+                                                <li class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="caseprocessna" name = "caseprocessna" onclick = "caseProcNA()" />
+                                                    <label class="custom-control-label" for="caseprocessna">Not Applicable</label>
+                                                </li>
+                                            </ul> 
+                                        </div>
                                         <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                                     </fieldset>
                                     <fieldset>
@@ -371,11 +362,11 @@
         let progress = document.getElementById("progressbar")
         let percent = parseInt(progress.style.width)
         if (node.value == "Next Step") {
-            percent = percent + 14.28
+            percent = percent + 10
             progress.style.width = percent + "%"
             progress.setAttribute('aria-valuenow', percent)
         } else {
-            percent = percent - 14.28
+            percent = percent - 10
             progress.style.width = percent + "%"
             progress.setAttribute('aria-valuenow', percent)
         }

@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>PSC Annual Survey</title>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script type = "text/javascript" src="../javascript.js"></script>       
 
-        <link rel="stylesheet" href="/stylesheet.css" type="text/css" /> 
-    </head>
-    <body>
         <%- include('maintemplate.ejs') %>
         <div class = "navbar fixed-top">
             <div class="progress">
-                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 14.28%;" aria-valuenow = "14.28" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" id = "progressbar" role="progressbar" style= "width: 12.5%;" aria-valuenow = "12.5" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
         <!-- MultiStep Form -->
@@ -40,54 +25,57 @@
                                     <fieldset>
                                         <div class="form-card">
                                             <div class = "flex-container">
-                                                <label class = "pay" >Level of charge accepted: </label>
+                                                <h2 class="fs-title">Level of charge accepted: </h2>
                                             </div>
-                                            <div class = "flex-container switches">
-                                                <div class="custom-control custom-switch">
+                                            <ul class = "flex-container switches">
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="chargemisd" name ="chargemisd" />
                                                     <label class="custom-control-label" for="chargemisd">Misdemeanor</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
+                                                </li>
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="chargefel" name= "chargefel" />
                                                     <label class="custom-control-label" for="chargefel">Felony</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
+                                                </li>
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="chargena" name = "chargena" onclick ="chargeReqNa()" />
                                                     <label class="custom-control-label" for="chargena">Not Applicable</label>
-                                                  </div>
-                                            </div>
+                                                </li>
+                                            </ul>
+                                        </div> 
+                                        <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
                                             <div class = "flex-container">
-                                                <label class = "pay">How are cases processed?</label>
+                                                <h2 class="fs-title">How are cases processed?</h2>
                                             </div>
-                                            <div class = "flex-container switches">
-                                                <div class="custom-control custom-switch">
+                                            <ul class = "flex-container switches">
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="pretrial" name = "pretrial" />
                                                     <label class="custom-control-label" for="pretrial">Pre-trial</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
+                                                </li>
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="preplea" name = "preplea" />
                                                     <label class="custom-control-label" for="preplea">Pre-plea</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
+                                                </li>
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="postplea" name = "postplea" />
                                                     <label class="custom-control-label" for="postplea">Post-plea</label>
-                                                  </div>   
-                                            </div>
-                                            <div class= "flex-container switches">
-                                                <div class="custom-control custom-switch">
+                                                </li>   
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="preadj" name = "preadj" />
                                                     <label class="custom-control-label" for="preadj">Pre-adjucation</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
+                                                </li>
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="postadj" name = "postadj" />
                                                     <label class="custom-control-label" for="postadj">Post-adjudication</label>
-                                                  </div>
-                                                  <div class="custom-control custom-switch">
+                                                </li>
+                                                <li class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="caseprocessna" name = "caseprocessna" onclick = "caseProcNA()" />
                                                     <label class="custom-control-label" for="caseprocessna">Not Applicable</label>
-                                                  </div>
-                                            </div> 
-                                        </div> 
+                                                </li>
+                                            </ul> 
+                                        </div>
                                         <input type="button" name="next" class="next action-button" value="Next Step" onclick = "progressUpdate(this)"/>
                                     </fieldset>
                                     <fieldset>
@@ -135,12 +123,12 @@
                                             <input type="tel" id = "designeephone" name="designeephone" placeholder = "Phone Numbeer" value = "<%= user.designeephone %>"/> 
                                             <input type="email" id = "designeeemail" name="designeeemail" value = "<%= user.designeeemail %>" /> <br> <br>
                                             <h3 class="fs-title">Clerk of Court Contact Information</h3>
-                                            <input type="text" id = "clerkname" name="clerkname"  placeholder = "Clerk of Court Name" value = "<%= user.clerkname %>" /> 
+                                            <input type="text" id = "clerkname" name="clerkname" placeholder = "Clerk of Court Name" value = "<%= user.clerkname %>" /> 
                                             <input type="text" id = "clerkaddress" name="clerkaddress" placeholder = "Address" value = "<%= user.clerkaddress %>" /> 
-                                            <input type="text" id = "clerkcity" name="clerkcity"  placeholder = "City" value = "<%= user.clerkcity %>" />
-                                            <input type="text" id = "clerkzipcode" name="clerkzipcode"  placeholder = "Zipcode" value = "<%= user.clerkzipcode %>" />
-                                            <input type="tel" id = "clerkphone" name="clerkphone"  placeholder = "Phone Numer" value = "<%= user.clerkphone %>" /> 
-                                            <input type="email" id = "clerkemail" name="clerkemail"  placeholder = "Email" value = "<%= user.clerkemail %>" />
+                                            <input type="text" id = "clerkcity" name="clerkcity" placeholder = "City" value = "<%= user.clerkcity %>" />
+                                            <input type="text" id = "clerkzipcode" name="clerkzipcode" placeholder = "Zipcode" value = "<%= user.clerkzipcode %>" />
+                                            <input type="tel" id = "clerkphone" name="clerkphone" placeholder = "Phone Numer" value = "<%= user.clerkphone %>" /> 
+                                            <input type="email" id = "clerkemail" name="clerkemail" placeholder = "Email" value = "<%= user.clerkemail %>" />
                                             <h3 class="fs-title">Transfer Requirements</h3>
                                             <textarea class = "form-control" rows= "10" name = "transferreq" id = "transferreq"> <%=user.transferreq %> </textarea>
                                         </div>
@@ -359,11 +347,11 @@ function progressUpdate(node) {
         let progress = document.getElementById("progressbar")
         let percent = parseInt(progress.style.width)
         if (node.value == "Next Step") {
-            percent = percent + 14.28
+            percent = percent + 12.5
             progress.style.width = percent + "%"
             progress.setAttribute('aria-valuenow', percent)
         } else {
-            percent = percent - 14.28
+            percent = percent - 12.5
             progress.style.width = percent + "%"
             progress.setAttribute('aria-valuenow', percent)
         }
