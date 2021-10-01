@@ -3,8 +3,6 @@
 
 This is a proof-of-concept protoype. The goal of this project is to develop a web-app to enable annual data reporting to be captured online and updated annually. 
 
-## Under Construction
-Ajax to enable pre-populated template currently under construction. Styling is also still under construction.
 
 ## Information
 
